@@ -1,1 +1,27 @@
 @import 'normalize.css';
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+// SASS
+@import '../../sassStyles/helpers/_mixin';
+@import '../../sassStyles/helpers/_variables';
+
+:root {
+    --white: #fff;
+    --dark-gray: #404145;
+    --light-gray: #66646f;
+    --bg-green: #f1fdf7;
+    --bg-gray: #f5f5f5;
+    --primary: #1dbf73;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.5;
+    text-rendering: optimizeSpeed;
+}

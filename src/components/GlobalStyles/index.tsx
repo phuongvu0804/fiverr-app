@@ -1,7 +1,7 @@
 import React from 'react';
 
-const GlobalStyles = () => {
-    return <div>GlobalStyles</div>;
+const GlobalStyles = ({ children }: { children: JSX.Element }) => {
+    return children;
 };
 
 export default GlobalStyles;
