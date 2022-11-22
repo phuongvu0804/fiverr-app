@@ -3,7 +3,11 @@ import Footer from '@/components/Layout/components/Footer';
 import Header from '@/components/Layout/components/Header';
 import JobFilter from '@/components/Layout/components/JobFilter';
 
-const DefaultLayout = ({ children }: { children: JSX.Element }) => {
+interface Props {
+    children: JSX.Element;
+}
+
+const DefaultLayout = ({ children }: Props) => {
     return (
         <div>
             <Header />

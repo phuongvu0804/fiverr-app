@@ -1,9 +1,11 @@
-import Footer from '@/components/Layout/components/Footer';
-import Header from '@/components/Layout/components/Header';
-import React from 'react';
+// Components
 import AuthBackground from '../components/AuthBackground';
 
-const AuthenLayout = ({ children }: { children: JSX.Element }) => {
+interface Props {
+    children: JSX.Element;
+}
+
+const AuthenLayout = ({ children }: Props) => {
     return (
         <div>
             <AuthBackground />

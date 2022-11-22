@@ -2,7 +2,11 @@
 import Footer from '@/components/Layout/components/Footer';
 import Header from '@/components/Layout/components/Header';
 
-const HeaderFooterLayout = ({ children }: { children: JSX.Element }) => {
+interface Props {
+    children: JSX.Element;
+}
+
+const HeaderFooterLayout = ({ children }: Props) => {
     return (
         <div>
             <Header />
