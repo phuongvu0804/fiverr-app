@@ -9,6 +9,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 //Components
 import './Header.scss';
 import { actionButtonList } from './constants';
+import { ButtonPropType } from '@/constants/intefaces';
 
 const Header = () => {
     const [drawer, setDrawer] = useState(false);
@@ -26,7 +27,7 @@ const Header = () => {
 
     const renderActionButtonList = () => {
         return actionButtonList.map((button, index) => {
-            let props: { to?: string; href?: string } = {};
+            let props: ButtonPropType = {};
             if (button.to) {
                 props.to = button.to;
             } else if (button.href) {
@@ -43,7 +44,7 @@ const Header = () => {
 
     return (
         <div id="header">
-            <div className="header__content">
+            <div className="header__content container-center">
                 <Button className="header__drawer-btn hide-on-pc-tablet" onClick={toggleDrawer(true)}>
                     <MenuIcon />
                 </Button>

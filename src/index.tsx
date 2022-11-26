@@ -2,23 +2,35 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 
-// Redux's config
+//Redux's config
 import { Provider } from 'react-redux';
 import configureStore from './store';
 
-// Components
+//Components
 import GlobalStyles from './components/GlobalStyles';
 import App from '@/App';
 
+//Material UI
+import { createTheme, ThemeProvider } from '@mui/material';
+
 const store = configureStore();
+
+const theme = createTheme({
+    typography: {
+        fontFamily: ['Poppins', 'sans-serif'].join(','),
+        fontSize: 16,
+    },
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
     <React.StrictMode>
         <Provider store={store}>
-            <GlobalStyles>
-                <App />
-            </GlobalStyles>
+            <ThemeProvider theme={theme}>
+                <GlobalStyles>
+                    <App />
+                </GlobalStyles>
+            </ThemeProvider>
         </Provider>
     </React.StrictMode>,
 );

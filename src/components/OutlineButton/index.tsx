@@ -1,6 +1,8 @@
-import { Button } from '@mui/material';
-import React, { ForwardRefExoticComponent } from 'react';
+import React from 'react';
 import { Link, LinkProps } from 'react-router-dom';
+
+//Material UI
+import { Button } from '@mui/material';
 
 interface Props {
     className?: string;
@@ -20,7 +22,6 @@ interface CompPropType {
 }
 
 const OutlineButton = ({ className, children, to, href, leftIcon, rightIcon, onClick, ...passedProps }: Props) => {
-    let Comp: any = Button;
     const props: CompPropType = {
         onClick,
         ...passedProps,
