@@ -1,0 +1,120 @@
+#header {
+    height: var(--header-height);
+    border-bottom: 1px solid var(--border-color);
+
+    .header__content {
+        display: flex;
+        height: 100%;
+        width: var(--container-width);
+        margin: 0 auto;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header__btn {
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: var(--light-gray);
+        text-transform: none;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .header__btn--text {
+        --padding-x: 10px;
+
+        padding-right: var(--padding-x);
+        padding-left: var(--padding-x);
+        border: none;
+        background-color: transparent;
+
+        &:hover {
+            background-color: transparent;
+        }
+    }
+
+    .header__btn--outline {
+        font-size: 1.4rem;
+        border: 1px solid var(--light-gray);
+        padding: 3px 19px;
+        margin-left: 10px;
+
+        &:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+            transition: all 0.2s ease;
+        }
+    }
+}
+
+.header__logo {
+}
+
+.header__action-list {
+}
+
+//Responsive for mobile and tablet devices
+@media (max-width: 1023px) {
+    #header {
+        .header__content {
+            width: 100%;
+        }
+    }
+}
+
+//Responsive for tablet devices
+@media (min-width: 740px) and (max-width: 1023px) {
+    #header {
+        .header__content {
+            padding: 0 32px;
+        }
+    }
+}
+
+//Responsive for mobile devices
+@media (max-width: 739px) {
+    .header__content {
+        padding: 15px 24px;
+    }
+
+    .header__drawer-btn {
+        svg {
+            font-size: 4rem;
+            color: var(--light-gray);
+        }
+    }
+
+    .header__action-list--mobile {
+        width: 272px;
+        padding: 20px;
+
+        .header__btn {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 300;
+            padding: 10px 0;
+            color: var(--light-text);
+            text-transform: none;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .header__btn--outline {
+            font-size: 1.4rem;
+            font-weight: 600;
+            background-color: var(--primary);
+            color: var(--white);
+            border: 1px solid var(--primary);
+            padding: 8px 24px;
+            margin-bottom: 20px;
+
+            &:hover {
+                background-color: var(--white);
+                color: var(--light-gray);
+                border-color: var(--light-gray);
+                transition: all 0.2s ease;
+            }
+        }
+    }
+}

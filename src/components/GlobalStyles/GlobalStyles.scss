@@ -9,12 +9,19 @@
     --white: #fff;
     --dark-gray: #404145;
     --light-gray: #66646f;
+    --light-text: #95979d;
     --bg-green: #f1fdf7;
     --bg-gray: #f5f5f5;
     --primary: #1dbf73;
-}
 
+    --border-color: #e4e5e7;
+
+    --header-height: 8rem;
+    --container-width: 140rem;
+}
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -27,4 +34,25 @@ body {
     font-size: 1.6rem;
     line-height: 1.5;
     text-rendering: optimizeSpeed;
+}
+
+//Responsive for tablet + PC devices
+@media (min-width: 740px) {
+    .hide-on-pc-tablet {
+        display: none !important;
+    }
+}
+
+//Responsive for tablet devices
+@media (min-width: 740px) and (max-width: 1023px) {
+    .hide-on-tablet {
+        display: none !important;
+    }
+}
+
+//Responsive for mobile devices
+@media (max-width: 739px) {
+    .hide-on-mobile {
+        display: none !important;
+    }
 }

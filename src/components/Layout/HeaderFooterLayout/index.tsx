@@ -1,6 +1,6 @@
 //Components
 import Footer from '@/components/Layout/components/Footer';
-import Header from '@/components/Layout/components/Header';
+import Header from '@/components/Layout/components/Header/index';
 
 interface Props {
     children: JSX.Element;
