@@ -1,8 +1,20 @@
 import React from 'react';
+import Banner from './components/Banner';
+import CategoryList from './components/CategoryList';
+import SellingPropo from './components/SellingPropo';
+import ServiceList from './components/ServiceList';
+import Testimonial from './components/Testimonial';
 
 const Home = () => {
-    console.log('Home');
-    return <h1>Home page</h1>;
+    return (
+        <div id="home">
+            <Banner />
+            <ServiceList />
+            <SellingPropo />
+            <Testimonial />
+            <CategoryList />
+        </div>
+    );
 };
 
 export default Home;

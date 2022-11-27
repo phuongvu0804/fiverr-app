@@ -65,7 +65,7 @@ const Footer = () => {
                 {/* Footer top for PC + tablet ends*/}
 
                 {/* Footer top for mobile starts */}
-                <div className="footer__top">
+                <div className="footer__top hide-on-pc-tablet">
                     <CollapseMenu menuList={columns} />
                 </div>
                 {/* Footer top for mobile ends */}
