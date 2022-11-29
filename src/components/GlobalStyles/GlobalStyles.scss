@@ -1,9 +1,13 @@
 @import 'normalize.css';
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
-// SASS
+//SASS
 @import '../../sassStyles/helpers/_mixin';
 @import '../../sassStyles/helpers/_variables';
+
+//React-slick
+@import '~slick-carousel/slick/slick.css';
+@import '~slick-carousel/slick/slick-theme.css';
 
 :root {
     --white: #fff;
@@ -43,6 +47,10 @@ body {
     margin: 0 auto !important;
 }
 
+.hide-on-pc {
+    display: none !important;
+}
+
 //Responsive for tablet + PC devices
 @media (min-width: 740px) {
     .hide-on-pc-tablet {
@@ -55,10 +63,18 @@ body {
     .container-center {
         width: 100% !important;
     }
+
+    .hide-on-tablet-mobile {
+        display: none !important;
+    }
+
+    .display-tablet-mobile {
+        display: block !important;
+    }
 }
 
 //Responsive for tablet devices
-@media (min-width: 740px) and (max-width: 1023px) {
+@media (min-width: 740px) and (max-width: 1024px) {
     .hide-on-tablet {
         display: none !important;
     }

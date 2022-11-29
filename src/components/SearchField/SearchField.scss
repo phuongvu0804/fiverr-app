@@ -1,0 +1,24 @@
+form.search-field__wrapper {
+    --search-field-height: 4.8rem;
+    width: 100%;
+    padding: 0;
+
+    .search-field__input {
+        font-size: 16px;
+        color: var(--black);
+        height: var(--search-field-height);
+    }
+
+    .search-field__btn {
+        height: var(--search-field-height);
+        font-size: 1.6rem;
+        text-transform: unset;
+        padding: 12px 24px;
+        background-color: var(--primary);
+    }
+}
+
+.search-field__icon svg {
+    font-size: 2.6rem;
+    fill: var(--gray-text);
+}

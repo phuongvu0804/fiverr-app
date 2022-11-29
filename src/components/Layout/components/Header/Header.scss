@@ -1,6 +1,11 @@
 #header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 111111111;
     height: var(--header-height);
-    border-bottom: 1px solid var(--border-color);
+    // border-bottom: 1px solid var(--border-color);
 
     .header__content {
         display: flex;

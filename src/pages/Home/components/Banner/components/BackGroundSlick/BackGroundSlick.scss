@@ -1,0 +1,106 @@
+div.home__bg--slick {
+    background-color: gray;
+    height: 100%;
+    width: 100%;
+
+    div.slick-list {
+        height: 100% !important;
+    }
+
+    div.slick-list > div.slick-track {
+        height: 100%;
+    }
+}
+
+.home__bg-item {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    &.active {
+        opacity: 1;
+        transition: opacity 0.9s ease;
+    }
+
+    > .container-center {
+        height: 100%;
+        display: flex;
+        align-items: end;
+        justify-content: flex-end;
+    }
+}
+
+.home__bg-item--andrea {
+    background-image: url('../../../../../../assets/images/bg-hero-1-1792-x2.jpeg');
+}
+
+.home__bg-item--moon {
+    background-image: url('../../../../../../assets/images/bg-hero-2-1792-x2.jpeg');
+}
+
+.home__bg-item--ritika {
+    background-image: url('../../../../../../assets/images/bg-hero-3-1792-x2.jpeg');
+}
+
+.home__bg-item--zach {
+    background-image: url('../../../../../../assets/images/bg-hero-4-1792-x2.jpeg');
+}
+
+.home__bg-item--gabrielle {
+    background-image: url('../../../../../../assets/images/bg-hero-5-1792-x2.jpeg');
+}
+
+.banner__hero-name {
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--white);
+    padding-bottom: 3.2rem;
+
+    span {
+        font-weight: 600;
+    }
+}
+
+//Responsive for mobile and tablet devices
+@media (max-width: 1023px) {
+    .home__bg--slick {
+    }
+
+    .home__bg-item--andrea {
+        background-color: #023a15;
+        background-image: unset;
+    }
+
+    .home__bg-item--moon {
+        background-color: #b64762;
+        background-image: unset;
+    }
+
+    .home__bg-item--ritika {
+        background-color: #540e1f;
+        background-image: unset;
+    }
+
+    .home__bg-item--zach {
+        background-color: #023a15;
+        background-image: unset;
+    }
+
+    .home__bg-item--gabrielle {
+        background-color: #7d1a00;
+        background-image: unset;
+    }
+}
+
+//Responsive for mobile and tablet devices
+@media (max-width: 1023px) {
+    .banner__hero-name {
+    }
+}
+
+//Responsive for tablet devices
+@media (min-width: 740px) and (max-width: 1023px) {
+}
