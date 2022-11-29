@@ -5,11 +5,12 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import { Button } from '@mui/material';
 
+//Others
 import './SearchField.scss';
 
 interface Props {
     className?: string;
-    children: JSX.Element | string;
+    children?: JSX.Element | string;
     searchBtn?: boolean;
 }
 
