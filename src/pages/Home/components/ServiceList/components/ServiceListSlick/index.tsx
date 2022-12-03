@@ -10,13 +10,13 @@ const ServiceListSlick = ({ data }: { data: ServiceProps[] }) => {
         return data.map((item, index) => {
             return (
                 <div key={index} className="service-list__item-wrapper">
-                    <a className="service-list__item" href="/">
+                    <div className="service-list__item">
                         <img src={item.img} />
                         <div className="service-list__item-content">
                             <h5 className="service-list__item-desc">{item.slogan}</h5>
                             <h3 className="service-list__item-title">{item.slogan}</h3>
                         </div>
-                    </a>
+                    </div>
                 </div>
             );
         });
