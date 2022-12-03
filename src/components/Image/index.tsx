@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 interface Props {
     src: string;
     alt: string;
-    className: string;
+    className?: string;
     fallback?: any;
 }
 

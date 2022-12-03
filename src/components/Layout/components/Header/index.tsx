@@ -14,9 +14,9 @@ import { ButtonPropType } from '@/constants/intefaces';
 const Header = () => {
     const [drawer, setDrawer] = useState(false);
     const [scrollDown, setScrollDown] = useState(false);
+
     useEffect(() => {
         const onScroll = () => {
-            console.log(window.pageYOffset);
             const offsetY = window.pageYOffset;
 
             offsetY > 0 ? setScrollDown(true) : setScrollDown(false);
