@@ -15,6 +15,16 @@ const images = {
     netflixLogo: require('./netflix-logo.png'),
     pandgLogo: require('./pandg-logo.png'),
     paypalLogo: require('./paypal-logo.png'),
+    serviceBg1: require('./service-bg-1.jpeg'),
+    serviceBg2: require('./service-bg-2.jpeg'),
+    serviceBg3: require('./service-bg-3.jpeg'),
+    serviceBg4: require('./service-bg-4.jpeg'),
+    serviceBg5: require('./service-bg-5.jpeg'),
+    serviceBg6: require('./service-bg-6.jpeg'),
+    serviceBg7: require('./service-bg-7.jpeg'),
+    serviceBg8: require('./service-bg-8.jpeg'),
+    serviceBg9: require('./service-bg-9.jpeg'),
+    serviceBg10: require('./service-bg-10.jpeg'),
 };
 
 export default images;

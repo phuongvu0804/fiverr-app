@@ -1,16 +1,17 @@
 //Components
 import SearchField from '@/components/SearchField';
 import { Button } from '@mui/material';
+import { BgItemType } from '../../interfaces';
 
 //Others
 import './Banner.scss';
 import BackGroundSlick from './components/BackGroundSlick';
 
-const Banner = () => {
+const Banner = ({ data }: { data: BgItemType[] }) => {
     return (
         <div className="home__banner">
             <div className="home__bg-wrapper">
-                <BackGroundSlick />
+                <BackGroundSlick data={data} />
             </div>
 
             <div className="container-center">

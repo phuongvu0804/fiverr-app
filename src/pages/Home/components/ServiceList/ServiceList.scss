@@ -1,0 +1,12 @@
+.service-list__wrapper {
+    > div {
+        margin: 0 calc(-1 * var(--service-list-gap));
+    }
+}
+
+//Responsive for tablet devices
+@media (min-width: 740px) and (max-width: 1024px) {
+    .home__service-list.container-center {
+        padding: 0 3.2rem;
+    }
+}

@@ -2,9 +2,9 @@ import Slider from 'react-slick';
 
 //Others
 import './BackGroundSlick.scss';
-import { bgList } from '../../constants';
+import { BgItemType } from '@/pages/Home/interfaces';
 
-const BackGroundSlick = () => {
+const BackGroundSlick = ({ data }: { data: BgItemType[] }) => {
     const settings = {
         dots: false,
         arrows: false,
@@ -19,7 +19,7 @@ const BackGroundSlick = () => {
     };
 
     const renderBgItem = () => {
-        return bgList.map((item, index) => (
+        return data.map((item, index) => (
             <div key={index} className={item.className.join(' ')}>
                 <div className="container-center">
                     <p className="banner__hero-name hide-on-tablet-mobile ">

@@ -1,10 +1,10 @@
-import { trustedListData } from './constants';
-
+//Others
+import { TrustedListProps } from '../../interfaces';
 import './TrustedList.scss';
 
-const TrustedList = () => {
+const TrustedList = ({ data }: { data: TrustedListProps[] }) => {
     const renderTrustedList = () => {
-        return trustedListData.map((item, index) => {
+        return data.map((item, index) => {
             return (
                 <div key={index} className="trusted-item">
                     <img alt={item.name} src={item.img} />
