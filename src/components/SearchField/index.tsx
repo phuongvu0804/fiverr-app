@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 //Material UI
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
@@ -7,6 +9,7 @@ import { Button } from '@mui/material';
 
 //Others
 import './SearchField.scss';
+import { useState } from 'react';
 
 interface Props {
     className?: string;
@@ -15,11 +18,21 @@ interface Props {
 }
 
 const SearchField = ({ className, children, searchBtn = true }: Props) => {
+    const [searchValue, setSearchValue] = useState('');
+
+    const navigate = useNavigate();
+
+    const handleSubmitSearch = (e: React.SyntheticEvent) => {
+        e.preventDefault();
+        navigate(`/cong-viec/${searchValue}`);
+    };
+
     return (
         <Paper
             className={`search-field__wrapper ${className}`}
             component="form"
             sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
+            onSubmit={handleSubmitSearch}
         >
             <IconButton className="search-field__icon" type="button" sx={{ p: '10px' }} aria-label="search">
                 <SearchIcon />
@@ -29,10 +42,11 @@ const SearchField = ({ className, children, searchBtn = true }: Props) => {
                 className="search-field__input"
                 sx={{ ml: 1, flex: 1 }}
                 placeholder='Try "building mobile app"'
+                onChange={(e) => setSearchValue(e.target.value)}
             />
 
             {searchBtn && (
-                <Button className="search-field__btn" variant="contained">
+                <Button type="submit" className="search-field__btn" variant="contained">
                     {children}
                 </Button>
             )}
