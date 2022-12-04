@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 
 //Material UI
-import { Pause, PlayArrow } from '@mui/icons-material';
-import { Grid, IconButton } from '@mui/material';
+import { Grid } from '@mui/material';
 
 //Others
 import { SellingPropoProps } from '../../interfaces';
 import './SellingPropo.scss';
 import SellingPropoItem from './components/SellingPropoItem';
-import SellingModal from './components/SellingModal';
+import Video from '@/components/Video';
 
 const SellingPropo = ({ data }: { data: SellingPropoProps }) => {
     const [openVid, setOpenVid] = useState(false);
@@ -27,17 +26,17 @@ const SellingPropo = ({ data }: { data: SellingPropoProps }) => {
                     <div className="selling-propo__list">{renderSellingPropoItem()}</div>
                 </Grid>
                 <Grid item md={6} className="selling-propo__illustration">
-                    <img src={data.image} />
-                    <IconButton className="selling-propo__illustration-btn" onClick={() => setOpenVid(true)}>
-                        {openVid ? (
-                            <Pause className="selling-propo__illustration-icon" />
-                        ) : (
-                            <PlayArrow className="selling-propo__illustration-icon" />
-                        )}
-                    </IconButton>
+                    <Video
+                        openVid={openVid}
+                        setOpenVid={setOpenVid}
+                        classNameButton="selling-propo__illustration-btn"
+                        classNameIcon="selling-propo__illustration-icon"
+                        classNameModal="selling-propo__modal"
+                        image={data.image}
+                        video={data.video}
+                    />
                 </Grid>
             </Grid>
-            <SellingModal data={data} openVid={openVid} setOpenVid={setOpenVid} />
         </div>
     );
 };

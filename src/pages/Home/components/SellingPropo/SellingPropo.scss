@@ -43,31 +43,6 @@
 
 .selling-propo__illustration {
     position: relative;
-    img {
-        width: 100%;
-    }
-
-    .selling-propo__illustration-btn {
-        --btn-size: 8rem;
-        position: absolute;
-        top: 40%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: rgb(41 41 41 / 68%);
-        width: var(--btn-size);
-        height: var(--btn-size);
-
-        &:hover {
-            background: rgb(41 41 41 / 68%);
-            opacity: 0.6;
-            transition: opacity 0.3s ease;
-        }
-    }
-
-    .selling-propo__illustration-icon {
-        font-size: 3rem;
-        color: var(--white);
-    }
 }
 
 .selling-propo__modal {

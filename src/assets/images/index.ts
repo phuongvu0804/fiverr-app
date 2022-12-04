@@ -26,6 +26,14 @@ const images = {
     serviceBg9: require('./service-bg-9.jpeg'),
     serviceBg10: require('./service-bg-10.jpeg'),
     sellingVidCover: require('./selling-vid-cover.png'),
+    testiImage1: require('./testi-1.jpeg'),
+    testiImage2: require('./testi-2.jpeg'),
+    testiImage3: require('./testi-3.jpeg'),
+    testiImage4: require('./testi-4.jpeg'),
+    testiLogo1: require('./testi-logo-1.png'),
+    testiLogo2: require('./testi-logo-2.png'),
+    testiLogo3: require('./testi-logo-3.png'),
+    testiLogo4: require('./testi-logo-4.png'),
 };
 
 export default images;

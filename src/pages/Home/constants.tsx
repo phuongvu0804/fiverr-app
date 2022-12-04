@@ -1,5 +1,5 @@
 import images from '@/assets/images';
-import { BgItemType, SellingPropoProps, ServiceProps, TrustedListProps } from './interfaces';
+import { BgItemType, SellingPropoProps, ServiceProps, TestimonialItemProps, TrustedListProps } from './interfaces';
 
 export const bgList: BgItemType[] = [
     {
@@ -108,7 +108,7 @@ export const serviceListData: ServiceProps[] = [
 export const sellingPropoData: SellingPropoProps = {
     title: 'A whole world of freelance talent at your fingertips',
     image: images.sellingVidCover,
-    video: 'https://fiverr-res.cloudinary.com/video/upload/t_fiverr_hd/yja2ld5fnolhsixj3xxw',
+    video: 'https://fiverr-res.cloudinary.com/video/upload/t_fiverr_hd/vmvv3czyk2ifedefkau7',
     content: [
         {
             name: 'The best for every budget',
@@ -128,3 +128,42 @@ export const sellingPropoData: SellingPropoProps = {
         },
     ],
 };
+
+export const TestimonialList: TestimonialItemProps[] = [
+    {
+        name: 'Tim and Dan Joo',
+        job: 'Co-Founders',
+        content:
+            '"When you want to create a business bigger than yourself, you need a lot of help. That\'s what Fiverr does."',
+        logo: images.testiLogo1,
+        image: images.testiImage1,
+        video: 'https://fiverr-res.cloudinary.com/video/upload/t_fiverr_hd/bsncmkwya3nectkensun',
+    },
+    {
+        name: 'Kay Kim',
+        job: 'Co-Founders',
+        content:
+            "\"It's extremely exciting that Fiverr has freelancers from all over the world — it broadens the talent pool. One of the best things about Fiverr is that while we're sleeping, someone's working.\"",
+        logo: images.testiLogo2,
+        image: images.testiImage2,
+        video: 'https://fiverr-res.cloudinary.com/video/upload/t_fiverr_hd/yja2ld5fnolhsixj3xxw',
+    },
+    {
+        name: 'Brighid Gannon (DNP, PMHNP-BC)',
+        job: 'Co-Founders',
+        content:
+            '"We used Fiverr for SEO, our logo, website, copy, animated videos — literally everything. It was like working with a human right next to you versus being across the world."',
+        logo: images.testiLogo3,
+        image: images.testiImage3,
+        video: 'https://fiverr-res.cloudinary.com/video/upload/t_fiverr_hd/rb8jtakrisiz0xtsffwi',
+    },
+    {
+        name: 'Caitlin Tormey',
+        job: 'Chief Commercial Officer',
+        content:
+            '"We\'ve used Fiverr for Shopify web development, graphic design, and backend web development. Working with Fiverr makes my job a little easier every day."',
+        logo: images.testiLogo4,
+        image: images.testiImage4,
+        video: 'https://fiverr-res.cloudinary.com/video/upload/t_fiverr_hd/bsncmkwya3nectkensun',
+    },
+];

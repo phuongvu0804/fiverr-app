@@ -27,3 +27,12 @@ export interface SellingPropoProps {
     video: string;
     content: SellingContentProps[];
 }
+
+export interface TestimonialItemProps {
+    name: string;
+    job: string;
+    content: string;
+    logo: any;
+    image: any;
+    video: string;
+}

@@ -1,6 +1,6 @@
 //Components
-import ServiceListNextArrow from './components/ServiceListNextArrow';
-import ServiceListPrevArrow from './components/ServiceListPrevArrow';
+import SlickNextArrow from '../../../../components/SlickNextArrow';
+import SlickPrevArrow from '../../../../components/SlickPrevArrow';
 
 export const serviceSlicksettings = {
     dots: false,
@@ -8,8 +8,8 @@ export const serviceSlicksettings = {
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 5,
-    nextArrow: <ServiceListNextArrow />,
-    prevArrow: <ServiceListPrevArrow />,
+    nextArrow: <SlickNextArrow />,
+    prevArrow: <SlickPrevArrow />,
     responsive: [
         {
             breakpoint: 1024,
