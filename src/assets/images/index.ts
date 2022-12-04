@@ -34,6 +34,15 @@ const images = {
     testiLogo2: require('./testi-logo-2.png'),
     testiLogo3: require('./testi-logo-3.png'),
     testiLogo4: require('./testi-logo-4.png'),
+    categoryGraphic: require('./graphic-design.svg').default,
+    categoryDigitial: require('./digital-marketing.svg').default,
+    categoryWriting: require('./writing-translation.svg').default,
+    categoryVideo: require('./video-animation.svg').default,
+    categoryMusic: require('./music-audio.svg').default,
+    categoryProgramming: require('./programming.svg').default,
+    categoryBusiness: require('./business.svg').default,
+    categoryLifestyle: require('./lifestyle.svg').default,
+    categoryData: require('./data.svg').default,
 };
 
 export default images;

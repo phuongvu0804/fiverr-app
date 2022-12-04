@@ -9,7 +9,14 @@ import Testimonial from './components/Testimonial';
 import TrustedList from './components/TrustedList';
 
 //Data
-import { bgList, sellingPropoData, serviceListData, TestimonialList, trustedListData } from './constants';
+import {
+    bgList,
+    jobCategoryList,
+    sellingPropoData,
+    serviceListData,
+    TestimonialList,
+    trustedListData,
+} from './constants';
 
 const Home = () => {
     return (
@@ -19,7 +26,7 @@ const Home = () => {
             <ServiceList data={serviceListData} />
             <SellingPropo data={sellingPropoData} />
             <Testimonial data={TestimonialList} />
-            <CategoryList />
+            <CategoryList data={jobCategoryList} />
         </div>
     );
 };

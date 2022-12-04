@@ -88,8 +88,6 @@
     .home__testimonial {
         --slick-btn-position: 1rem;
 
-        padding: 0 3.2rem;
-
         .slick__btn {
             top: 30%;
         }
@@ -100,8 +98,6 @@
 @media (max-width: 739px) {
     .home__testimonial {
         --slick-btn-position: 1rem;
-
-        padding: 0 2.4rem;
 
         .slick__btn {
             display: block !important;

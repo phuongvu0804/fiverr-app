@@ -61,14 +61,23 @@
     }
 }
 
-//Responsive for tablet devices
-@media (min-width: 740px) and (max-width: 1024px) {
+//Responsive for tablet + mobile devices
+@media (max-width: 1023px) {
     .home__selling-propo {
         > div.container-center {
-            padding: 4.8rem 3.2rem;
+            --padding-y: 4.8rem;
+            padding-top: var(--padding-y);
+            padding-bottom: var(--padding-y);
         }
     }
 
+    .selling-propo__content {
+        padding-right: unset;
+    }
+}
+
+//Responsive for tablet devices
+@media (min-width: 740px) and (max-width: 1024px) {
     .selling-propo__list {
         padding-bottom: 0.8rem;
     }
@@ -76,12 +85,6 @@
 
 //Responsive for mobile devices
 @media (max-width: 739px) {
-    .home__selling-propo {
-        > div.container-center {
-            padding: 4.8rem 2.4rem;
-        }
-    }
-
     .selling-propo__list {
         padding-bottom: 4.8rem;
     }

@@ -1,5 +1,12 @@
 import images from '@/assets/images';
-import { BgItemType, SellingPropoProps, ServiceProps, TestimonialItemProps, TrustedListProps } from './interfaces';
+import {
+    BgItemType,
+    jobCategoryProps,
+    SellingPropoProps,
+    ServiceProps,
+    TestimonialItemProps,
+    TrustedListProps,
+} from './interfaces';
 
 export const bgList: BgItemType[] = [
     {
@@ -165,5 +172,44 @@ export const TestimonialList: TestimonialItemProps[] = [
         logo: images.testiLogo4,
         image: images.testiImage4,
         video: 'https://fiverr-res.cloudinary.com/video/upload/t_fiverr_hd/bsncmkwya3nectkensun',
+    },
+];
+
+export const jobCategoryList: jobCategoryProps[] = [
+    {
+        name: 'Graphics & Design',
+        image: images.categoryGraphic,
+    },
+    {
+        name: 'Digital Marketing',
+        image: images.categoryDigitial,
+    },
+    {
+        name: 'Writing & Translation',
+        image: images.categoryWriting,
+    },
+    {
+        name: 'Video & Animation',
+        image: images.categoryVideo,
+    },
+    {
+        name: 'Music & Audio',
+        image: images.categoryMusic,
+    },
+    {
+        name: 'Programming & Tech',
+        image: images.categoryProgramming,
+    },
+    {
+        name: 'Business',
+        image: images.categoryBusiness,
+    },
+    {
+        name: 'Lifestyle',
+        image: images.categoryLifestyle,
+    },
+    {
+        name: 'Data',
+        image: images.categoryData,
     },
 ];

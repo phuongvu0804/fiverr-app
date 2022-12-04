@@ -36,3 +36,8 @@ export interface TestimonialItemProps {
     image: any;
     video: string;
 }
+
+export interface jobCategoryProps {
+    name: string;
+    image: any;
+}

@@ -144,6 +144,12 @@ body {
         display: none !important;
     }
 
+    .container-center {
+        --padding-x: 3.2rem;
+        padding-left: var(--padding-x) !important;
+        padding-right: var(--padding-x) !important;
+    }
+
     .mb-l {
         margin-bottom: 8rem !important;
     }
@@ -167,6 +173,12 @@ body {
 
     .hide-on-mobile {
         display: none !important;
+    }
+
+    .container-center {
+        --padding-x: 2.4rem;
+        padding-left: var(--padding-x) !important;
+        padding-right: var(--padding-x) !important;
     }
 
     .sub-title__md {
