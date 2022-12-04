@@ -40,6 +40,7 @@ html {
 body {
     font-family: 'Poppins', sans-serif;
     font-size: 1.6rem;
+    color: var(--dark-gray);
     line-height: 1.5;
     text-rendering: optimizeSpeed;
 }
@@ -59,6 +60,10 @@ body {
     color: var(--dark-gray);
     line-height: 120%;
     padding-bottom: 24px;
+}
+
+.mb-l {
+    margin-bottom: 9.6rem !important;
 }
 
 //Responsive for tablet + PC devices
@@ -92,6 +97,10 @@ body {
     .hide-on-tablet {
         display: none !important;
     }
+
+    .mb-l {
+        margin-bottom: 8rem;
+    }
 }
 
 //Responsive for mobile devices
@@ -100,12 +109,16 @@ body {
         --service-list-gap: 0.6rem;
     }
 
+    .hide-on-mobile {
+        display: none !important;
+    }
+
     .sub-title__md {
         font-size: 2.8rem;
         padding-bottom: 2rem;
     }
 
-    .hide-on-mobile {
-        display: none !important;
+    .mb-l {
+        margin-bottom: 4.8rem;
     }
 }

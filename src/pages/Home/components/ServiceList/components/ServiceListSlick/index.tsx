@@ -4,21 +4,12 @@ import Slider from 'react-slick';
 import './ServiceListSlick.scss';
 import { ServiceProps } from '@/pages/Home/interfaces';
 import { serviceSlicksettings } from '../../constants';
+import ServiceItem from '../ServiceItem';
 
 const ServiceListSlick = ({ data }: { data: ServiceProps[] }) => {
     const renderServiceItem = () => {
         return data.map((item, index) => {
-            return (
-                <div key={index} className="service-list__item-wrapper">
-                    <div className="service-list__item">
-                        <img src={item.img} />
-                        <div className="service-list__item-content">
-                            <h5 className="service-list__item-desc">{item.slogan}</h5>
-                            <h3 className="service-list__item-title">{item.slogan}</h3>
-                        </div>
-                    </div>
-                </div>
-            );
+            return <ServiceItem key={index} data={item} />;
         });
     };
 

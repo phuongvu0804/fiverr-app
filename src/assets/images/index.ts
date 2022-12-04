@@ -25,6 +25,7 @@ const images = {
     serviceBg8: require('./service-bg-8.jpeg'),
     serviceBg9: require('./service-bg-9.jpeg'),
     serviceBg10: require('./service-bg-10.jpeg'),
+    sellingVidCover: require('./selling-vid-cover.png'),
 };
 
 export default images;

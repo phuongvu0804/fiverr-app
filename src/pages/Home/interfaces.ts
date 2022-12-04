@@ -15,3 +15,15 @@ export interface ServiceProps {
     slogan: string;
     img: any;
 }
+
+export interface SellingContentProps {
+    name: string;
+    content: string;
+}
+
+export interface SellingPropoProps {
+    title: string;
+    image: string;
+    video: string;
+    content: SellingContentProps[];
+}

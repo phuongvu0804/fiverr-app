@@ -14,7 +14,7 @@ const TrustedList = ({ data }: { data: TrustedListProps[] }) => {
     };
 
     return (
-        <div className="home__trusted-list-wrapper">
+        <div className="home__trusted-list-wrapper mb-l">
             <div className="home__trusted-list-content">
                 <span className="trusted-list__text hide-on-tablet-mobile">Trusted by:</span>
                 <div className="home__trusted-list">{renderTrustedList()}</div>

@@ -1,6 +1,5 @@
 .home__trusted-list-wrapper {
     background-color: #fafafa;
-    margin-bottom: 9.6rem;
 
     > .home__trusted-list-content {
         max-width: 120rem;
@@ -44,10 +43,6 @@
 
 //Responsive for tablet devices
 @media (min-width: 740px) and (max-width: 1024px) {
-    .home__trusted-list-wrapper {
-        margin-bottom: 8rem;
-    }
-
     .trusted-item {
         padding-right: 2.4rem;
     }
@@ -56,8 +51,6 @@
 //Responsive for mobile devices
 @media (max-width: 739px) {
     .home__trusted-list-wrapper {
-        margin-bottom: 4.8rem;
-
         > .home__trusted-list-content {
             max-width: 100%;
         }

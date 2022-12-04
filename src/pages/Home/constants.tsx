@@ -1,5 +1,5 @@
 import images from '@/assets/images';
-import { BgItemType, ServiceProps, TrustedListProps } from './interfaces';
+import { BgItemType, SellingPropoProps, ServiceProps, TrustedListProps } from './interfaces';
 
 export const bgList: BgItemType[] = [
     {
@@ -104,3 +104,27 @@ export const serviceListData: ServiceProps[] = [
         img: images.serviceBg10,
     },
 ];
+
+export const sellingPropoData: SellingPropoProps = {
+    title: 'A whole world of freelance talent at your fingertips',
+    image: images.sellingVidCover,
+    video: 'https://fiverr-res.cloudinary.com/video/upload/t_fiverr_hd/yja2ld5fnolhsixj3xxw',
+    content: [
+        {
+            name: 'The best for every budget',
+            content: 'Find the right freelancer to begin working on your project within minutes.',
+        },
+        {
+            name: 'Quality work done quickly',
+            content: "Always know what you'll pay upfront. Your payment isn'\t released until you approve the work.",
+        },
+        {
+            name: 'Protected payments, every time',
+            content: 'Find high-quality services at every price point. No hourly rates, just project-based pricing.',
+        },
+        {
+            name: '24/7 support',
+            content: 'Questions? Our round-the-clock support team is available to help anytime, anywhere.',
+        },
+    ],
+};

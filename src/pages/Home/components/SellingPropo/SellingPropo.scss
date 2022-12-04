@@ -1,0 +1,117 @@
+.home__selling-propo {
+    background-color: #f1fdf7;
+    > div.container-center {
+        display: flex;
+        padding: 9.6rem 0;
+    }
+}
+
+.selling-propo__content {
+    padding-right: 11%;
+}
+
+.selling-propo__item-title {
+    display: flex;
+    align-items: center;
+    padding-bottom: 0.8rem;
+
+    svg {
+        --icon-size: 2.6rem;
+        height: var(--icon-size);
+        width: var(--icon-size);
+        fill: rgb(122, 125, 133);
+    }
+
+    h6 {
+        font-size: 1.6rem;
+        font-weight: 600;
+        margin-left: 0.8rem;
+        color: var(--black);
+    }
+}
+
+.selling-propo__item {
+    align-items: center;
+    padding-bottom: 2.4rem;
+    span {
+        font-size: 1.8rem;
+        font-weight: 300;
+        line-height: 2.6rem;
+        color: #62646a;
+    }
+}
+
+.selling-propo__illustration {
+    position: relative;
+    img {
+        width: 100%;
+    }
+
+    .selling-propo__illustration-btn {
+        --btn-size: 8rem;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgb(41 41 41 / 68%);
+        width: var(--btn-size);
+        height: var(--btn-size);
+
+        &:hover {
+            background: rgb(41 41 41 / 68%);
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+    }
+
+    .selling-propo__illustration-icon {
+        font-size: 3rem;
+        color: var(--white);
+    }
+}
+
+.selling-propo__modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70vw;
+    max-width: 900px;
+    max-height: 90vh;
+
+    video {
+        width: 100%;
+        height: 100%;
+        border-radius: 4px;
+    }
+}
+
+//Responsive for tablet devices
+@media (min-width: 740px) and (max-width: 1024px) {
+    .home__selling-propo {
+        > div.container-center {
+            padding: 4.8rem 3.2rem;
+        }
+    }
+
+    .selling-propo__list {
+        padding-bottom: 0.8rem;
+    }
+}
+
+//Responsive for mobile devices
+@media (max-width: 739px) {
+    .home__selling-propo {
+        > div.container-center {
+            padding: 4.8rem 2.4rem;
+        }
+    }
+
+    .selling-propo__list {
+        padding-bottom: 4.8rem;
+    }
+
+    .selling-propo__modal {
+        width: 100vw;
+    }
+}
