@@ -24,7 +24,7 @@ const SearchField = ({ className, children, searchBtn = true }: Props) => {
 
     const handleSubmitSearch = (e: React.SyntheticEvent) => {
         e.preventDefault();
-        navigate(`/cong-viec/${searchValue}`);
+        navigate(`/job-list/${searchValue}`);
     };
 
     return (

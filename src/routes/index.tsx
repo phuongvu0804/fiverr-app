@@ -5,7 +5,7 @@ import ClientRoutes from './ClientRoutes';
 import AuthRoutes from './AuthRoutes';
 import NotFoundRoute from './NotFoundRoute';
 import Home from '@/pages/Home';
-import JobCategories from '@/pages/JobCategories';
+import JobCategories from '@/pages/JobList';
 import Register from '@/pages/Register';
 
 // ---------------------------|| RENDER ROUTES ||------------------------------------- //

@@ -1,7 +1,5 @@
-import { Button, ButtonBase } from '@mui/material';
-import React from 'react';
-
 //Material UI
+import { Button } from '@mui/material';
 
 import './TextButton.scss';
 

@@ -1,6 +1,6 @@
 //Components
 import Footer from '@/components/Layout/components/Footer';
-import Header from '@/components/Layout/components/Header';
+import HeaderFix from '@/components/Layout/components/Header/components/HeaderFix';
 import JobFilter from '@/components/Layout/components/JobFilter';
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
 const DefaultLayout = ({ children }: Props) => {
     return (
         <div>
-            <Header />
+            <HeaderFix />
             <JobFilter />
             <div className="content">{children}</div>
             <Footer />

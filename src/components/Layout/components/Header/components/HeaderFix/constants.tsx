@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 //Components
 import OutlineButton from '@/components/OutlineButton';
-import './Header.scss';
+import './HeaderFix.scss';
 
 interface ActionType {
     content: string;

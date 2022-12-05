@@ -1,9 +1,9 @@
-import { HeaderFooterLayout } from '@/components/Layout';
+import { DefaultLayout, HeaderFooterLayout } from '@/components/Layout';
 import { Fragment, lazy } from 'react';
 
 //Pages
 const HomePage = lazy(() => import('@/pages/Home'));
-const JobCategoriesPage = lazy(() => import('@/pages/JobCategories'));
+const JobListPage = lazy(() => import('@/pages/JobList'));
 
 const ClientRoutes = [
     {
@@ -12,9 +12,9 @@ const ClientRoutes = [
         layout: HeaderFooterLayout,
     },
     {
-        path: '/categories',
-        component: JobCategoriesPage,
-        layout: HeaderFooterLayout,
+        path: '/job-list',
+        component: JobListPage,
+        layout: DefaultLayout,
     },
 ];
 

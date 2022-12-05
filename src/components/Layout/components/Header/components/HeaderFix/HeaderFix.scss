@@ -1,0 +1,28 @@
+#header-fix {
+    position: relative;
+    border-bottom: 1px solid var(--border-color);
+
+    .header__logo svg {
+        g:first-of-type {
+            fill: var(--dark-gray);
+        }
+    }
+
+    .header__btn {
+        color: var(--light-gray);
+    }
+
+    .header__btn--text:hover {
+        color: var(--primary);
+        transition: all 0.2s ease;
+    }
+
+    .header__btn--outline {
+        border-color: var(--primary);
+        color: var(--primary);
+
+        &:hover {
+            color: var(--white);
+        }
+    }
+}
