@@ -19,6 +19,7 @@
     --bg-green: #f1fdf7;
     --bg-gray: #f5f5f5;
     --primary: #1dbf73;
+    --mint: #02c2a9;
 
     --border-color: #e4e5e7;
 
@@ -26,6 +27,7 @@
     --container-width: 140rem;
 
     --service-list-gap: 1.8rem;
+    --job-list-card-padding: 1.2rem;
 }
 * {
     margin: 0;
@@ -51,6 +53,10 @@ body {
 }
 
 .hide-on-pc {
+    display: none !important;
+}
+
+.display-tablet-mobile {
     display: none !important;
 }
 
@@ -117,6 +123,10 @@ body {
     .hide-on-pc-tablet {
         display: none !important;
     }
+
+    .display-on-mobile {
+        display: none !important;
+    }
 }
 
 //Responsive for tablet + mobile devices
@@ -169,6 +179,10 @@ body {
 @media (max-width: 739px) {
     :root {
         --service-list-gap: 0.6rem;
+    }
+
+    .display-on-mobile {
+        display: block !important;
     }
 
     .hide-on-mobile {

@@ -1,138 +1,56 @@
 import React from 'react';
 
 //Material UI
-import { Button, FormControlLabel, FormGroup, Grid, Popover, Switch } from '@mui/material';
+import { Grid, Pagination } from '@mui/material';
 
 //Others
 import './JobList.scss';
 import JobItem from './components/JobItem';
+import { CategoryJobFilter, PriceJobFilter, SellerRateFilter } from './components/HOCJobFilter';
+import { PriceData, sellerFilterList, SellerRateData } from './constants';
+import FilterRadioInput from './components/FilterRadioInput';
 
 const JobList = () => {
-    const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
-    console.log('Categories');
-
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-
-    const open = Boolean(anchorEl);
-    const id = open ? 'simple-popover' : undefined;
-
     return (
         <div id="job-list" className="container-center">
             <h3 className="job-list__title">Results for "software"</h3>
             <div className="job-list__filter-wrapper">
                 <div className="job-list__filter—group">
-                    <div className="job-list__filter-item">
-                        <Button className="job-list__filter-btn" onClick={handleClick}>
-                            Category
-                        </Button>
-                        <Popover
-                            className="job-list__filter-menu"
-                            open={open}
-                            anchorEl={anchorEl}
-                            onClose={handleClose}
-                            anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'left',
-                            }}
-                        >
-                            <a href="" className="filter-menu__item">
-                                Support & IT 1
-                            </a>
-                            <a href="" className="filter-menu__item">
-                                Support & IT 1
-                            </a>
-                            <a href="" className="filter-menu__item">
-                                Support & IT 1
-                            </a>
-                            <a href="" className="filter-menu__item">
-                                Support & IT 1
-                            </a>
-                        </Popover>
-                    </div>
-                    <div className="job-list__filter-item">
-                        <Button className="job-list__filter-btn" onClick={handleClick}>
-                            Category
-                        </Button>
-                        <Popover
-                            className="job-list__filter-menu"
-                            open={open}
-                            anchorEl={anchorEl}
-                            onClose={handleClose}
-                            anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'left',
-                            }}
-                        >
-                            <a href="" className="filter-menu__item">
-                                Support & IT 1
-                            </a>
-                            <a href="" className="filter-menu__item">
-                                Support & IT 1
-                            </a>
-                            <a href="" className="filter-menu__item">
-                                Support & IT 1
-                            </a>
-                            <a href="" className="filter-menu__item">
-                                Support & IT 1
-                            </a>
-                        </Popover>
-                    </div>
-                    <div className="job-list__filter-item">
-                        <Button className="job-list__filter-btn" onClick={handleClick}>
-                            Category
-                        </Button>
-                        <Popover
-                            className="job-list__filter-menu"
-                            open={open}
-                            anchorEl={anchorEl}
-                            onClose={handleClose}
-                            anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'left',
-                            }}
-                        >
-                            <a href="" className="filter-menu__item">
-                                Support & IT 1
-                            </a>
-                            <a href="" className="filter-menu__item">
-                                Support & IT 1
-                            </a>
-                            <a href="" className="filter-menu__item">
-                                Support & IT 1
-                            </a>
-                            <a href="" className="filter-menu__item">
-                                Support & IT 1
-                            </a>
-                        </Popover>
-                    </div>
+                    <CategoryJobFilter data={PriceData} />
+                    <PriceJobFilter data={PriceData} />
+                    <SellerRateFilter data={SellerRateData} />
                 </div>
                 <div className="job-list__filter—group">
-                    <FormGroup className="job-list__filter-item">
-                        <FormControlLabel control={<Switch />} label="Local sellers" />
-                    </FormGroup>
-                    <FormGroup className="job-list__filter-item">
-                        <FormControlLabel control={<Switch />} label="Local sellers" />
-                    </FormGroup>
-                    <FormGroup className="job-list__filter-item">
-                        <FormControlLabel control={<Switch />} label="Local sellers" />
-                    </FormGroup>
+                    {sellerFilterList.map((item, index) => (
+                        <FilterRadioInput key={index} label={item} />
+                    ))}
                 </div>
             </div>
             <div className="job-list__content">
                 <span className="job-list__result">8,186 services available</span>
-                <Grid container className="job-list__wrapper">
+                <Grid container spacing={3} className="job-list__wrapper">
+                    <JobItem />
+                    <JobItem />
+                    <JobItem />
                     <JobItem />
                 </Grid>
             </div>
-            <div className="job-list__pagination">
-                <button className="job-list__pagination-btn">1</button>
-            </div>
+            <Pagination
+                className="job-list__pagination hide-on-mobile"
+                count={10}
+                size="medium"
+                variant="outlined"
+                shape="rounded"
+            />
+
+            <Pagination
+                className="job-list__pagination display-on-mobile"
+                count={10}
+                siblingCount={0}
+                size="large"
+                variant="outlined"
+                shape="rounded"
+            />
         </div>
     );
 };

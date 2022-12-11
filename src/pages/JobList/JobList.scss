@@ -2,40 +2,67 @@
 }
 
 .job-list__title {
+    color: #000;
+    font-size: 3.2rem;
+    line-height: 150%;
+    font-weight: 600;
+    padding: 3.2rem 0 1.2rem;
 }
 
 .job-list__filter-wrapper {
+    display: flex;
+    justify-content: space-between;
 }
 .job-list__filter—group {
-}
-.job-list__filter-item {
-}
-
-.job-list__filter-btn {
+    display: flex;
 }
 
 .job-list__filter-menu {
-    .filter-menu__item {
-    }
 }
 
 .job-list__filter—group {
 }
 
-.job-list__filter-item {
+label.filter-menu__item {
+    .filter-menu__item--radio {
+    }
+
+    .filter-menu__item--text {
+    }
 }
 
 .job-list__content {
 }
 
 .job-list__result {
+    display: block;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 500;
+    margin: 1.5rem 0;
+    color: #74767e;
 }
 
 .job-list__wrapper {
 }
 
 .job-list__pagination {
+    display: flex;
+    justify-content: center;
+    margin: 3.2rem auto;
+
+    .MuiPaginationItem-root {
+        font-size: 1.5rem;
+        border-radius: 0;
+    }
 }
 
-.job-list__pagination-btn {
+//Responsive for tablet + mobile devices
+@media (max-width: 1023px) {
+    .job-list__filter-wrapper {
+        display: block;
+    }
+    .job-list__filter—group {
+        margin: 1.2rem 0;
+    }
 }

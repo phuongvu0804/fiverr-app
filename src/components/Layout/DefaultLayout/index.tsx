@@ -11,7 +11,8 @@ const DefaultLayout = ({ children }: Props) => {
     return (
         <div>
             <HeaderFix />
-            <JobFilter />
+            {/* Fix later */}
+            {/* <JobFilter /> */}
             <div className="content">{children}</div>
             <Footer />
         </div>
