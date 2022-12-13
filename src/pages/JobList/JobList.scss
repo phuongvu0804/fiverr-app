@@ -6,7 +6,7 @@
     font-size: 3.2rem;
     line-height: 150%;
     font-weight: 600;
-    padding: 3.2rem 0 1.2rem;
+    padding: 6rem 0 1.2rem;
 }
 
 .job-list__filter-wrapper {
@@ -64,5 +64,12 @@ label.filter-menu__item {
     }
     .job-list__filter—group {
         margin: 1.2rem 0;
+    }
+}
+
+//Responsive for mobile devices
+@media (max-width: 739px) {
+    .job-list__title {
+        padding: 2rem 0 1.2rem;
     }
 }

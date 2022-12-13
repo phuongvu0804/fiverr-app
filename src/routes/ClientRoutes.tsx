@@ -12,7 +12,7 @@ const ClientRoutes = [
         layout: HeaderFooterLayout,
     },
     {
-        path: '/job-list',
+        path: '/job-list/:id',
         component: JobListPage,
         layout: DefaultLayout,
     },

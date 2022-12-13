@@ -23,3 +23,23 @@ export interface ButtonPropType {
     to?: string;
     onClick?: () => void;
 }
+
+//Job Category Filter
+export interface JobNameListProps {
+    id: number;
+    name: string;
+}
+
+export interface SubCategoryProps {
+    dsChiTietLoai: JobNameListProps[];
+    hinhAnh: string;
+    id: number;
+    maLoaiCongviec: number;
+    tenNhom: string;
+}
+
+export interface JobCategoryProps {
+    dsNhomChiTietLoai: SubCategoryProps[];
+    id: number;
+    tenLoaiCongViec: string;
+}

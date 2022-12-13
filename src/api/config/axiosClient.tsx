@@ -25,7 +25,8 @@ const axiosClient = axios.create({
 //Add request interceptor
 axiosClient.interceptors.request.use(
     (config) => {
-        config.headers!.tokenByClass = apiConfig.authToken;
+        config.headers!.TokenCybersoft = apiConfig.tokenCybersoft;
+        config.headers!.token = apiConfig.authToken;
 
         let user = localStorage.getItem('user');
         if (user) {

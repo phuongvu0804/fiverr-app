@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 //Components
 import OutlineButton from '@/components/OutlineButton';
 import './HeaderFix.scss';
+import { Button } from '@mui/material';
 
 interface ActionType {
     content: string;
@@ -12,6 +13,7 @@ interface ActionType {
     className?: string;
     to?: string;
     href?: string;
+    children?: [];
     onClick?: () => void;
 }
 
@@ -24,18 +26,24 @@ export const actionButtonList: ActionType[] = [
         to: '/auth/sign-up',
     },
     {
-        content: 'Become a Seller',
-        component: Link,
-        variant: 'text',
-        className: 'header__btn header__btn--text',
-        to: '/',
-    },
-    {
         content: 'Sign in',
         component: Link,
         variant: 'text',
         className: 'header__btn header__btn--text',
         to: '/auth/sign-in',
+    },
+    {
+        content: 'Browser Categories',
+        component: Button,
+        variant: 'text',
+        className: 'header__btn header__btn--text hide-on-pc-tablet',
+    },
+    {
+        content: 'Become a Seller',
+        component: Link,
+        variant: 'text',
+        className: 'header__btn header__btn--text',
+        to: '/',
     },
     {
         content: 'Join',

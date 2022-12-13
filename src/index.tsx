@@ -15,6 +15,8 @@ import { createTheme, ThemeProvider } from '@mui/material';
 
 const store = configureStore();
 
+export type AppDispatch = typeof store.dispatch; // Type to access dispatch
+
 const theme = createTheme({
     typography: {
         fontFamily: ['Poppins', 'sans-serif'].join(','),
