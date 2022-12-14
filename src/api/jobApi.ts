@@ -3,8 +3,13 @@ import axiosClient from './config/axiosClient';
 const RESOURCE_NAME = 'cong-viec';
 
 const jobApi = {
-    getJobByName: () => {
+    getAllJobs: () => {
         return axiosClient.get(RESOURCE_NAME);
+    },
+
+    getJobsByName: (searchedValue: string) => {
+        const url = `${RESOURCE_NAME}/lay-danh-sach-cong-viec-theo-ten/${searchedValue}`;
+        return axiosClient.get(url);
     },
 
     getJobCategoryList: () => {
