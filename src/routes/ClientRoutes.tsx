@@ -3,7 +3,7 @@ import { Fragment, lazy } from 'react';
 
 //Pages
 const HomePage = lazy(() => import('@/pages/Home'));
-const JobListPage = lazy(() => import('@/pages/JobList'));
+const JobListPage = lazy(() => import('@/pages/JobListPage'));
 
 const ClientRoutes = [
     {
