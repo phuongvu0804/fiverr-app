@@ -24,10 +24,12 @@
     --border-color: #e4e5e7;
 
     --header-height: 8rem;
+    --job-filter-height: 4.2rem;
     --container-width: 140rem;
 
     --service-list-gap: 1.8rem;
     --job-list-card-padding: 1.2rem;
+    --padding-x-container-tablet: 3.2rem;
 }
 * {
     margin: 0;
@@ -50,10 +52,6 @@ body {
 .container-center {
     width: var(--container-width) !important;
     margin: 0 auto !important;
-}
-
-.hide-on-pc {
-    display: none !important;
 }
 
 .display-tablet-mobile {
@@ -118,6 +116,13 @@ body {
     background-image: url('../../assets/images/arrow-next.png');
 }
 
+//Responsive for PC devices
+@media (min-width: 1025px) {
+    .hide-on-pc {
+        display: none !important;
+    }
+}
+
 //Responsive for tablet + PC devices
 @media (min-width: 740px) {
     .hide-on-pc-tablet {
@@ -155,9 +160,8 @@ body {
     }
 
     .container-center {
-        --padding-x: 3.2rem;
-        padding-left: var(--padding-x) !important;
-        padding-right: var(--padding-x) !important;
+        padding-left: var(--padding-x-container-tablet) !important;
+        padding-right: var(--padding-x-container-tablet) !important;
     }
 
     .mb-l {

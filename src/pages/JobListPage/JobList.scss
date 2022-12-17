@@ -2,11 +2,12 @@
 }
 
 .job-list__title {
+    --padding-y: 1.2rem;
     color: #000;
     font-size: 3.2rem;
     line-height: 150%;
     font-weight: 600;
-    padding: 6rem 0 1.2rem;
+    padding: calc(var(--job-filter-height) + var(--padding-y)) 0 var(--padding-y);
 }
 
 .job-list__filter-wrapper {
@@ -62,14 +63,23 @@ label.filter-menu__item {
     .job-list__filter-wrapper {
         display: block;
     }
+
     .job-list__filter—group {
         margin: 1.2rem 0;
+    }
+
+    .job-list__title {
+        --padding-y: 1.2rem;
+
+        // padding: 2rem 0 1.2rem;
     }
 }
 
 //Responsive for mobile devices
 @media (max-width: 739px) {
     .job-list__title {
-        padding: 2rem 0 1.2rem;
+        --padding-y: 2rem;
+
+        // padding: 2rem 0 1.2rem;
     }
 }

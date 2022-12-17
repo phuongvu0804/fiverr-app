@@ -1,9 +1,12 @@
+import Slider from 'react-slick';
+
+//Components
 import SlickNextArrow from '@/components/SlickNextArrow';
 import SlickPrevArrow from '@/components/SlickPrevArrow';
-import React from 'react';
-import Slider from 'react-slick';
-import { TestimonialItemProps } from '../../interfaces';
 import TestimonialItem from './components/TestimonialItem';
+
+//Others
+import { TestimonialItemProps } from '../../interfaces';
 
 import './Testimonial.scss';
 const Testimonial = ({ data }: { data: TestimonialItemProps[] }) => {

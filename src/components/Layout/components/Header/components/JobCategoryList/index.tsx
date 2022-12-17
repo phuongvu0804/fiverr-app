@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 //Others
-import { JobCategoryProps } from '@/constants/intefaces';
 import { jobApi } from '@/api';
 import {
     actGetJobCategoryListFail,
@@ -11,6 +10,10 @@ import {
 } from '@/store/actions/jobCategoryList';
 import './JobCategoryList.scss';
 import { useAppDispatch } from '@/hooks';
+
+//Components
+import JobCategoryListTablet from './components/JobCategoryListTablet';
+import JobCategoryListPC from './components/JobCategoryListPC';
 
 const JobCategoryList = () => {
     const dispatch = useAppDispatch();
@@ -39,22 +42,14 @@ const JobCategoryList = () => {
     }, []);
 
     return (
-        <div className="job-category__list__wrapper hide-on-mobile">
-            <ul className="job-category__list container-center">
-                {jobCategoryData?.map((item: JobCategoryProps, index: number) => (
-                    <li key={index} className="job-category__item">
-                        <NavLink
-                            className={({ isActive }) =>
-                                isActive ? 'job-category__link active' : 'job-category__link'
-                            }
-                            to={`/job-list/${item.id}`}
-                        >
-                            {item.tenLoaiCongViec}
-                        </NavLink>
-                    </li>
-                ))}
-            </ul>
-        </div>
+        <Fragment>
+            {/* In PC screen */}
+            <div className="job-category__list__wrapper">
+                <JobCategoryListPC data={jobCategoryData} />
+                {/* In tablet screen */}
+                <JobCategoryListTablet data={jobCategoryData} />
+            </div>
+        </Fragment>
     );
 };
 
