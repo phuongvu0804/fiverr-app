@@ -1,30 +1,33 @@
 import StarIcon from '@mui/icons-material/Star';
 import { JobFilterDataProps, Operator } from './interfaces';
 
+export enum PriceDataValues {
+    value = 'value',
+    midRange = 'mid-range',
+    highEnd = 'high-end',
+    custom = 'custom',
+}
+
 export const PriceData: JobFilterDataProps = {
     options: [
         {
-            value: '314',
+            value: PriceDataValues.value,
             label: 'Value',
-            subText: 'Under €315',
             operator: Operator.smaller,
         },
         {
-            value: '315-1100',
+            value: PriceDataValues.midRange,
             label: 'Mid-range',
-            subText: '€315- €1,101',
             operator: Operator.range,
         },
         {
-            value: '1101',
+            value: PriceDataValues.highEnd,
             label: 'High-end',
-            subText: '€1,101 and above',
             operator: Operator.bigger,
         },
         {
             value: 'custom',
             label: 'Custom',
-            subText: null,
             operator: Operator.range,
             custom: true,
             icon: '$',

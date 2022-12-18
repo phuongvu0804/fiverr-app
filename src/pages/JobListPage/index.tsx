@@ -9,7 +9,7 @@ import PaginationMUI from './components/Pagination';
 
 //Others
 import './JobList.scss';
-import { PriceData, sellerFilterList, SellerRateData } from './constants';
+import { PriceData, PriceDataValues, sellerFilterList, SellerRateData } from './constants';
 import { jobApi } from '@/api';
 import { useAppSelector } from '@/hooks';
 
@@ -68,13 +68,45 @@ const JobListPage = () => {
         setFilteredData(filteredPostList);
     };
 
+    const onFilterPrice = ({ option, min, max }: { option: string; min?: number; max?: number }) => {
+        let filteredPostList = [...data];
+        switch (option) {
+            case PriceDataValues.value:
+                filteredPostList = data.filter((item: any) => {
+                    return item.congViec.giaTien < 10;
+                });
+                break;
+            case PriceDataValues.midRange:
+                filteredPostList = data.filter((item: any) => {
+                    return item.congViec.giaTien > 10 && item.congViec.giaTien < 21;
+                });
+                break;
+            case PriceDataValues.highEnd:
+                filteredPostList = data.filter((item: any) => {
+                    return item.congViec.giaTien >= 21;
+                });
+                break;
+            case PriceDataValues.custom:
+                if (min && max) {
+                    filteredPostList = data.filter((item: any) => {
+                        return item.congViec.giaTien >= min && item.congViec.giaTien <= max;
+                    });
+                }
+                break;
+            default:
+                return setFilteredData(filteredPostList);
+        }
+
+        setFilteredData(filteredPostList);
+    };
+
     return (
         <div id="job-list" className="container-center">
             <h3 className="job-list__title">Results for "{searchedValue}"</h3>
             <div className="job-list__filter-wrapper">
                 <div className="job-list__filter—group">
                     <CategoryJobFilter data={jobCategory} name="Category" onFilter={onFilterCategory} />
-                    <PriceJobFilter data={PriceData} name="Budget" onFilter={onFilterCategory} />
+                    <PriceJobFilter data={PriceData} name="Budget" onFilter={onFilterPrice} />
                     <SellerRateFilter data={SellerRateData} name="Seller rate" onFilter={onFilterCategory} />
                 </div>
                 <div className="job-list__filter—group">

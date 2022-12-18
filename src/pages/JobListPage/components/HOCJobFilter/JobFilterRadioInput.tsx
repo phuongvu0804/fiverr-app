@@ -1,3 +1,5 @@
+import React, { useEffect, useState } from 'react';
+
 //Material UI
 import { Star } from '@mui/icons-material';
 import {
@@ -5,21 +7,43 @@ import {
     Divider,
     FormControl,
     FormControlLabel,
+    FormGroup,
     InputAdornment,
     OutlinedInput,
     Radio,
     RadioGroup,
+    Box,
 } from '@mui/material';
 
 //Others
 import { JobFilterDataProps } from '../../interfaces';
+import { PriceDataValues } from '../../constants';
 
 interface Props {
     data: JobFilterDataProps;
     onFilter?: any;
 }
 
-const JobFilterRadioInput = ({ data }: Props) => {
+interface RangeValueProps {
+    min: number;
+    max: number;
+}
+
+const JobFilterRadioInput = ({ data, onFilter }: Props) => {
+    const [selected, setSelected] = useState<any>(0);
+    const [rangeValue, setRangeValue] = useState<RangeValueProps>({
+        min: 0,
+        max: 0,
+    });
+
+    const handleSubmit = (e: any) => {
+        e.preventDefault();
+        onFilter({
+            option: selected,
+            ...rangeValue,
+        });
+    };
+
     const renderLabel = (option: any) => {
         switch (typeof option.label) {
             case 'object':
@@ -41,22 +65,28 @@ const JobFilterRadioInput = ({ data }: Props) => {
         }
     };
 
+    const handleFilterValue = (value: string) => {
+        return Number(value);
+    };
+
     return (
         <>
-            <FormControl>
+            <Box component="form">
                 <RadioGroup>
                     {data.options.map((item, index) => {
                         if (item.custom) {
                             return (
-                                <FormControl key={index}>
+                                <FormGroup key={index}>
                                     <FormControlLabel
                                         className="filter-menu__item filter-menu__item--custom filter-menu__item--radio"
                                         value={item.custom}
                                         control={<Radio />}
+                                        checked={selected === item.value}
                                         label={renderLabel(item)}
+                                        onChange={() => setSelected(item.value)}
                                     />
                                     <div className="filter-custom-wrapper">
-                                        <div className="filter-custom-group">
+                                        <FormControl className="filter-custom-group">
                                             <span className="filter-custom-group__title">MIN.</span>
                                             <OutlinedInput
                                                 className="filter-menu__item filter-menu__item--text"
@@ -68,11 +98,19 @@ const JobFilterRadioInput = ({ data }: Props) => {
                                                         {item?.icon}
                                                     </InputAdornment>
                                                 }
-                                                placeholder="Any"
+                                                placeholder="Price"
+                                                value={rangeValue.min || 0}
+                                                onChange={(e) => {
+                                                    const selectedValue = handleFilterValue(e.target.value);
+                                                    setRangeValue({
+                                                        ...rangeValue,
+                                                        min: selectedValue,
+                                                    });
+                                                }}
                                             />
-                                        </div>
+                                        </FormControl>
 
-                                        <div className="filter-custom-group">
+                                        <FormControl className="filter-custom-group">
                                             <span className="filter-custom-group__title">MAX.</span>
                                             <OutlinedInput
                                                 className="filter-menu__item filter-menu__item--text"
@@ -84,11 +122,19 @@ const JobFilterRadioInput = ({ data }: Props) => {
                                                         {item?.icon}
                                                     </InputAdornment>
                                                 }
-                                                placeholder="Any"
+                                                placeholder="Price"
+                                                value={rangeValue.max || 0}
+                                                onChange={(e) => {
+                                                    const selectedValue = handleFilterValue(e.target.value);
+                                                    setRangeValue({
+                                                        ...rangeValue,
+                                                        max: selectedValue,
+                                                    });
+                                                }}
                                             />
-                                        </div>
+                                        </FormControl>
                                     </div>
-                                </FormControl>
+                                </FormGroup>
                             );
                         } else {
                             return (
@@ -97,20 +143,41 @@ const JobFilterRadioInput = ({ data }: Props) => {
                                     className="filter-menu__item filter-menu__item--radio"
                                     value={item.value}
                                     control={<Radio />}
+                                    checked={selected === item.value}
                                     label={renderLabel(item)}
+                                    onChange={() => {
+                                        setSelected(item.value);
+                                    }}
                                 />
                             );
                         }
                     })}
                 </RadioGroup>
-            </FormControl>
+            </Box>
             <Divider />
-
             <div className="filter-menu__btn-list">
-                <Button className="filter-menu__btn-item filter-menu__btn-item--text" variant="text">
+                <Button
+                    className="filter-menu__btn-item filter-menu__btn-item--text"
+                    variant="text"
+                    onClick={() => {
+                        //Clear radio input
+                        setSelected(null);
+
+                        //Clear custom input
+                        setRangeValue({
+                            min: 0,
+                            max: 0,
+                        });
+                    }}
+                >
                     Clear All
                 </Button>
-                <Button className="filter-menu__btn-item filter-menu__btn-item--contained" variant="contained">
+                <Button
+                    className="filter-menu__btn-item filter-menu__btn-item--contained"
+                    variant="contained"
+                    type="submit"
+                    onClick={handleSubmit}
+                >
                     Apply
                 </Button>
             </div>
