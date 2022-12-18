@@ -63,10 +63,15 @@ div.job-list__filter-menu {
         color: var(--black);
         text-decoration: none;
         min-width: 24rem;
+        text-transform: none;
+        justify-content: left;
+        margin-bottom: 0;
 
-        &:hover {
+        &:hover,
+        &.active {
             color: var(--primary);
             transition: color 0.2s;
+            background-color: transparent;
         }
 
         &:last-of-type {

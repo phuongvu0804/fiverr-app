@@ -11,30 +11,36 @@ import PaginationMUI from './components/Pagination';
 import './JobList.scss';
 import { PriceData, sellerFilterList, SellerRateData } from './constants';
 import { jobApi } from '@/api';
+import { useAppSelector } from '@/hooks';
 
 const JobListPage = () => {
     //Get params from URLs
     let { id } = useParams();
-    const [postList, setPostList] = useState([]);
+    const jobCategory = useAppSelector((state) => state.jobCategory['data']);
+
+    const [data, setData] = useState([]);
+    const [filteredData, setFilteredData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(12);
 
-    const postListLength = postList.length;
+    const postListLength = filteredData.length;
 
     const searchedValue: string = id !== undefined ? id : '';
 
     //Get current posts
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    const currentPosts = postList.slice(indexOfFirstPost, indexOfLastPost);
+    const currentPosts = filteredData.slice(indexOfFirstPost, indexOfLastPost);
     const totalPage = Math.ceil(postListLength / postsPerPage);
 
     const fetchPosts = async (searchedValue: string) => {
         setLoading(true);
         const result = await jobApi.getJobsByName(searchedValue);
         try {
-            setPostList(result.data.content);
+            setData(result.data.content);
+            setFilteredData(result.data.content);
+
             setLoading(false);
         } catch (error) {
             console.log(error);
@@ -51,14 +57,25 @@ const JobListPage = () => {
         setCurrentPage(pageNumber);
     };
 
+    const onFilterCategory = (value: any) => {
+        //Filter data by job category
+        const filteredPostList = data.filter((item: any) => {
+            if (item.tenLoaiCongViec === value) {
+                return item;
+            }
+        });
+
+        setFilteredData(filteredPostList);
+    };
+
     return (
         <div id="job-list" className="container-center">
             <h3 className="job-list__title">Results for "{searchedValue}"</h3>
             <div className="job-list__filter-wrapper">
                 <div className="job-list__filter—group">
-                    <CategoryJobFilter data={PriceData} />
-                    <PriceJobFilter data={PriceData} />
-                    <SellerRateFilter data={SellerRateData} />
+                    <CategoryJobFilter data={jobCategory} name="Category" onFilter={onFilterCategory} />
+                    <PriceJobFilter data={PriceData} name="Budget" onFilter={onFilterCategory} />
+                    <SellerRateFilter data={SellerRateData} name="Seller rate" onFilter={onFilterCategory} />
                 </div>
                 <div className="job-list__filter—group">
                     {sellerFilterList.map((item, index) => (

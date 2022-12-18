@@ -30,7 +30,7 @@ const JobCategoryListTablet = ({ data }: Props) => {
                 <div key={index} className="job-category__item hide-on-mobile">
                     <NavLink
                         className={({ isActive }) => (isActive ? 'job-category__link active' : 'job-category__link')}
-                        to={`/job-list/${item.id}`}
+                        to={`/job-category/${item.id}`}
                     >
                         {item.tenLoaiCongViec}
                     </NavLink>

@@ -17,6 +17,5 @@ export interface JobFilterOptionProps {
 }
 
 export interface JobFilterDataProps {
-    name: string;
     options: JobFilterOptionProps[];
 }

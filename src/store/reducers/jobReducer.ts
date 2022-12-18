@@ -8,7 +8,7 @@ const initialState: StateProps = {
     error: null,
 };
 
-const jobReducer = (state: StateProps = initialState, action: ActionProps) => {
+const jobCategoryReducer = (state: StateProps = initialState, action: ActionProps) => {
     switch (action.type) {
         case JobCategoryActionType.getRequest:
             return {
@@ -33,4 +33,4 @@ const jobReducer = (state: StateProps = initialState, action: ActionProps) => {
     }
 };
 
-export default jobReducer;
+export default jobCategoryReducer;

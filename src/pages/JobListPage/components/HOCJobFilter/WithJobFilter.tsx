@@ -7,8 +7,14 @@ import { Button, Popover } from '@mui/material';
 //Others
 import { JobFilterDataProps } from '../../interfaces';
 
-const WithJobFilter = (Component: ({ data }: { data: any }) => JSX.Element) => {
-    return function HOCJobFilter({ data }: { data: JobFilterDataProps }) {
+interface Props {
+    data: JobFilterDataProps;
+    name?: string;
+    onFilter?: any;
+}
+
+const WithJobFilter = (Component: ({ data, name, onFilter }: any) => JSX.Element) => {
+    return function HOCJobFilter({ data, name, onFilter }: Props) {
         const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
 
         const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -24,7 +30,7 @@ const WithJobFilter = (Component: ({ data }: { data: any }) => JSX.Element) => {
         return (
             <div className="job-list__filter-item">
                 <Button className="job-list__filter-btn" onClick={handleClick} endIcon={<KeyboardArrowDown />}>
-                    {data.name}
+                    {name}
                 </Button>
                 <Popover
                     className="job-list__filter-menu"
@@ -36,7 +42,7 @@ const WithJobFilter = (Component: ({ data }: { data: any }) => JSX.Element) => {
                         horizontal: 'left',
                     }}
                 >
-                    <Component data={data} />
+                    <Component data={data} onFilter={onFilter} />
                 </Popover>
             </div>
         );

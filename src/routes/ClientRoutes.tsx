@@ -16,6 +16,11 @@ const ClientRoutes = [
         component: JobListPage,
         layout: DefaultLayout,
     },
+    {
+        path: '/job-category/:id',
+        component: JobListPage,
+        layout: DefaultLayout,
+    },
 ];
 
 export default ClientRoutes;

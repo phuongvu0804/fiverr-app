@@ -14,7 +14,12 @@ import {
 //Others
 import { JobFilterDataProps } from '../../interfaces';
 
-const JobFilterRadioInput = ({ data }: { data: JobFilterDataProps }) => {
+interface Props {
+    data: JobFilterDataProps;
+    onFilter?: any;
+}
+
+const JobFilterRadioInput = ({ data }: Props) => {
     const renderLabel = (option: any) => {
         switch (typeof option.label) {
             case 'object':

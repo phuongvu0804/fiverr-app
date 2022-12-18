@@ -2,7 +2,6 @@ import StarIcon from '@mui/icons-material/Star';
 import { JobFilterDataProps, Operator } from './interfaces';
 
 export const PriceData: JobFilterDataProps = {
-    name: 'Category',
     options: [
         {
             value: '314',
@@ -34,7 +33,6 @@ export const PriceData: JobFilterDataProps = {
 };
 
 export const SellerRateData: JobFilterDataProps = {
-    name: 'Seller Rate',
     options: [
         {
             value: '1',
