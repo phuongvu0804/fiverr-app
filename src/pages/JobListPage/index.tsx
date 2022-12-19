@@ -12,6 +12,8 @@ import './JobList.scss';
 import { PriceData, PriceDataValues, sellerFilterList, SellerRateData } from './constants';
 import { jobApi } from '@/api';
 import { useAppSelector } from '@/hooks';
+import { JobFilterDataProps } from './interfaces';
+import { PostProps } from './types';
 
 const JobListPage = () => {
     //Get params from URLs
@@ -68,6 +70,16 @@ const JobListPage = () => {
         setFilteredData(filteredPostList);
     };
 
+    const handleMinMax = (a: number, b: number) => {
+        if (a < b) {
+            return { minValue: a, maxValue: b };
+        } else if (a > b) {
+            return { minValue: b, maxValue: a };
+        } else {
+            return { minValue: a, maxValue: a };
+        }
+    };
+
     const onFilterPrice = ({ option, min, max }: { option: string; min?: number; max?: number }) => {
         let filteredPostList = [...data];
         switch (option) {
@@ -88,8 +100,9 @@ const JobListPage = () => {
                 break;
             case PriceDataValues.custom:
                 if (min && max) {
+                    const { minValue, maxValue } = handleMinMax(min, max);
                     filteredPostList = data.filter((item: any) => {
-                        return item.congViec.giaTien >= min && item.congViec.giaTien <= max;
+                        return item.congViec.giaTien >= minValue && item.congViec.giaTien <= maxValue;
                     });
                 }
                 break;
@@ -100,6 +113,24 @@ const JobListPage = () => {
         setFilteredData(filteredPostList);
     };
 
+    const onFilterSeller = ({ option, min, max }: { option: string; min: number; max: number }) => {
+        const selectedValue = Number(option);
+        const filteredPostList = data.filter((item: PostProps) => {
+            switch (option) {
+                case '0':
+                    return item;
+                case 'custom':
+                    const { minValue, maxValue } = handleMinMax(min, max);
+                    return item.congViec.saoCongViec >= minValue && item.congViec.saoCongViec <= maxValue;
+                default:
+                    return item.congViec.saoCongViec === selectedValue;
+            }
+        });
+
+        setFilteredData(filteredPostList);
+    };
+
+    console.log(filteredData);
     return (
         <div id="job-list" className="container-center">
             <h3 className="job-list__title">Results for "{searchedValue}"</h3>
@@ -107,7 +138,7 @@ const JobListPage = () => {
                 <div className="job-list__filter—group">
                     <CategoryJobFilter data={jobCategory} name="Category" onFilter={onFilterCategory} />
                     <PriceJobFilter data={PriceData} name="Budget" onFilter={onFilterPrice} />
-                    <SellerRateFilter data={SellerRateData} name="Seller rate" onFilter={onFilterCategory} />
+                    <SellerRateFilter data={SellerRateData} name="Seller rate" onFilter={onFilterSeller} />
                 </div>
                 <div className="job-list__filter—group">
                     {sellerFilterList.map((item, index) => (

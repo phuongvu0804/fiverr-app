@@ -17,7 +17,6 @@ import {
 
 //Others
 import { JobFilterDataProps } from '../../interfaces';
-import { PriceDataValues } from '../../constants';
 
 interface Props {
     data: JobFilterDataProps;
