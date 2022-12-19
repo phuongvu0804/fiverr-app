@@ -8,6 +8,7 @@
 }
 
 .job-list__item-head {
+    display: block;
     height: 20rem;
 }
 
@@ -55,6 +56,7 @@
     color: var(--black);
     line-height: var(--line-height);
     height: calc(var(--line-height) * 2);
+    text-decoration: none;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;

@@ -132,7 +132,7 @@ const JobListPage = () => {
 
     console.log(filteredData);
     return (
-        <div id="job-list" className="container-center">
+        <div id="job-list" className="container-center padding-top-page">
             <h3 className="job-list__title">Results for "{searchedValue}"</h3>
             <div className="job-list__filter-wrapper">
                 <div className="job-list__filter—group">
