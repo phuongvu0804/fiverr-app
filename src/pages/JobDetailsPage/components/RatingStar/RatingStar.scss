@@ -1,0 +1,19 @@
+.job-details__rating-star {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    svg {
+        --size: 2.2rem;
+        width: var(--size);
+        height: var(--size);
+        fill: #ffb33e;
+        padding-bottom: 0.4rem;
+    }
+
+    .job-details__rating-star-number {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #ffb33e;
+    }
+}

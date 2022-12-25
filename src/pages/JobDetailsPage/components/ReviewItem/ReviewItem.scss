@@ -1,0 +1,53 @@
+.job-details-review__item {
+    padding: 4rem 0;
+    border-top: 1px solid #dadbdd;
+}
+
+.job-details-review__user {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2.2rem;
+
+    img {
+        --size: 4.8rem;
+        width: var(--size);
+        height: var(--size);
+        border-radius: 50%;
+        margin-right: 1.6rem;
+    }
+}
+
+.user-info__name {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--dark-gray);
+    padding-bottom: 0.4rem;
+}
+
+.user-info__country {
+    font-size: 1.4rem;
+    color: var(--light-gray);
+}
+
+.job-details-review__text {
+    margin-left: 6.4rem;
+
+    .job-details__rating-star svg:first-of-type {
+        margin-left: -0.4rem;
+    }
+}
+
+//Responsive for mobile devices
+@media (max-width: 739px) {
+    .job-details-review__item {
+        padding: 3.2rem 0;
+    }
+
+    .job-details-review__user {
+        margin-bottom: 1.2rem;
+    }
+
+    .job-details-review__text p {
+        margin-top: 1.2rem;
+    }
+}

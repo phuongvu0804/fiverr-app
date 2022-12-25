@@ -26,6 +26,7 @@
     --header-height: 8rem;
     --job-filter-height: 4.2rem;
     --container-width: 140rem;
+    --job-details-nav-height: 5.4rem;
 
     --service-list-gap: 1.8rem;
     --job-list-card-padding: 1.2rem;
@@ -133,7 +134,7 @@ body {
         display: none !important;
     }
 
-    .display-on-mobile {
+    .display-on-pc-tablet {
         display: none !important;
     }
 }

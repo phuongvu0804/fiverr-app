@@ -1,0 +1,11 @@
+.job-details__rating {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .job-details__rating-count {
+        font-size: 1.4rem;
+        font-weight: 400;
+        color: var(--light-text);
+    }
+}

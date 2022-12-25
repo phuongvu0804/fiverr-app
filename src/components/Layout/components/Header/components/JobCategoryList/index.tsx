@@ -20,25 +20,31 @@ const JobCategoryList = () => {
 
     const [jobCategoryData, setJobCategoryData] = useState([]);
 
-    const getJobCategoryList = () => {
-        dispatch(actGetJobCategoryListRequest());
+    useEffect(() => {
+        const controller = new AbortController();
 
-        const fetchJobCategoryList = async () => {
-            const result = await jobApi.getJobCategoryList();
-            try {
-                dispatch(actGetJobCategoryListSuccess(result.data.content));
-                setJobCategoryData(result.data.content);
-            } catch (error) {
-                dispatch(actGetJobCategoryListFail(error));
-            }
+        //Fetch list of job categories
+        const getJobCategoryList = () => {
+            dispatch(actGetJobCategoryListRequest());
+
+            const fetchJobCategoryList = async () => {
+                const result = await jobApi.getJobCategoryList();
+                try {
+                    dispatch(actGetJobCategoryListSuccess(result.data.content));
+                    setJobCategoryData(result.data.content);
+                } catch (error) {
+                    dispatch(actGetJobCategoryListFail(error));
+                }
+            };
+
+            fetchJobCategoryList();
         };
 
-        fetchJobCategoryList();
-    };
-
-    useEffect(() => {
-        // dispatch(getJobCategoryList()); error with prop type
         getJobCategoryList();
+
+        return () => {
+            controller.abort();
+        };
     }, []);
 
     return (

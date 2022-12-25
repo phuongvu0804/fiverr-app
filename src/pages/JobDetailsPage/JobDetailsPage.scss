@@ -1,104 +1,225 @@
 #job-details-page {
+    position: relative;
 }
 
 .job-details__head {
-}
+    height: var(--job-details-nav-height);
+    border-bottom: 0.1rem solid #dadbdd;
 
-.job-details-head__nav-list {
-}
-
-.job-details-head__nav-item {
-}
-
-.job-details-head__social-list {
-}
-
-.job-details-head__social-item {
-}
-
-.job-details__booking {
-}
-
-.job-details-booking__price {
-}
-
-.job-details-booking__add-info-list {
-}
-
-.job-details-booking__add-info-item {
-    svg {
-    }
-
-    span {
+    &.on-scroll {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: var(--white);
+        z-index: 11;
     }
 }
 
-.job-details-booking__hour {
-    span {
-    }
-
-    input {
-    }
+.job-details__body {
+    position: relative;
+    display: flex;
+    margin: 0 3.2rem;
 }
 
 .job-details__content {
+    margin-right: 10%;
+    width: calc(100% - 34% - 10%);
+    object-fit: contain;
+    object-position: center;
 }
 
 .job-details-content__wrapper {
-    .job-details__img img {
-    }
+    padding-bottom: 6.4rem;
+}
 
-    .job-details-content__title {
-    }
+.job-details__img img {
+    margin-top: 3rem;
+    width: 100%;
+    height: 50rem;
+}
+
+.job-details-content__title {
+    font-size: 2rem;
+    font-weight: 600;
+    padding-bottom: 2.5rem;
 }
 
 .job-details__title {
+    font-size: 2.8rem;
+    font-weight: 600;
+    padding-bottom: 1.6rem;
 }
 
 .job-details__seller-overview {
+    display: flex;
+    align-items: center;
     img {
+        --size: 3rem;
+        width: var(--size);
+        height: var(--size);
+        border-radius: 50%;
     }
 
-    span {
-    }
-}
+    > span {
+        position: relative;
+        padding: 0 0.8rem 0.8rem 1.6rem;
+        font-size: 1.4rem;
+        font-weight: 600;
 
-.job-details__rating {
-    svg {
+        &::before {
+            position: absolute;
+            content: '';
+            right: 0;
+            top: 0;
+            height: 1.8rem;
+            width: 0.1rem;
+            background-color: #c5c6c9;
+        }
     }
 
-    .job-details__rating-number {
+    .job-details__rating {
+        margin: 0 0.8rem 0.8rem 0.8rem;
     }
 
+    .job-details__rating-star-number,
     .job-details__rating-count {
+        padding-left: 0.4rem;
     }
 }
 
 .job-details-about__content {
     .job-details-content__text {
+        color: var(--light-gray);
+        line-height: 2.4rem;
     }
 
     .job-details-content__text--bold {
+        font-weight: 600;
     }
 }
 
-.job-details-review__list {
+.job-details-seller__content {
+    display: flex;
+    align-items: center;
 }
 
-.job-details-review__item {
+.job-details-seller__img {
+    --size: 11rem;
+    width: var(--size);
+    height: var(--size);
+    object-fit: contain;
+    object-position: center;
+    border-radius: 50%;
 }
 
-.job-details-review__user {
+.job-details-seller__info {
+    padding-left: 1.4rem;
+
+    p {
+        font-weight: 600;
+        padding-bottom: 1rem;
+        color: var(--light-gray);
+    }
+
+    button {
+        font-size: 1.4rem;
+        text-transform: none;
+        margin-top: 2rem;
+        padding: 0.8rem 2.4rem;
+        border-color: var(--light-gray);
+        background-color: var(--white);
+        color: var(--light-gray);
+
+        &:hover {
+            background-color: var(--light-gray);
+            color: var(--white);
+            transition: all 0.3s ease;
+            border-color: var(--light-gray);
+        }
+    }
 }
 
-.job-details-review__user-info {
+.job-details-content__wrapper—review {
+    .job-details__rating {
+        padding-bottom: 2rem;
+    }
+
+    .job-details-review__rating-count {
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: var(--black);
+        padding-right: 0.8rem;
+    }
 }
 
-.user-info__name {
+//Responsive for tablet + mobile devices
+@media (max-width: 1023px) {
+    .job-details__body {
+        margin: 0;
+    }
+
+    .job-details__content {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .job-details-content__wrapper {
+        padding-bottom: 3.2rem;
+    }
+
+    .job-details__img {
+        margin-left: -3.2rem;
+        margin-right: -3.2rem;
+
+        img {
+            margin-bottom: 0;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
 }
 
-.user-info__country {
+//Responsive for tablet devices
+@media (min-width: 740px) and (max-width: 1024px) {
 }
 
-.job-details-review__text {
+//Responsive for mobile devices
+@media (max-width: 739px) {
+    .job-details__title {
+        font-size: 2.3rem;
+        font-weight: 600;
+    }
+
+    .job-details__img {
+        img {
+            height: 22rem;
+        }
+    }
+
+    .job-details-seller__content {
+        display: block;
+        text-align: center;
+
+        .job-details__rating {
+            justify-content: center;
+        }
+    }
+
+    .job-details-seller__info {
+        button {
+            width: 100%;
+        }
+    }
+
+    .job-details-content__wrapper—review {
+        .MuiBox-root {
+            display: block;
+        }
+
+        .job-details-review__rating-count {
+            display: block;
+            margin-bottom: 1rem;
+        }
+    }
 }

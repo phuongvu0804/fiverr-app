@@ -36,22 +36,26 @@ const JobListPage = () => {
     const currentPosts = filteredData.slice(indexOfFirstPost, indexOfLastPost);
     const totalPage = Math.ceil(postListLength / postsPerPage);
 
-    const fetchPosts = async (searchedValue: string) => {
-        setLoading(true);
-        const result = await jobApi.getJobsByName(searchedValue);
-        try {
-            setData(result.data.content);
-            setFilteredData(result.data.content);
-
-            setLoading(false);
-        } catch (error) {
-            console.log(error);
-            setLoading(false);
-        }
-    };
-
     useEffect(() => {
+        const controller = new AbortController();
+        const fetchPosts = async (searchedValue: string) => {
+            setLoading(true);
+            const result = await jobApi.getJobsByName(searchedValue);
+            try {
+                setData(result.data.content);
+                setFilteredData(result.data.content);
+
+                setLoading(false);
+            } catch (error) {
+                console.log(error);
+                setLoading(false);
+            }
+        };
         fetchPosts(searchedValue);
+
+        return () => {
+            controller.abort();
+        };
     }, []);
 
     //Set current page
@@ -130,7 +134,6 @@ const JobListPage = () => {
         setFilteredData(filteredPostList);
     };
 
-    console.log(filteredData);
     return (
         <div id="job-list" className="container-center padding-top-page">
             <h3 className="job-list__title">Results for "{searchedValue}"</h3>

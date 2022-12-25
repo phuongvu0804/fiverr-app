@@ -1,0 +1,111 @@
+.job-details__booking {
+    position: sticky;
+    top: 0;
+    right: 0;
+    width: 34%;
+    height: 100%;
+    padding: 3.2rem;
+    border: 1px solid #dadbdd;
+    color: var(--light-gray);
+    background-color: var(--white);
+    transform: translate3d(0px, 0px, 0px);
+
+    &.on-scroll {
+        transform: translate3d(0px, 86px, 0px);
+    }
+}
+
+.job-details-booking__price {
+    font-size: 3rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.job-details-booking__desc {
+    font-size: 1.4rem;
+    margin: 3rem 0;
+    min-height: 3.2rem;
+}
+
+.job-details-booking__add-info-list {
+    display: flex;
+}
+
+.job-details-booking__add-info-item {
+    display: flex;
+    align-items: center;
+    margin-right: 1.6rem;
+
+    svg {
+        color: var(--primary);
+    }
+
+    span {
+        font-size: 1.4rem;
+        font-weight: 500;
+        color: var(--dark-gray);
+        margin-left: 0.6rem;
+    }
+}
+
+.job-details-booking__hour {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0 2rem;
+
+    span {
+        font-size: 1.4rem;
+        margin-right: 2rem;
+    }
+
+    input {
+        padding: 0.8rem 1.2rem;
+        border-radius: 0.4rem;
+        border: 1px solid #c5c6c9;
+        outline: none;
+
+        &:hover,
+        &:focus {
+            border-color: #95979d;
+        }
+    }
+}
+
+button.job-details-booking__btn {
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 100%;
+    padding: 1.2rem 2.4rem;
+    width: 100%;
+    background-color: var(--primary);
+    color: var(--white);
+    border: 1px solid transparent;
+    text-transform: unset;
+
+    &:hover {
+        background: #19a463;
+    }
+}
+
+//Responsive for tablet + mobile devices
+@media (max-width: 1023px) {
+    .job-details__booking {
+        position: relative;
+        width: 100%;
+        height: unset;
+        margin-bottom: 3.2rem;
+        padding: 3.2rem 2rem;
+    }
+
+    .job-details-booking__hour {
+        margin: 2rem 0;
+    }
+}
+
+//Responsive for tablet devices
+@media (min-width: 740px) and (max-width: 1024px) {
+}
+
+//Responsive for mobile devices
+@media (max-width: 739px) {
+}

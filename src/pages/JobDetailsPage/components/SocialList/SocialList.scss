@@ -1,0 +1,14 @@
+button.job-details-head__social-item {
+    border: 1px solid #c5c6c9;
+    border-radius: 0.3rem;
+
+    &:hover {
+        color: var(--primary);
+        border-color: var(--gray-text);
+        transition: all 0.3s ease;
+    }
+}
+
+button.job-details-head__social-item + button.job-details-head__social-item {
+    margin-left: 0.8rem;
+}
