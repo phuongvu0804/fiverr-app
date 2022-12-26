@@ -1,28 +1,52 @@
 //Material UI
 import { AccessTime, Autorenew } from '@mui/icons-material';
-import { Button } from '@mui/material';
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
+import { ChangeEvent, SyntheticEvent, useState } from 'react';
+import { SectionProps } from '../../types';
 
 //Others
 import './BookingCard.scss';
+import MUIDialog from './components/MUIDialog';
 
-interface Props {
+interface Props extends SectionProps {
     className?: string;
     scrollDown?: boolean;
 }
 
-const BookingCard = ({ className, scrollDown }: Props) => {
+const BookingCard = ({ data, className, scrollDown }: Props) => {
+    const [hour, setHour] = useState(1);
+    const [openDialog, setOpenDialog] = useState(false);
+
     //Html tag - div for PC, - section for tablet + mobile
     const HtmlTag = className === 'hide-on-tablet-mobile' ? 'div' : 'section';
+
+    const handleHourInput = (e: ChangeEvent<HTMLInputElement>) => {
+        const inputValue = Number(e.target.value);
+        setHour(inputValue);
+    };
+
+    const handleTotalPrice = () => {
+        return hour * data.congViec.giaTien;
+    };
+
+    const handleBooking = () => {
+        const user = localStorage.getItem('user');
+        if (user) {
+            setOpenDialog(true);
+        }
+    };
 
     return (
         <HtmlTag
             id="price"
             className={scrollDown ? `job-details__booking ${className} on-scroll` : `job-details__booking ${className}`}
         >
-            <p className="job-details-booking__price">€14.85</p>
-            <p className="job-details-booking__desc">
-                <p>I will spend 1 hour on your task as a Virtual Assistant</p>
-            </p>
+            <p className="job-details-booking__price">€{data.congViec.giaTien}/ hour</p>
+
+            <div className="job-details-booking__desc">
+                <p>{data.congViec.moTaNgan}</p>
+            </div>
+
             <div className="job-details-booking__add-info-list">
                 <div className="job-details-booking__add-info-item">
                     <AccessTime />
@@ -34,13 +58,23 @@ const BookingCard = ({ className, scrollDown }: Props) => {
                     <span>7 Revisions</span>
                 </div>
             </div>
+
             <div className="job-details-booking__hour">
                 <span>Hours of work</span>
-                <input type="number" />
+                <input value={hour} type="number" min="1" onChange={handleHourInput} />
             </div>
-            <Button variant="contained" className="job-details-booking__btn">
-                Continue (€14.85)
+
+            <Button variant="contained" className="job-details-booking__btn" onClick={handleBooking}>
+                Continue (€{handleTotalPrice()})
             </Button>
+
+            <MUIDialog
+                openDialog={openDialog}
+                setOpenDialog={setOpenDialog}
+                hour={hour}
+                data={data}
+                totalPrice={handleTotalPrice()}
+            />
         </HtmlTag>
     );
 };

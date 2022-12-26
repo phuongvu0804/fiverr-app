@@ -1,6 +1,5 @@
 import { Favorite, Share } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
-import React from 'react';
 
 //Others
 import './SocialList.scss';

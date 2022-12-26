@@ -10,17 +10,13 @@ interface Props {
 
 const Image = (props: Props) => {
     const { src, alt, className, fallback: customFallback = images.noImage } = props;
-    const [path, setPath] = useState('');
-
-    useEffect(() => {
-        setPath(src);
-    }, []);
+    const [fallback, setFallback] = useState('');
 
     const handleError = () => {
-        setPath(customFallback);
+        setFallback(customFallback);
     };
 
-    return <img className={className} alt={alt} src={path} onError={handleError} />;
+    return <img className={className} alt={alt} src={src || fallback} onError={handleError} />;
 };
 
 export default Image;

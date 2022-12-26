@@ -12,7 +12,6 @@ import './JobList.scss';
 import { PriceData, PriceDataValues, sellerFilterList, SellerRateData } from './constants';
 import { jobApi } from '@/api';
 import { useAppSelector } from '@/hooks';
-import { JobFilterDataProps } from './interfaces';
 import { PostProps } from './types';
 
 const JobListPage = () => {

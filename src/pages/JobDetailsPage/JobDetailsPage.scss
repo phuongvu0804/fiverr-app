@@ -51,43 +51,6 @@
     padding-bottom: 1.6rem;
 }
 
-.job-details__seller-overview {
-    display: flex;
-    align-items: center;
-    img {
-        --size: 3rem;
-        width: var(--size);
-        height: var(--size);
-        border-radius: 50%;
-    }
-
-    > span {
-        position: relative;
-        padding: 0 0.8rem 0.8rem 1.6rem;
-        font-size: 1.4rem;
-        font-weight: 600;
-
-        &::before {
-            position: absolute;
-            content: '';
-            right: 0;
-            top: 0;
-            height: 1.8rem;
-            width: 0.1rem;
-            background-color: #c5c6c9;
-        }
-    }
-
-    .job-details__rating {
-        margin: 0 0.8rem 0.8rem 0.8rem;
-    }
-
-    .job-details__rating-star-number,
-    .job-details__rating-count {
-        padding-left: 0.4rem;
-    }
-}
-
 .job-details-about__content {
     .job-details-content__text {
         color: var(--light-gray);
@@ -102,55 +65,6 @@
 .job-details-seller__content {
     display: flex;
     align-items: center;
-}
-
-.job-details-seller__img {
-    --size: 11rem;
-    width: var(--size);
-    height: var(--size);
-    object-fit: contain;
-    object-position: center;
-    border-radius: 50%;
-}
-
-.job-details-seller__info {
-    padding-left: 1.4rem;
-
-    p {
-        font-weight: 600;
-        padding-bottom: 1rem;
-        color: var(--light-gray);
-    }
-
-    button {
-        font-size: 1.4rem;
-        text-transform: none;
-        margin-top: 2rem;
-        padding: 0.8rem 2.4rem;
-        border-color: var(--light-gray);
-        background-color: var(--white);
-        color: var(--light-gray);
-
-        &:hover {
-            background-color: var(--light-gray);
-            color: var(--white);
-            transition: all 0.3s ease;
-            border-color: var(--light-gray);
-        }
-    }
-}
-
-.job-details-content__wrapper—review {
-    .job-details__rating {
-        padding-bottom: 2rem;
-    }
-
-    .job-details-review__rating-count {
-        font-size: 1.6rem;
-        font-weight: 600;
-        color: var(--black);
-        padding-right: 0.8rem;
-    }
 }
 
 //Responsive for tablet + mobile devices
@@ -194,32 +108,6 @@
     .job-details__img {
         img {
             height: 22rem;
-        }
-    }
-
-    .job-details-seller__content {
-        display: block;
-        text-align: center;
-
-        .job-details__rating {
-            justify-content: center;
-        }
-    }
-
-    .job-details-seller__info {
-        button {
-            width: 100%;
-        }
-    }
-
-    .job-details-content__wrapper—review {
-        .MuiBox-root {
-            display: block;
-        }
-
-        .job-details-review__rating-count {
-            display: block;
-            margin-bottom: 1rem;
         }
     }
 }

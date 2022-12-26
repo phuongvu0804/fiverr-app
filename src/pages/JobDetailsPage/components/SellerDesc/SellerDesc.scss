@@ -1,0 +1,53 @@
+.job-details-seller__img {
+    --size: 11rem;
+    width: var(--size);
+    height: var(--size);
+    object-fit: contain;
+    object-position: center;
+    border-radius: 50%;
+}
+
+.job-details-seller__info {
+    padding-left: 1.4rem;
+
+    p {
+        font-weight: 600;
+        padding-bottom: 1rem;
+        color: var(--light-gray);
+    }
+
+    button {
+        font-size: 1.4rem;
+        text-transform: none;
+        margin-top: 2rem;
+        padding: 0.8rem 2.4rem;
+        border-color: var(--light-gray);
+        background-color: var(--white);
+        color: var(--light-gray);
+
+        &:hover {
+            background-color: var(--light-gray);
+            color: var(--white);
+            transition: all 0.3s ease;
+            border-color: var(--light-gray);
+        }
+    }
+}
+
+//Responsive for mobile devices
+@media (max-width: 739px) {
+    .job-details-seller__content {
+        display: block;
+        text-align: center;
+
+        .job-details__rating {
+            justify-content: center;
+        }
+    }
+
+    .job-details-seller__info {
+        button {
+            width: 100%;
+        }
+    }
+}

@@ -1,9 +1,16 @@
 .job-details__bread-crumb {
-    margin: 3.2rem 0 1rem;
+    margin: 3.2rem 3.2rem 1rem;
 
     .bread-crumb__item {
         font-size: 1.4rem;
         color: #446ee7;
+    }
+}
+
+//Responsive for tablet devices
+@media (min-width: 740px) and (max-width: 1024px) {
+    .job-details__bread-crumb {
+        margin: 3.2rem 0 1rem;
     }
 }
 

@@ -1,0 +1,26 @@
+.job-details-content__wrapper—review {
+    .job-details__rating {
+        padding-bottom: 2rem;
+    }
+
+    .job-details-review__rating-count {
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: var(--black);
+        padding-right: 0.8rem;
+    }
+}
+
+//Responsive for mobile devices
+@media (max-width: 739px) {
+    .job-details-content__wrapper—review {
+        .MuiBox-root {
+            display: block;
+        }
+
+        .job-details-review__rating-count {
+            display: block;
+            margin-bottom: 1rem;
+        }
+    }
+}

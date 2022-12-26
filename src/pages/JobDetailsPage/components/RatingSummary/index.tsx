@@ -1,14 +1,19 @@
-import { AccessTime, Autorenew, Favorite, NavigateNext, Share, Star } from '@mui/icons-material';
+//Material UI
 import RatingStar from '../RatingStar';
 
 //Others
 import './Rating.scss';
 
-const RatingSummary = () => {
+interface Props {
+    ratingStar: number;
+    ratingCount: number;
+}
+
+const RatingSummary = ({ ratingStar, ratingCount }: Props) => {
     return (
         <div className="job-details__rating">
-            <RatingStar />
-            <span className="job-details__rating-count">(11)</span>
+            <RatingStar ratingStar={ratingStar} />
+            <span className="job-details__rating-count">({ratingCount})</span>
         </div>
     );
 };

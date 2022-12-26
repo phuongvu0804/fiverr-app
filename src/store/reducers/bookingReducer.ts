@@ -1,4 +1,5 @@
 import { ActionProps } from '../actions/types';
+import { BookingActionType } from '../constants/booking';
 import { JobCategoryActionType } from '../constants/jobCategoryList';
 import { StateProps } from './types';
 
@@ -8,21 +9,21 @@ const initialState: StateProps = {
     error: null,
 };
 
-const jobCategoryReducer = (state: StateProps = initialState, action: any) => {
+const bookingReducer = (state: StateProps = initialState, action: any) => {
     switch (action.type) {
-        case JobCategoryActionType.getRequest:
+        case BookingActionType.bookingRequest:
             return {
                 loading: true,
                 data: null,
                 error: null,
             };
-        case JobCategoryActionType.getSuccess:
+        case BookingActionType.bookingSuccess:
             return {
                 loading: false,
                 data: action.payload,
                 error: null,
             };
-        case JobCategoryActionType.getFail:
+        case BookingActionType.bookingFail:
             return {
                 loading: false,
                 data: null,
@@ -33,4 +34,4 @@ const jobCategoryReducer = (state: StateProps = initialState, action: any) => {
     }
 };
 
-export default jobCategoryReducer;
+export default bookingReducer;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { NavbarItemProps } from '../../types';
+import { NavbarItemProps } from '../../../../types';
 
 //Others
 import './Navbar.scss';
@@ -8,7 +8,6 @@ interface Props {
     data: NavbarItemProps[];
 }
 
-const sections = document.querySelectorAll('section[id]');
 const Navbar = ({ data }: Props) => {
     const [isActive, setActive] = useState<string>('overview');
 
@@ -21,10 +20,12 @@ const Navbar = ({ data }: Props) => {
             sections.forEach((section) => {
                 const sectionTop = section.offsetTop;
 
-                if (scrollY >= sectionTop) {
+                if (scrollY === 0) {
+                    currentSection = 'overview';
+                } else if (scrollY >= sectionTop) {
                     currentSection = section.getAttribute('id') || 'overview';
-                    setActive(currentSection);
                 }
+                setActive(currentSection);
             });
         };
 
