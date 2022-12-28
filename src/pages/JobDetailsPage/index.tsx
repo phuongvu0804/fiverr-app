@@ -7,7 +7,7 @@ import BookingCard from './components/BookingCard';
 import MUIBreadCrumbs from './components/MUIBreadCrumbs';
 
 //Others
-import { navbarList } from './constants';
+import { initPostData, initReviewData, navbarList } from './constants';
 
 //Others
 import './JobDetailsPage.scss';
@@ -22,40 +22,11 @@ import Reviews from './components/Reviews';
 import Header from './components/Header';
 import reviewApi from '@/api/reviewApi';
 
-const initPostData = {
-    avatar: '',
-    congViec: {
-        danhGia: 0,
-        giaTien: -1,
-        hinhAnh: '',
-        id: -1,
-        maChiTietLoaiCongViec: -1,
-        moTa: '',
-        moTaNgan: '',
-        nguoiTao: -1,
-        saoCongViec: 0,
-        tenCongViec: '',
-    },
-    id: 0,
-    tenChiTietLoai: '',
-    tenLoaiCongViec: '',
-    tenNguoiTao: '',
-    tenNhomChiTietLoai: '',
-};
-
 const JobDetailsPage = () => {
     const { id } = useParams();
 
     const [data, setData] = useState<PostProps>(initPostData);
-    const [reviews, setReviews] = useState<ReviewProps[]>([
-        {
-            avatar: '',
-            ngayBinhLuan: '',
-            noiDung: '',
-            saoBinhLuan: 0,
-            tenNguoiBinhLuan: '',
-        },
-    ]);
+    const [reviews, setReviews] = useState<ReviewProps[]>(initReviewData);
     const [scrollDown, setScrollDown] = useState<boolean>(false);
     const [navBarData, setNavbarData] = useState<NavbarItemProps[]>(navbarList);
     const [loading, setLoading] = useState<boolean>(false);
