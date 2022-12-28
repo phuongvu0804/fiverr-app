@@ -6,10 +6,12 @@ import SocialList from './components/SocialList';
 
 interface Props {
     data: NavbarItemProps[];
+    likedPosts: number[];
+    postId: number;
     scrollDown: boolean;
 }
 
-const Header = ({ data, scrollDown }: Props) => {
+const Header = ({ data, scrollDown, postId, likedPosts }: Props) => {
     return (
         <div
             className={scrollDown ? 'job-details__head hide-on-mobile on-scroll' : 'job-details__head  hide-on-mobile'}
@@ -19,7 +21,7 @@ const Header = ({ data, scrollDown }: Props) => {
                 sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%' }}
             >
                 <Navbar data={data} />
-                <SocialList />
+                <SocialList postId={postId} likedPosts={likedPosts} />
             </Box>
         </div>
     );

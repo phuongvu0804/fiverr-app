@@ -24,6 +24,7 @@ const JobListPage = () => {
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(12);
+    const [likedPosts, setLikedPosts] = useState<number[]>([]);
 
     const postListLength = filteredData.length;
 
@@ -35,6 +36,7 @@ const JobListPage = () => {
     const currentPosts = filteredData.slice(indexOfFirstPost, indexOfLastPost);
     const totalPage = Math.ceil(postListLength / postsPerPage);
 
+    //Fetch data of list of jobs
     useEffect(() => {
         const controller = new AbortController();
         const fetchPosts = async (searchedValue: string) => {
@@ -55,6 +57,16 @@ const JobListPage = () => {
         return () => {
             controller.abort();
         };
+    }, []);
+
+    //Get liked posts from local storage
+    useEffect(() => {
+        const likedPostsData = localStorage.getItem('fiverLikedPosts');
+        if (likedPostsData) {
+            const parsedLikedPostsData = JSON.parse(likedPostsData);
+            parsedLikedPostsData && setLikedPosts(parsedLikedPostsData!);
+        }
+        console.log('likedPosts', likedPosts);
     }, []);
 
     //Set current page
@@ -150,7 +162,7 @@ const JobListPage = () => {
             </div>
             <div className="job-list__content">
                 <span className="job-list__result">{postListLength} services available</span>
-                <JobList loading={loading} data={currentPosts} postsPerPage={postsPerPage} />
+                <JobList loading={loading} data={currentPosts} postsPerPage={postsPerPage} likedPosts={likedPosts} />
             </div>
             <PaginationMUI currentPage={currentPage} totalPage={totalPage} paginate={paginate} />
         </div>

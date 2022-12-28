@@ -93,10 +93,10 @@
 }
 
 .item-footer__like {
-    --size: 1.6rem;
-    width: var(--size);
-    height: var(--size);
-    color: var(--light-text);
+    &:hover,
+    &.active {
+        color: var(--primary);
+    }
 }
 
 .item-footer__salary {

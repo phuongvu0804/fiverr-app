@@ -20,7 +20,7 @@ const jobApi = {
         const url = `${RESOURCE_NAME}/lay-cong-viec-chi-tiet/${id}`;
         return axiosClient.get(url);
     },
-    bookService: (service = new BookingInfo()) => {
+    bookService: (service: any) => {
         return axiosClient.post('thue-cong-viec', service);
     },
 };

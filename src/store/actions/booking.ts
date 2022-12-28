@@ -22,7 +22,7 @@ export const actBookingFail = (error: any) => {
     };
 };
 
-export const BookingJob = (service = new BookingInfo()) => {
+export const BookingJob = (service: any) => {
     return (dispatch: any) => {
         dispatch(actBookingRequest());
 

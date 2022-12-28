@@ -59,6 +59,7 @@ const JobDetailsPage = () => {
     const [scrollDown, setScrollDown] = useState<boolean>(false);
     const [navBarData, setNavbarData] = useState<NavbarItemProps[]>(navbarList);
     const [loading, setLoading] = useState<boolean>(false);
+    const [likedPosts, setLikedPosts] = useState<number[]>([]);
 
     //Listen to the scrolling event
     useEffect(() => {
@@ -116,7 +117,6 @@ const JobDetailsPage = () => {
             const result = await reviewApi.getReviewsbyJob(jobId);
             try {
                 setLoading(true);
-                console.log('reviews', result.data.content);
                 setReviews(result.data.content);
             } catch (error) {
                 setLoading(true);
@@ -134,12 +134,18 @@ const JobDetailsPage = () => {
         };
     }, []);
 
-    //Fetch reviews
-    useEffect(() => {}, []);
+    //Get liked posts from local storage
+    useEffect(() => {
+        const likedPostsData = localStorage.getItem('fiverLikedPosts');
+        if (likedPostsData) {
+            const parsedLikedPostsData = JSON.parse(likedPostsData);
+            parsedLikedPostsData && setLikedPosts(parsedLikedPostsData!);
+        }
+    }, []);
 
     return (
         <div id="job-details-page" className="padding-top-page">
-            <Header data={navBarData} scrollDown={scrollDown} />
+            <Header likedPosts={likedPosts} postId={data.id} data={navBarData} scrollDown={scrollDown} />
 
             <MUIBreadCrumbs data={data} />
 
@@ -149,12 +155,7 @@ const JobDetailsPage = () => {
                         {/* Job details */}
                         <Overview data={data} />
 
-                        <BookingCard
-                            // price={data.congViec.giaTien}
-                            // jobDesc={data.congViec.moTaNgan}
-                            data={data}
-                            className="display-tablet-mobile hide-on-pc"
-                        />
+                        <BookingCard data={data} className="display-tablet-mobile hide-on-pc" />
 
                         <JobDesc data={data.congViec.moTa} />
 
@@ -163,13 +164,7 @@ const JobDetailsPage = () => {
                         <Reviews data={data} reviewList={reviews} />
                     </div>
 
-                    <BookingCard
-                        // price={data.congViec.giaTien}
-                        // jobDesc={data.congViec.moTaNgan}
-                        data={data}
-                        className="hide-on-tablet-mobile"
-                        scrollDown={scrollDown}
-                    />
+                    <BookingCard data={data} className="hide-on-tablet-mobile" scrollDown={scrollDown} />
                 </div>
             </div>
         </div>

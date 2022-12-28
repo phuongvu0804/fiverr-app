@@ -28,6 +28,7 @@ const MUIDialog = ({ openDialog, setOpenDialog, data, hour, totalPrice }: Props)
         setOpenDialog(false);
         const bookingInfo = new BookingInfo();
         bookingInfo.id = data.congViec.id;
+        bookingInfo.maCongViec = data.congViec.id;
         bookingInfo.maNguoiThue = 1826;
         bookingInfo.ngayThue = moment().format('DD/MM/YYYY');
         bookingInfo.hoanThanh = true;
