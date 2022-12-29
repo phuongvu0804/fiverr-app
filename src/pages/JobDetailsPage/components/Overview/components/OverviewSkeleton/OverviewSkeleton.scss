@@ -1,0 +1,10 @@
+.job-details__title {
+    width: 600;
+}
+
+//Responsive for mobile devices
+@media (max-width: 739px) {
+    .job-details__title {
+        width: 200px;
+    }
+}

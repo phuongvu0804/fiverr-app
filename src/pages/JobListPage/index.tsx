@@ -66,7 +66,6 @@ const JobListPage = () => {
             const parsedLikedPostsData = JSON.parse(likedPostsData);
             parsedLikedPostsData && setLikedPosts(parsedLikedPostsData!);
         }
-        console.log('likedPosts', likedPosts);
     }, []);
 
     //Set current page

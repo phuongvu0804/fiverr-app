@@ -1,7 +1,12 @@
+//Components
+import JobItem from './components/JobItem';
+import JobItemSkeleton from './components/JobItem/JobItemSkeleton';
+
+//Material UI
 import { Grid } from '@mui/material';
+
+//Others
 import { PostProps } from '../../types';
-import JobItem from '../JobItem';
-import JobItemSkeleton from '../JobItemSkeleton';
 
 interface Props {
     loading: boolean;

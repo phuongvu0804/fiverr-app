@@ -21,6 +21,7 @@ import SellerDesc from './components/SellerDesc';
 import Reviews from './components/Reviews';
 import Header from './components/Header';
 import reviewApi from '@/api/reviewApi';
+import JobDetailsPageSkeleton from './components/JobDetailsPageSkeleton';
 
 const JobDetailsPage = () => {
     const { id } = useParams();
@@ -114,7 +115,8 @@ const JobDetailsPage = () => {
         }
     }, []);
 
-    return (
+    return loading ? (
+        //Page's content
         <div id="job-details-page" className="padding-top-page">
             <Header likedPosts={likedPosts} postId={data.id} data={navBarData} scrollDown={scrollDown} />
 
@@ -139,6 +141,9 @@ const JobDetailsPage = () => {
                 </div>
             </div>
         </div>
+    ) : (
+        //Page's skeleton
+        <JobDetailsPageSkeleton likedPosts={likedPosts} data={navBarData} scrollDown={scrollDown} />
     );
 };
 

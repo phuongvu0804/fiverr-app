@@ -13,7 +13,7 @@ const Overview = ({ data }: SectionProps) => {
             <h2 className="job-details__title">{data.congViec.tenCongViec}</h2>
             <div className="job-details__seller-overview">
                 <Image src={data.avatar} alt={`${data.tenNguoiTao}'s image`} />
-                <span>{data.tenNguoiTao}</span>
+                <span className="seller-overview__name">{data.tenNguoiTao}</span>
                 <RatingSummary ratingStar={data.congViec.saoCongViec} ratingCount={data.congViec.danhGia} />
             </div>
             <div className="job-details__img">

@@ -7,7 +7,7 @@ import { Grid, IconButton } from '@mui/material';
 
 //Others
 import { handleInitialLikedState, handleLike } from '@/constants/functions';
-import { PostProps } from '../../types';
+import { PostProps } from '../../../../types';
 
 //Others
 import './JobItem.scss';
