@@ -43,6 +43,8 @@ const images = {
     categoryBusiness: require('./business.svg').default,
     categoryLifestyle: require('./lifestyle.svg').default,
     categoryData: require('./data.svg').default,
+    signInBg: require('./sign-in.webp'),
+    signUpBg: require('./sign-up.webp'),
 };
 
 export default images;

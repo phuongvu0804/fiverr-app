@@ -1,7 +1,6 @@
 //Components
-import Footer from '@/components/Layout/components/Footer';
 import HeaderFix from '@/components/Layout/components/Header/components/HeaderFix';
-import JobFilter from '@/components/Layout/components/JobFilter';
+import Footer from '../components/Footer';
 
 interface Props {
     children: JSX.Element;
