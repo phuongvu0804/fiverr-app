@@ -13,7 +13,7 @@ interface Props {
 }
 
 const JobCategoryListTablet = ({ data }: Props) => {
-    const settings = {
+    const SETTINGS = {
         dots: false,
         infinite: true,
         speed: 500,
@@ -25,7 +25,7 @@ const JobCategoryListTablet = ({ data }: Props) => {
     };
 
     return (
-        <Slider {...settings} className="job-category__list hide-on-pc hide-on-mobile">
+        <Slider {...SETTINGS} className="job-category__list hide-on-pc hide-on-mobile">
             {data.map((item: JobCategoryProps, index: number) => (
                 <div key={index} className="job-category__item hide-on-mobile">
                     <NavLink

@@ -1,7 +1,7 @@
 import { PostProps } from '../JobListPage/types';
 import { ReviewProps } from './types';
 
-export const navbarList = [
+export const NAVBAR_LIST = [
     {
         name: 'Overview',
         href: 'overview',
@@ -24,7 +24,7 @@ export const navbarList = [
     },
 ];
 
-export const initPostData: PostProps = {
+export const INIT_POST_DATA: PostProps = {
     avatar: '',
     congViec: {
         danhGia: 0,
@@ -45,7 +45,7 @@ export const initPostData: PostProps = {
     tenNhomChiTietLoai: '',
 };
 
-export const initReviewData: ReviewProps[] = [
+export const INIT_REVIEW_DATA: ReviewProps[] = [
     {
         avatar: '',
         ngayBinhLuan: '',

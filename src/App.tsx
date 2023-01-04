@@ -2,7 +2,7 @@ import React, { FunctionComponent, ExoticComponent, ReactNode, Suspense } from '
 
 // Route's config
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import AuthRoutes from './routes/AuthRoutes';
+import AUTH_ROUTES from './routes/AuthRoutes';
 
 //Datepicker's config
 import { LocalizationProvider } from '@mui/x-date-pickers';
@@ -10,7 +10,7 @@ import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 
 // Layout
 import { DefaultLayout } from './components/Layout';
-import ClientRoutes from './routes/ClientRoutes';
+import CLIENT_ROUTES from './routes/ClientRoutes';
 
 interface RouteType {
     path: string;
@@ -42,8 +42,8 @@ function App() {
         <LocalizationProvider dateAdapter={AdapterMoment}>
             <Suspense fallback="<p>Loading</p>">
                 <Router>
-                    <Routes>{renderRoutes(AuthRoutes)}</Routes>
-                    <Routes>{renderRoutes(ClientRoutes)}</Routes>
+                    <Routes>{renderRoutes(AUTH_ROUTES)}</Routes>
+                    <Routes>{renderRoutes(CLIENT_ROUTES)}</Routes>
                 </Router>
             </Suspense>
         </LocalizationProvider>

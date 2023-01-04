@@ -10,7 +10,7 @@ export interface NotiDialogProps {
     content: string;
 }
 
-export const initDialogValue: NotiDialogProps = {
+export const INIT_DIALOG_VALUE: NotiDialogProps = {
     type: NotiTypes.SUCCESS,
     title: 'Success',
     content: 'Congratulations! You have successfully created an account',

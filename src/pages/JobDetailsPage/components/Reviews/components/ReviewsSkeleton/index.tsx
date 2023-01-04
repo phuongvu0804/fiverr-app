@@ -6,9 +6,9 @@ import './ReviewsSkeleton.scss';
 
 const ReviewsSkeleton = () => {
     const renderReviews = () => {
-        const array = Array.apply(null, Array(5));
+        const ARRAY = Array.apply(null, Array(5));
 
-        return array.map((item, index) => <ReviewItemSkeleton key={index} />);
+        return ARRAY.map((item, index) => <ReviewItemSkeleton key={index} />);
     };
 
     return (

@@ -1,23 +1,23 @@
 import * as yup from 'yup';
-import message from './messages';
-import pattern from './pattern';
+import MESSAGE from './messages';
+import PATTERN from './pattern';
 
 //Sign in
-const signInSchema = yup.object().shape({
-    email: yup.string().required(message.required).email(message.email),
-    password: yup.string().required(message.required).matches(pattern.password, message.password),
+const SIGN_IN_SCHEMA = yup.object().shape({
+    email: yup.string().required(MESSAGE.required).email(MESSAGE.email),
+    password: yup.string().required(MESSAGE.required).matches(PATTERN.password, MESSAGE.password),
 });
 
 //Sign up
 const yesterday = new Date(new Date().setDate(new Date().getDate() - 1));
 
-const signUpSchema = yup.object().shape({
-    name: yup.string().required(message.required).matches(pattern.name, message.string),
-    email: yup.string().required(message.required).email(message.email),
-    password: yup.string().required(message.required).matches(pattern.password, message.password),
-    phone: yup.string().required(message.required).matches(pattern.phone, message.phone),
-    birthday: yup.date().required(message.required).nullable().max(yesterday, message.birthday.max),
-    gender: yup.boolean().nullable().typeError(message.birthday.invalid).required(message.required),
+const SIGN_UP_SCHEMA = yup.object().shape({
+    name: yup.string().required(MESSAGE.required).matches(PATTERN.name, MESSAGE.string),
+    email: yup.string().required(MESSAGE.required).email(MESSAGE.email),
+    password: yup.string().required(MESSAGE.required).matches(PATTERN.password, MESSAGE.password),
+    phone: yup.string().required(MESSAGE.required).matches(PATTERN.phone, MESSAGE.phone),
+    birthday: yup.date().required(MESSAGE.required).nullable().max(yesterday, MESSAGE.birthday.max),
+    gender: yup.boolean().nullable().typeError(MESSAGE.birthday.invalid).required(MESSAGE.required),
 });
 
-export { signUpSchema, signInSchema };
+export { SIGN_UP_SCHEMA, SIGN_IN_SCHEMA };

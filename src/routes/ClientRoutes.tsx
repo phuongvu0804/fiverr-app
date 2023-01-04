@@ -6,7 +6,7 @@ const HomePage = lazy(() => import('@/pages/Home'));
 const JobListPage = lazy(() => import('@/pages/JobListPage'));
 const JobDetailsPage = lazy(() => import('@/pages/JobDetailsPage'));
 
-const ClientRoutes = [
+const CLIENT_ROUTES = [
     {
         path: '/',
         component: HomePage,
@@ -30,4 +30,4 @@ const ClientRoutes = [
     },
 ];
 
-export default ClientRoutes;
+export default CLIENT_ROUTES;

@@ -3,13 +3,13 @@ import { BookingActionType } from '../constants/booking';
 import { JobCategoryActionType } from '../constants/jobCategoryList';
 import { StateProps } from './types';
 
-const initialState: StateProps = {
+const INITIAL_STATE: StateProps = {
     loading: false,
     data: null,
     error: null,
 };
 
-const bookingReducer = (state: StateProps = initialState, action: any) => {
+const bookingReducer = (state: StateProps = INITIAL_STATE, action: any) => {
     switch (action.type) {
         case BookingActionType.bookingRequest:
             return {

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import apiConfig from './apiConfig';
+import API_CONFIG from './apiConfig';
 
 interface UserType {
     address: string;
@@ -18,15 +18,15 @@ interface UserType {
 }
 
 //Set config defaults by creating the instance
-const axiosClient = axios.create({
+const AXIOS_CLIENT = axios.create({
     baseURL: process.env.REACT_APP_BASE_URL,
 });
 
 //Add request interceptor
-axiosClient.interceptors.request.use(
+AXIOS_CLIENT.interceptors.request.use(
     (config) => {
-        config.headers!.TokenCybersoft = apiConfig.tokenCybersoft;
-        config.headers!.token = apiConfig.authToken;
+        config.headers!.TokenCybersoft = API_CONFIG.tokenCybersoft;
+        config.headers!.token = API_CONFIG.authToken;
 
         let user = localStorage.getItem('user');
         if (user) {
@@ -56,9 +56,9 @@ axiosClient.interceptors.request.use(
     (error) => Promise.reject(error),
 );
 
-axiosClient.interceptors.response.use(
+AXIOS_CLIENT.interceptors.response.use(
     (response) => response.data.content,
     (error) => Promise.reject(error),
 );
 
-export default axiosClient;
+export default AXIOS_CLIENT;

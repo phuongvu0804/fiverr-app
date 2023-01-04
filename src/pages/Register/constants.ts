@@ -1,7 +1,7 @@
 import moment from 'moment';
 import { SignUpValuesProps } from './types';
 
-export const initialValues: SignUpValuesProps = {
+export const INITIAL_VALUES: SignUpValuesProps = {
     name: '',
     email: '',
     password: '',

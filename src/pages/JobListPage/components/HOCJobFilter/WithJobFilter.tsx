@@ -25,7 +25,7 @@ const WithJobFilter = (Component: ({ data, name, onFilter }: any) => JSX.Element
             setAnchorEl(null);
         };
 
-        const open = Boolean(anchorEl);
+        const OPEN = Boolean(anchorEl);
 
         return (
             <div className="job-list__filter-item">
@@ -34,7 +34,7 @@ const WithJobFilter = (Component: ({ data, name, onFilter }: any) => JSX.Element
                 </Button>
                 <Popover
                     className="job-list__filter-menu"
-                    open={open}
+                    open={OPEN}
                     anchorEl={anchorEl}
                     onClose={handleClose}
                     anchorOrigin={{

@@ -17,7 +17,7 @@ interface ActionType {
     onClick?: () => void;
 }
 
-export const actionButtonList: ActionType[] = [
+export const ACTION_BUTTON_LIST: ActionType[] = [
     {
         content: 'Join Fiverr',
         component: OutlineButton,

@@ -9,9 +9,9 @@ interface Props {
 
 const RatingStar = ({ ratingStar }: Props) => {
     const renderStars = () => {
-        const array = Array.apply(null, Array(ratingStar));
+        const ARRAY = Array.apply(null, Array(ratingStar));
 
-        return array.map((item, index) => <Star key={index} />);
+        return ARRAY.map((item, index) => <Star key={index} />);
     };
 
     return (

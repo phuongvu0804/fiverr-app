@@ -12,7 +12,7 @@ export interface ColumnType {
     children: ColumnItemType[];
 }
 
-export const columns: ColumnType[] = [
+export const COLUMNS: ColumnType[] = [
     {
         title: 'Categories',
         children: [
@@ -208,7 +208,7 @@ export const columns: ColumnType[] = [
     },
 ];
 
-export const socialList: IconButtonType[] = [
+export const SOCIAL_LIST: IconButtonType[] = [
     {
         name: 'Twitter',
         icon: <Twitter />,
@@ -236,7 +236,7 @@ export const socialList: IconButtonType[] = [
     },
 ];
 
-export const settingList: TextIconButtonType[] = [
+export const SETTING_LIST: TextIconButtonType[] = [
     {
         name: 'Language setting',
         icon: <Language />,

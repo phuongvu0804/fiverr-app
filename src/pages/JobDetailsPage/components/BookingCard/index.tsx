@@ -21,8 +21,8 @@ const BookingCard = ({ data, className, scrollDown }: Props) => {
     const HtmlTag = className === 'hide-on-tablet-mobile' ? 'div' : 'section';
 
     const handleHourInput = (e: ChangeEvent<HTMLInputElement>) => {
-        const inputValue = Number(e.target.value);
-        setHour(inputValue);
+        const INPUT_VALUE = Number(e.target.value);
+        setHour(INPUT_VALUE);
     };
 
     const handleTotalPrice = () => {
@@ -30,8 +30,8 @@ const BookingCard = ({ data, className, scrollDown }: Props) => {
     };
 
     const handleBooking = () => {
-        const user = localStorage.getItem('user');
-        if (user) {
+        const USER = localStorage.getItem('user');
+        if (USER) {
             setOpenDialog(true);
         }
     };

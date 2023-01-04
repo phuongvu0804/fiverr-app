@@ -5,7 +5,7 @@ import './BackGroundSlick.scss';
 import { BgItemType } from '@/pages/Home/interfaces';
 
 const BackGroundSlick = ({ data }: { data: BgItemType[] }) => {
-    const settings = {
+    const SETTINGS = {
         dots: false,
         arrows: false,
         fade: true,
@@ -31,7 +31,7 @@ const BackGroundSlick = ({ data }: { data: BgItemType[] }) => {
     };
 
     return (
-        <Slider {...settings} className="home__bg--slick">
+        <Slider {...SETTINGS} className="home__bg--slick">
             {renderBgItem()}
         </Slider>
     );

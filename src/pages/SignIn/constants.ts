@@ -1,8 +1,8 @@
 import { signInValuesProps } from './types';
 
-export const initialValues: signInValuesProps = {
+export const INITIAL_VALUES: signInValuesProps = {
     email: '',
     password: '',
 };
 
-export const formInputList: string[] = ['email', 'password'];
+export const FORM_INPUT_LIST: string[] = ['email', 'password'];

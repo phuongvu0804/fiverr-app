@@ -8,7 +8,7 @@ import {
     TrustedListProps,
 } from './interfaces';
 
-export const bgList: BgItemType[] = [
+export const BG_LIST: BgItemType[] = [
     {
         name: 'Andrea',
         job: 'Fashion Degisner',
@@ -36,7 +36,7 @@ export const bgList: BgItemType[] = [
     },
 ];
 
-export const trustedListData: TrustedListProps[] = [
+export const TRUSTED_LIST_DATA: TrustedListProps[] = [
     {
         name: 'facebook',
         img: images.facebookLogo,
@@ -59,7 +59,7 @@ export const trustedListData: TrustedListProps[] = [
     },
 ];
 
-export const serviceListData: ServiceProps[] = [
+export const SERVICE_LIST_DATA: ServiceProps[] = [
     {
         name: 'Logo Design',
         slogan: 'Build your brand',
@@ -112,7 +112,7 @@ export const serviceListData: ServiceProps[] = [
     },
 ];
 
-export const sellingPropoData: SellingPropoProps = {
+export const SELLING_PROPO_DATA: SellingPropoProps = {
     title: 'A whole world of freelance talent at your fingertips',
     image: images.sellingVidCover,
     video: 'https://fiverr-res.cloudinary.com/video/upload/t_fiverr_hd/vmvv3czyk2ifedefkau7',
@@ -136,7 +136,7 @@ export const sellingPropoData: SellingPropoProps = {
     ],
 };
 
-export const TestimonialList: TestimonialItemProps[] = [
+export const TESTIMONIAL_LIST: TestimonialItemProps[] = [
     {
         name: 'Tim and Dan Joo',
         job: 'Co-Founders',
@@ -175,7 +175,7 @@ export const TestimonialList: TestimonialItemProps[] = [
     },
 ];
 
-export const jobCategoryList: jobCategoryProps[] = [
+export const JOB_CATEGORY_LIST: jobCategoryProps[] = [
     {
         name: 'Graphics & Design',
         image: images.categoryGraphic,

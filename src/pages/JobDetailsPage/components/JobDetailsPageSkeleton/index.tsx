@@ -8,12 +8,12 @@ import ReviewsSkeleton from '../Reviews/components/ReviewsSkeleton';
 import SellerDescSkeleton from '../SellerDesc/components/SellerDescSkeleton';
 
 //Others
-import { navbarList } from '../../constants';
+import { NAVBAR_LIST } from '../../constants';
 
 const JobDetailsPageSkeleton = ({ likedPosts, data, scrollDown }: { likedPosts: any; data: any; scrollDown: any }) => {
     return (
         <div id="job-details-page" className="padding-top-page">
-            <Header likedPosts={likedPosts} postId={data.id} data={navbarList} scrollDown={scrollDown} />
+            <Header likedPosts={likedPosts} postId={data.id} data={NAVBAR_LIST} scrollDown={scrollDown} />
 
             <div className="container-center">
                 <MUIBreadCrumbsSkeleton />

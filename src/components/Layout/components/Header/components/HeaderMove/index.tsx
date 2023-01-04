@@ -9,9 +9,9 @@ const HeaderMove = () => {
 
     useEffect(() => {
         const onScroll = () => {
-            const offsetY = window.pageYOffset;
+            const OFFSET_Y = window.pageYOffset;
 
-            offsetY > 0 ? setScrollDown(true) : setScrollDown(false);
+            OFFSET_Y > 0 ? setScrollDown(true) : setScrollDown(false);
         };
 
         window.addEventListener('scroll', onScroll);

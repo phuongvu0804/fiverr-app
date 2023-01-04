@@ -1,11 +1,11 @@
-import axiosClient from './config/axiosClient';
+import AXIOS_CLIENT from './config/axiosClient';
 
 const RESOURCE_NAME = 'binh-luan';
 
 const reviewApi = {
     getReviewsbyJob: (id: string) => {
-        const url = `${RESOURCE_NAME}/lay-binh-luan-theo-cong-viec/${id}`;
-        return axiosClient.get(url);
+        const URL = `${RESOURCE_NAME}/lay-binh-luan-theo-cong-viec/${id}`;
+        return AXIOS_CLIENT.get(URL);
     },
 };
 

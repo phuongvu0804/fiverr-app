@@ -10,7 +10,7 @@ import { TestimonialItemProps } from '../../interfaces';
 
 import './Testimonial.scss';
 const Testimonial = ({ data }: { data: TestimonialItemProps[] }) => {
-    const serviceSlicksettings = {
+    const SERVICE_SLICK_SETTINGS = {
         dots: false,
         infinite: true,
         speed: 500,
@@ -21,7 +21,7 @@ const Testimonial = ({ data }: { data: TestimonialItemProps[] }) => {
     };
 
     return (
-        <Slider {...serviceSlicksettings} className="home__testimonial mb-l container-center">
+        <Slider {...SERVICE_SLICK_SETTINGS} className="home__testimonial mb-l container-center">
             {data.map((item, index) => (
                 <TestimonialItem key={index} data={item} />
             ))}

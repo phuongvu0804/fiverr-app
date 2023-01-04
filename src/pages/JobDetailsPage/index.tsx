@@ -1,45 +1,44 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 //Material UI
 
 //Components
 import BookingCard from './components/BookingCard';
 import MUIBreadCrumbs from './components/MUIBreadCrumbs';
-
+import Overview from './components/Overview';
+import JobDesc from './components/JobDesc';
+import SellerDesc from './components/SellerDesc';
+import Reviews from './components/Reviews';
+import Header from './components/Header';
 //Others
-import { initPostData, initReviewData, navbarList } from './constants';
+import { INIT_POST_DATA, INIT_REVIEW_DATA, NAVBAR_LIST } from './constants';
 
 //Others
 import './JobDetailsPage.scss';
 import { NavbarItemProps, ReviewProps } from './types';
 import { PostProps } from '@/pages/JobListPage/types';
 import { jobApi } from '@/api';
-import { useParams } from 'react-router-dom';
-import Overview from './components/Overview';
-import JobDesc from './components/JobDesc';
-import SellerDesc from './components/SellerDesc';
-import Reviews from './components/Reviews';
-import Header from './components/Header';
 import reviewApi from '@/api/reviewApi';
 import JobDetailsPageSkeleton from './components/JobDetailsPageSkeleton';
 
 const JobDetailsPage = () => {
     const { id } = useParams();
 
-    const [data, setData] = useState<PostProps>(initPostData);
-    const [reviews, setReviews] = useState<ReviewProps[]>(initReviewData);
+    const [data, setData] = useState<PostProps>(INIT_POST_DATA);
+    const [reviews, setReviews] = useState<ReviewProps[]>(INIT_REVIEW_DATA);
     const [scrollDown, setScrollDown] = useState<boolean>(false);
-    const [navBarData, setNavbarData] = useState<NavbarItemProps[]>(navbarList);
+    const [navBarData, setNavbarData] = useState<NavbarItemProps[]>(NAVBAR_LIST);
     const [loading, setLoading] = useState<boolean>(false);
     const [likedPosts, setLikedPosts] = useState<number[]>([]);
 
     //Listen to the scrolling event
     useEffect(() => {
-        let offsetY = 0;
+        let OFFSET_Y = 0;
         const onScroll = () => {
-            offsetY = window.pageYOffset;
+            OFFSET_Y = window.pageYOffset;
 
-            offsetY > 0 ? setScrollDown(true) : setScrollDown(false);
+            OFFSET_Y > 0 ? setScrollDown(true) : setScrollDown(false);
         };
 
         window.addEventListener('scroll', onScroll);
@@ -48,10 +47,10 @@ const JobDetailsPage = () => {
     //Listen to the screen resizing event
     useEffect(() => {
         const onResize = () => {
-            const screenWidth = window.innerWidth;
-            let navbarListFiltered = [...navbarList];
+            const SCREEN_WIDTH = window.innerWidth;
+            let navbarListFiltered = [...NAVBAR_LIST];
 
-            if (screenWidth > 1024) {
+            if (SCREEN_WIDTH > 1024) {
                 //For PC: remove item Price off the NavBar List
                 navbarListFiltered = navbarListFiltered.filter((item) => {
                     return item.name.toLowerCase() !== 'price';

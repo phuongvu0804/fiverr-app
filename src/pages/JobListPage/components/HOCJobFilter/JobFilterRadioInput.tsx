@@ -46,10 +46,10 @@ const JobFilterRadioInput = ({ data, onFilter }: Props) => {
     const renderLabel = (option: any) => {
         switch (typeof option.label) {
             case 'object':
-                const arrayLength = option.value * 1;
-                const array = Array.apply(null, Array(arrayLength));
+                const ARRAY_LENGTH = option.value * 1;
+                const ARRAY = Array.apply(null, Array(ARRAY_LENGTH));
 
-                return array.map((item, index) => {
+                return ARRAY.map((item, index) => {
                     return <option.label key={index} />;
                 });
 

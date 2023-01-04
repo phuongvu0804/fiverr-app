@@ -1,4 +1,4 @@
-const message = {
+const MESSAGE = {
     string: 'This field needs to be letter',
     required: 'This field is required.',
     email: 'This email is invalid.',
@@ -8,4 +8,4 @@ const message = {
     birthday: { invalid: 'This birthday is invalid.', max: 'Birthday should be before today.' },
 };
 
-export default message;
+export default MESSAGE;

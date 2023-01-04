@@ -12,13 +12,13 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import AuthenDialog from '../../components/Layout/AuthenLayout/components/AuthenDialog';
 
 //Others
-import { initialValues, TEXT_INPUT_LIST } from './constants';
-import { signUpSchema } from '@/validators/authValidator';
+import { INITIAL_VALUES, TEXT_INPUT_LIST } from './constants';
+import { SIGN_UP_SCHEMA } from '@/validators/authValidator';
 import authApi from '@/api/authApi';
 import { SignUpValuesProps } from './types';
 import useAuth from '@/hooks/useAuth';
 import {
-    initDialogValue,
+    INIT_DIALOG_VALUE,
     NotiDialogProps,
     NotiTypes,
 } from '@/components/Layout/AuthenLayout/components/AuthenDialog/constants';
@@ -32,7 +32,7 @@ const Register = () => {
     const [date, setDate] = useState<Moment | null>(null);
     const [loading, setLoading] = useState(false);
     const [openDialog, setOpenDialog] = useState<boolean>(false);
-    const [dialogContent, setDialogContent] = useState<NotiDialogProps>(initDialogValue);
+    const [dialogContent, setDialogContent] = useState<NotiDialogProps>(INIT_DIALOG_VALUE);
 
     const handleAutoCloseSuccessNoti = () => {
         //Close Dialog
@@ -43,8 +43,8 @@ const Register = () => {
     };
 
     const { handleSubmit, values, errors, touched, handleChange, setFieldValue, handleBlur } = useFormik({
-        initialValues: initialValues,
-        validationSchema: signUpSchema,
+        initialValues: INITIAL_VALUES,
+        validationSchema: SIGN_UP_SCHEMA,
         onSubmit: (values) => {
             setLoading(true);
 
@@ -58,7 +58,7 @@ const Register = () => {
                     setOpenDialog(true);
 
                     setDialogContent({
-                        ...initDialogValue,
+                        ...INIT_DIALOG_VALUE,
                         content: `Congratulations ${formValues.name}! You have successfully created an account`,
                     });
 
@@ -81,15 +81,15 @@ const Register = () => {
     });
 
     const handleDatePickerValue = (newValue: any) => {
-        const birthday = moment(newValue);
+        const BIRTHDAY = moment(newValue);
         setDate(newValue);
-        setFieldValue('birthday', birthday);
+        setFieldValue('birthday', BIRTHDAY);
     };
 
     const handleGenderInput = (e: any) => {
-        const genderValue = e.target.value === 'true';
+        const GENDER_VALUE = e.target.value === 'true';
         setGender(e.target.value as string);
-        return setFieldValue('gender', genderValue);
+        return setFieldValue('gender', GENDER_VALUE);
     };
 
     return (

@@ -13,16 +13,16 @@ const Navbar = ({ data }: Props) => {
 
     useEffect(() => {
         const navHighLighter = () => {
-            let scrollY = window.pageYOffset;
+            let SCROLL_Y = window.pageYOffset;
             let currentSection = '';
-            const sections = document.querySelectorAll('section');
+            const SECTIONS = document.querySelectorAll('section');
 
-            sections.forEach((section) => {
-                const sectionTop = section.offsetTop;
+            SECTIONS.forEach((section) => {
+                const SECTION_TOP = section.offsetTop;
 
-                if (scrollY === 0) {
+                if (SCROLL_Y === 0) {
                     currentSection = 'overview';
-                } else if (scrollY >= sectionTop) {
+                } else if (SCROLL_Y >= SECTION_TOP) {
                     currentSection = section.getAttribute('id') || 'overview';
                 }
                 setActive(currentSection);

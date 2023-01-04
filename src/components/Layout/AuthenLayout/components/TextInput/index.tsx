@@ -14,14 +14,14 @@ interface Props {
 }
 
 const TextInput = ({ name, value, error, touched, handleChange, handleBlur }: Props) => {
-    const inputName: string = name.charAt(0).toUpperCase() + name.slice(1);
+    const INPUT_NAME: string = name.charAt(0).toUpperCase() + name.slice(1);
 
     return (
         <FormControl className="authen__input-group">
             <TextField
                 error={error && touched}
                 className="authen-input-group__input"
-                label={inputName}
+                label={INPUT_NAME}
                 name={name}
                 type={name}
                 onChange={handleChange}

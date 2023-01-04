@@ -17,7 +17,7 @@ interface Props extends SectionProps {
 }
 
 const Reviews = ({ data, reviewList }: Props) => {
-    const visibleNumber = 5;
+    const VISIBLE_NUMBER = 5;
     const [visible, setVisible] = useState(5);
 
     const renderReviews = () => {
@@ -41,8 +41,8 @@ const Reviews = ({ data, reviewList }: Props) => {
 
             <Button></Button>
 
-            {visible >= visibleNumber && visible < reviewList.length && (
-                <LoadMoreBtn className="contained-primary-btn" setVisible={setVisible} visibleNumber={visibleNumber}>
+            {visible >= VISIBLE_NUMBER && visible < reviewList.length && (
+                <LoadMoreBtn className="contained-primary-btn" setVisible={setVisible} visibleNumber={VISIBLE_NUMBER}>
                     Load More
                 </LoadMoreBtn>
             )}

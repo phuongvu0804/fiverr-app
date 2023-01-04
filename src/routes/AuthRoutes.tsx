@@ -7,7 +7,7 @@ import AuthenLayout from '@/components/Layout/AuthenLayout';
 const SignIn = lazy(() => import('@/pages/SignIn'));
 const Register = lazy(() => import('@/pages/Register'));
 
-const AuthRoutes = [
+const AUTH_ROUTES = [
     { path: 'auth', component: SignIn, layout: AuthenLayout },
     {
         path: '/auth/sign-in',
@@ -21,4 +21,4 @@ const AuthRoutes = [
     },
 ];
 
-export default AuthRoutes;
+export default AUTH_ROUTES;

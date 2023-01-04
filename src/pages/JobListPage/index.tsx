@@ -9,15 +9,15 @@ import PaginationMUI from './components/Pagination';
 
 //Others
 import './JobList.scss';
-import { PriceData, PriceDataValues, sellerFilterList, SellerRateData } from './constants';
+import { PRICE_DATA, PriceDataValues, SELLER_FILTER_LIST, SELLER_RATE_DATA } from './constants';
 import { jobApi } from '@/api';
 import { useAppSelector } from '@/hooks';
 import { PostProps } from './types';
 
 const JobListPage = () => {
     //Get params from URLs
-    let { id } = useParams();
-    const jobCategory = useAppSelector((state) => state.jobCategory['data']);
+    let { ID } = useParams();
+    const JOB_CATEGORY = useAppSelector((state) => state.jobCategory['data']);
 
     const [data, setData] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
@@ -26,22 +26,22 @@ const JobListPage = () => {
     const [postsPerPage] = useState(12);
     const [likedPosts, setLikedPosts] = useState<number[]>([]);
 
-    const postListLength = filteredData.length;
+    const POST_LIST_LENGTH = filteredData.length;
 
-    const searchedValue: string = id !== undefined ? id : '';
+    const SEARCHED_VALUE: string = ID !== undefined ? ID : '';
 
     //Get current posts
-    const indexOfLastPost = currentPage * postsPerPage;
-    const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    const currentPosts = filteredData.slice(indexOfFirstPost, indexOfLastPost);
-    const totalPage = Math.ceil(postListLength / postsPerPage);
+    const INDEX_OF_LAST_POST = currentPage * postsPerPage;
+    const INDEX_OF_FIRST_POST = INDEX_OF_LAST_POST - postsPerPage;
+    const CURRENT_POSTS = filteredData.slice(INDEX_OF_FIRST_POST, INDEX_OF_LAST_POST);
+    const TOTAL_PAGE = Math.ceil(POST_LIST_LENGTH / postsPerPage);
 
     //Fetch data of list of jobs
     useEffect(() => {
         const controller = new AbortController();
-        const fetchPosts = async (searchedValue: string) => {
+        const fetchPosts = async (SEARCHED_VALUE: string) => {
             setLoading(true);
-            const result = await jobApi.getJobsByName(searchedValue);
+            const result = await jobApi.getJobsByName(SEARCHED_VALUE);
             try {
                 setData(result.data.content);
                 setFilteredData(result.data.content);
@@ -52,7 +52,7 @@ const JobListPage = () => {
                 setLoading(false);
             }
         };
-        fetchPosts(searchedValue);
+        fetchPosts(SEARCHED_VALUE);
 
         return () => {
             controller.abort();
@@ -61,10 +61,10 @@ const JobListPage = () => {
 
     //Get liked posts from local storage
     useEffect(() => {
-        const likedPostsData = localStorage.getItem('fiverLikedPosts');
-        if (likedPostsData) {
-            const parsedLikedPostsData = JSON.parse(likedPostsData);
-            parsedLikedPostsData && setLikedPosts(parsedLikedPostsData!);
+        const LIKED_POST_DATA = localStorage.getItem('fiverLikedPosts');
+        if (LIKED_POST_DATA) {
+            const PARSED_LIKED_POST_DATA = JSON.parse(LIKED_POST_DATA);
+            PARSED_LIKED_POST_DATA && setLikedPosts(PARSED_LIKED_POST_DATA!);
         }
     }, []);
 
@@ -128,7 +128,7 @@ const JobListPage = () => {
     };
 
     const onFilterSeller = ({ option, min, max }: { option: string; min: number; max: number }) => {
-        const selectedValue = Number(option);
+        const SELECTED_VALUE = Number(option);
         const filteredPostList = data.filter((item: PostProps) => {
             switch (option) {
                 case '0':
@@ -137,7 +137,7 @@ const JobListPage = () => {
                     const { minValue, maxValue } = handleMinMax(min, max);
                     return item.congViec.saoCongViec >= minValue && item.congViec.saoCongViec <= maxValue;
                 default:
-                    return item.congViec.saoCongViec === selectedValue;
+                    return item.congViec.saoCongViec === SELECTED_VALUE;
             }
         });
 
@@ -146,24 +146,24 @@ const JobListPage = () => {
 
     return (
         <div id="job-list" className="container-center padding-top-page">
-            <h3 className="job-list__title">Results for "{searchedValue}"</h3>
+            <h3 className="job-list__title">Results for "{SEARCHED_VALUE}"</h3>
             <div className="job-list__filter-wrapper">
                 <div className="job-list__filter—group">
-                    <CategoryJobFilter data={jobCategory} name="Category" onFilter={onFilterCategory} />
-                    <PriceJobFilter data={PriceData} name="Budget" onFilter={onFilterPrice} />
-                    <SellerRateFilter data={SellerRateData} name="Seller rate" onFilter={onFilterSeller} />
+                    <CategoryJobFilter data={JOB_CATEGORY} name="Category" onFilter={onFilterCategory} />
+                    <PriceJobFilter data={PRICE_DATA} name="Budget" onFilter={onFilterPrice} />
+                    <SellerRateFilter data={SELLER_RATE_DATA} name="Seller rate" onFilter={onFilterSeller} />
                 </div>
                 <div className="job-list__filter—group">
-                    {sellerFilterList.map((item, index) => (
+                    {SELLER_FILTER_LIST.map((item, index) => (
                         <FilterRadioInput key={index} label={item} />
                     ))}
                 </div>
             </div>
             <div className="job-list__content">
-                <span className="job-list__result">{postListLength} services available</span>
-                <JobList loading={loading} data={currentPosts} postsPerPage={postsPerPage} likedPosts={likedPosts} />
+                <span className="job-list__result">{POST_LIST_LENGTH} services available</span>
+                <JobList loading={loading} data={CURRENT_POSTS} postsPerPage={postsPerPage} likedPosts={likedPosts} />
             </div>
-            <PaginationMUI currentPage={currentPage} totalPage={totalPage} paginate={paginate} />
+            <PaginationMUI currentPage={currentPage} totalPage={TOTAL_PAGE} paginate={paginate} />
         </div>
     );
 };

@@ -2,13 +2,13 @@ import { ActionProps } from '../actions/types';
 import { JobCategoryActionType } from '../constants/jobCategoryList';
 import { StateProps } from './types';
 
-const initialState: StateProps = {
+const INITIAL_STATE: StateProps = {
     loading: false,
     data: null,
     error: null,
 };
 
-const jobCategoryReducer = (state: StateProps = initialState, action: any) => {
+const jobCategoryReducer = (state: StateProps = INITIAL_STATE, action: any) => {
     switch (action.type) {
         case JobCategoryActionType.getRequest:
             return {

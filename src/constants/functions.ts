@@ -29,12 +29,12 @@ export const handleLike = (
 
         //Update liked post list to local storage
         if (!isLiked) {
-            const newList = [...parsedLikedPostsData, postId];
-            localStorage.setItem('fiverLikedPosts', JSON.stringify(newList));
+            const NEW_LIST = [...parsedLikedPostsData, postId];
+            localStorage.setItem('fiverLikedPosts', JSON.stringify(NEW_LIST));
         } else {
             localStorage.removeItem('fiverLikedPosts');
-            const newList = handleRemoveLikedPostId(parsedLikedPostsData, postId);
-            localStorage.setItem('fiverLikedPosts', JSON.stringify(newList));
+            const NEW_LIST = handleRemoveLikedPostId(parsedLikedPostsData, postId);
+            localStorage.setItem('fiverLikedPosts', JSON.stringify(NEW_LIST));
         }
     }
 };

@@ -12,6 +12,7 @@ const ReviewItem = ({ data }: { data: ReviewProps }) => {
     const [date, setDate] = useState<string>('No date');
 
     useEffect(() => {
+        //Format date display to DD/MM/YYYY
         const handleDate = () => {
             if (data.ngayBinhLuan) {
                 if (data.ngayBinhLuan.includes('-')) {

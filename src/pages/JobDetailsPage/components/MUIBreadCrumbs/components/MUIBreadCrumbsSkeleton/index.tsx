@@ -8,9 +8,9 @@ import './MUIBreadCrumbsSkeleton.scss';
 
 const MUIBreadCrumbsSkeleton = () => {
     const renderSections = () => {
-        const array = Array.apply(null, Array(3));
+        const ARRAY = Array.apply(null, Array(3));
 
-        return array.map((item, index) => <Skeleton key={index} variant="text" sx={{ fontSize: '16px' }} width={60} />);
+        return ARRAY.map((item, index) => <Skeleton key={index} variant="text" sx={{ fontSize: '16px' }} width={60} />);
     };
 
     return (

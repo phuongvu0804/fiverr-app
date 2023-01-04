@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { Button, Drawer } from '@mui/material';
 import { Box } from '@mui/system';
 import MenuIcon from '@mui/icons-material/Menu';
-import { actionButtonList } from '../HeaderFix/constants';
+import { ACTION_BUTTON_LIST } from '../HeaderFix/constants';
 import { ButtonPropType } from '@/constants/intefaces';
 
 //Others
@@ -26,7 +26,7 @@ const HeaderContent = () => {
     };
 
     const renderActionButtonList = () => {
-        return actionButtonList.map((button, index) => {
+        return ACTION_BUTTON_LIST.map((button, index) => {
             let props: ButtonPropType = {};
             if (button.to) {
                 props.to = button.to;

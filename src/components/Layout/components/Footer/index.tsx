@@ -2,12 +2,12 @@
 import { ButtonPropType, TextIconButtonType } from '@/constants/intefaces';
 import { Grid, IconButton } from '@mui/material';
 import CollapseMenu from './components/CollapseMenu';
-import { columns, settingList, socialList } from './constants';
+import { COLUMNS, SETTING_LIST, SOCIAL_LIST } from './constants';
 
 import './Footer.scss';
 const Footer = () => {
     const renderColumns = () => {
-        return columns.map((column, index) => (
+        return COLUMNS.map((column, index) => (
             <Grid item xs={12} sm={4} md={2.4} key={index} className="footer__category">
                 <h5 className="footer__category-name">{column.title}</h5>
                 <ul>
@@ -66,7 +66,7 @@ const Footer = () => {
 
                 {/* Footer top for mobile starts */}
                 <div className="footer__top hide-on-pc-tablet">
-                    <CollapseMenu menuList={columns} />
+                    <CollapseMenu menuList={COLUMNS} />
                 </div>
                 {/* Footer top for mobile ends */}
 
@@ -92,10 +92,10 @@ const Footer = () => {
                     </div>
                     <div className="footer__right">
                         <ul className="footer__right-list footer__right-list--social">
-                            {renderButtonList(socialList)}
+                            {renderButtonList(SOCIAL_LIST)}
                         </ul>
                         <ul className="footer__right-list footer__right-list--setting">
-                            {renderButtonList(settingList)}
+                            {renderButtonList(SETTING_LIST)}
                         </ul>
                     </div>
                 </div>

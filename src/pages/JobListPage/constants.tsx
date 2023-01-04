@@ -8,7 +8,7 @@ export enum PriceDataValues {
     custom = 'CUSTOM',
 }
 
-export const PriceData: JobFilterDataProps = {
+export const PRICE_DATA: JobFilterDataProps = {
     options: [
         {
             value: PriceDataValues.value,
@@ -35,7 +35,7 @@ export const PriceData: JobFilterDataProps = {
     ],
 };
 
-export const SellerRateData: JobFilterDataProps = {
+export const SELLER_RATE_DATA: JobFilterDataProps = {
     options: [
         {
             value: '1',
@@ -72,4 +72,4 @@ export const SellerRateData: JobFilterDataProps = {
     ],
 };
 
-export const sellerFilterList: string[] = ['Pro services', 'Local sellers', 'Online sellers'];
+export const SELLER_FILTER_LIST: string[] = ['Pro services', 'Local sellers', 'Online sellers'];

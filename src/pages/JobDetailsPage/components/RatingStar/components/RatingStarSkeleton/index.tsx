@@ -3,9 +3,9 @@ import React from 'react';
 
 const RatingStarSkeleton = () => {
     const renderStars = () => {
-        const array = Array.apply(null, Array(5));
+        const ARRAY = Array.apply(null, Array(5));
 
-        return array.map((item, index) => (
+        return ARRAY.map((item, index) => (
             <Skeleton key={index} variant="rounded" width={15} height={15} sx={{ marginRight: 1 }} />
         ));
     };
