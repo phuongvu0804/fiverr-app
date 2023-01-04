@@ -121,6 +121,41 @@ body {
     padding-top: calc(var(--job-filter-height));
 }
 
+button.contained-primary-btn {
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 100%;
+    padding: 1.2rem 2.4rem;
+    width: 100%;
+    background-color: var(--primary);
+    color: var(--white);
+    border: 1px solid transparent;
+    text-transform: unset;
+
+    &:hover {
+        background: #19a463;
+    }
+}
+
+//Sign in + sign up pages
+.authen__form {
+    display: flex;
+    flex-direction: column;
+
+    .authen__input-group {
+        margin-bottom: 2rem;
+    }
+    .contained-primary-btn {
+        margin: 1rem 0;
+    }
+}
+
+.authen__input-group {
+    label.Mui-focused {
+        color: var(--primary);
+    }
+}
+
 //Responsive for PC devices
 @media (min-width: 1025px) {
     .hide-on-pc {

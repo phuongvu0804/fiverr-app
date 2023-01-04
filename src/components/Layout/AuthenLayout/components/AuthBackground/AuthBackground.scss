@@ -34,7 +34,9 @@
 }
 
 .authen__content {
-    padding: 2.4rem 3.6rem;
+    width: 80%;
+    margin: 0 auto;
+    padding: 0 3.6rem 2.4rem;
 }
 
 .authen__text {
@@ -44,6 +46,12 @@
     a {
         color: var(--primary);
         text-decoration: none;
+    }
+}
+
+.authen__input-group {
+    &.error fieldset {
+        border-color: #d32f2f;
     }
 }
 

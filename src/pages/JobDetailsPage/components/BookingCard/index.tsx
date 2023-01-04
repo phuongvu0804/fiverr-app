@@ -64,7 +64,7 @@ const BookingCard = ({ data, className, scrollDown }: Props) => {
                 <input value={hour} type="number" min="1" onChange={handleHourInput} />
             </div>
 
-            <Button variant="contained" className="job-details-booking__btn" onClick={handleBooking}>
+            <Button variant="contained" className="contained-primary-btn" onClick={handleBooking}>
                 Continue (€{handleTotalPrice()})
             </Button>
 

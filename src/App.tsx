@@ -4,6 +4,10 @@ import React, { FunctionComponent, ExoticComponent, ReactNode, Suspense } from '
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AuthRoutes from './routes/AuthRoutes';
 
+//Datepicker's config
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
+
 // Layout
 import { DefaultLayout } from './components/Layout';
 import ClientRoutes from './routes/ClientRoutes';
@@ -35,12 +39,14 @@ function App() {
     }
 
     return (
-        <Suspense fallback="<p>Loading</p>">
-            <Router>
-                <Routes>{renderRoutes(AuthRoutes)}</Routes>
-                <Routes>{renderRoutes(ClientRoutes)}</Routes>
-            </Router>
-        </Suspense>
+        <LocalizationProvider dateAdapter={AdapterMoment}>
+            <Suspense fallback="<p>Loading</p>">
+                <Router>
+                    <Routes>{renderRoutes(AuthRoutes)}</Routes>
+                    <Routes>{renderRoutes(ClientRoutes)}</Routes>
+                </Router>
+            </Suspense>
+        </LocalizationProvider>
     );
 }
 

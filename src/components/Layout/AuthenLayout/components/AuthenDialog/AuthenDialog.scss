@@ -1,0 +1,41 @@
+.authen__dialog {
+    &.error .MuiPaper-root {
+        background-color: #fceee8;
+        border-color: #d16042;
+    }
+
+    &.success .MuiPaper-root {
+        background-color: #f0f8f3;
+        border-color: #51dc6b;
+    }
+
+    .MuiPaper-root {
+        min-width: 40rem;
+        border-radius: 1.2rem;
+        border: 0.2rem solid transparent;
+    }
+
+    .authen-dialog__title {
+        font-size: 2.4rem;
+        font-weight: 600;
+        text-align: center;
+    }
+}
+
+button.authen-dialog__close-btn {
+    position: absolute;
+    top: 0.6rem;
+    left: 1rem;
+    line-height: unset;
+    padding: 1rem;
+    border-radius: 50%;
+
+    svg {
+        font-size: 26px;
+        color: #d16042;
+    }
+}
+
+.authen-dialog__content {
+    text-align: center;
+}

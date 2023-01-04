@@ -71,22 +71,6 @@
     }
 }
 
-button.job-details-booking__btn {
-    font-size: 1.6rem;
-    font-weight: 500;
-    line-height: 100%;
-    padding: 1.2rem 2.4rem;
-    width: 100%;
-    background-color: var(--primary);
-    color: var(--white);
-    border: 1px solid transparent;
-    text-transform: unset;
-
-    &:hover {
-        background: #19a463;
-    }
-}
-
 //Responsive for tablet + mobile devices
 @media (max-width: 1023px) {
     .job-details__booking {

@@ -33,7 +33,7 @@ const BookingCardSkeleton = ({ className }: { className: string }) => {
                 <input type="number" min="1" />
             </div>
 
-            <Button variant="contained" className="job-details-booking__btn">
+            <Button variant="contained" className="contained-primary-btn">
                 Continue
             </Button>
         </section>

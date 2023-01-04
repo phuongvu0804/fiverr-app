@@ -42,7 +42,7 @@ const Reviews = ({ data, reviewList }: Props) => {
             <Button></Button>
 
             {visible >= visibleNumber && visible < reviewList.length && (
-                <LoadMoreBtn className="job-details-booking__btn" setVisible={setVisible} visibleNumber={visibleNumber}>
+                <LoadMoreBtn className="contained-primary-btn" setVisible={setVisible} visibleNumber={visibleNumber}>
                     Load More
                 </LoadMoreBtn>
             )}
