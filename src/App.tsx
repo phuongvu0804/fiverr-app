@@ -16,6 +16,7 @@ import { useAppDispatch } from './hooks';
 //Others
 import { actSignIn } from './store/actions/signIn';
 import { UserDataTokenProps } from './constants/intefaces';
+import { LOCAL_STORAGE_USER_NAME } from './constants/constants';
 
 interface RouteType {
     path: string;
@@ -27,7 +28,7 @@ function App() {
     const dispatch = useAppDispatch();
     useEffect(() => {
         //Check if local storage has account => automatically signed in
-        const DATA = window.localStorage.getItem('fiver_user');
+        const DATA = window.localStorage.getItem(LOCAL_STORAGE_USER_NAME);
 
         if (DATA) {
             const PARSED_DATA: UserDataTokenProps = JSON.parse(DATA);

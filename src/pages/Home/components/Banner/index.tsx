@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 //Components
 import SearchField from '@/components/SearchField';
@@ -8,7 +9,6 @@ import { BgItemType } from '../../interfaces';
 //Others
 import './Banner.scss';
 import BackGroundSlick from './components/BackGroundSlick';
-import { useState } from 'react';
 
 const Banner = ({ data }: { data: BgItemType[] }) => {
     const navigate = useNavigate();

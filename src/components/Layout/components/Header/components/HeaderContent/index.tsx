@@ -21,6 +21,7 @@ import { UserDataProps } from '@/constants/intefaces';
 import './HeaderContent.scss';
 import UserDropDownBtn from './components/UserDropDownBtn';
 import { useAppSelector } from '@/hooks';
+import { LOCAL_STORAGE_USER_NAME } from '@/constants/constants';
 
 const HeaderContent = () => {
     const USER_INFO: UserDataProps = useAppSelector((state) => state.user.data);
@@ -32,7 +33,7 @@ const HeaderContent = () => {
 
     useEffect(() => {
         //Check if user has signed in
-        let user = window.localStorage.getItem('fiver_user');
+        let user = window.localStorage.getItem(LOCAL_STORAGE_USER_NAME);
         if (user) {
             user = JSON.parse(user);
             //Change content of header
@@ -89,7 +90,9 @@ const HeaderContent = () => {
 
                         {isSignedIn && (
                             <>
-                                <Button className="header__btn header__btn--text">Your Profile</Button>
+                                <Button className="header__btn header__btn--text" component={Link} to="/profile">
+                                    Your Profile
+                                </Button>
                                 <Button
                                     className="header__btn header__btn--text"
                                     onClick={() => handleUserSignOut(setIsSignedIn, setButtonListData)}
