@@ -16,24 +16,24 @@ import { PostProps } from './types';
 
 const JobListPage = () => {
     //Get params from URLs
-    let { ID } = useParams();
+    let { id } = useParams();
     const JOB_CATEGORY = useAppSelector((state) => state.jobCategory['data']);
 
     const [data, setData] = useState([]);
-    const [filteredData, setFilteredData] = useState([]);
+    const [filteredData, setFilteredData] = useState(data);
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage] = useState(12);
     const [likedPosts, setLikedPosts] = useState<number[]>([]);
 
-    const POST_LIST_LENGTH = filteredData.length;
+    const POST_LIST_LENGTH = filteredData?.length;
 
-    const SEARCHED_VALUE: string = ID !== undefined ? ID : '';
+    const SEARCHED_VALUE: string = id !== undefined ? id : '';
 
     //Get current posts
     const INDEX_OF_LAST_POST = currentPage * postsPerPage;
     const INDEX_OF_FIRST_POST = INDEX_OF_LAST_POST - postsPerPage;
-    const CURRENT_POSTS = filteredData.slice(INDEX_OF_FIRST_POST, INDEX_OF_LAST_POST);
+    const CURRENT_POSTS = filteredData?.slice(INDEX_OF_FIRST_POST, INDEX_OF_LAST_POST);
     const TOTAL_PAGE = Math.ceil(POST_LIST_LENGTH / postsPerPage);
 
     //Fetch data of list of jobs
@@ -42,6 +42,7 @@ const JobListPage = () => {
         const fetchPosts = async (SEARCHED_VALUE: string) => {
             setLoading(true);
             const result = await jobApi.getJobsByName(SEARCHED_VALUE);
+
             try {
                 setData(result.data.content);
                 setFilteredData(result.data.content);

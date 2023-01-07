@@ -20,9 +20,12 @@ import { SIGN_IN_SCHEMA } from '@/validators/authValidator';
 import { FORM_INPUT_LIST, INITIAL_VALUES } from './constants';
 import { signInValuesProps } from './types';
 import { renderTextInputs } from '@/components/Layout/AuthenLayout/constants';
+import { useAppDispatch } from '@/hooks';
+import { actGetUserFail, actGetUserRequest, actGetUserSuccess } from '@/store/actions/signIn';
 
 const SignIn = () => {
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
     const auth = useAuth();
     const [loading, setLoading] = useState(false);
     const [openDialog, setOpenDialog] = useState<boolean>(false);
@@ -36,11 +39,15 @@ const SignIn = () => {
             setLoading(true);
 
             const handleSignIn = async (formValues: signInValuesProps) => {
+                dispatch(actGetUserRequest());
+
                 try {
-                    await authApi.signIn(formValues);
+                    const result = await authApi.signIn(formValues);
+                    //Dispatch user info (not token) to redux store
+                    dispatch(actGetUserSuccess(result.data.content.user));
 
                     //Save user data to local storage
-                    auth.signin(formValues);
+                    auth.signin(result.data.content);
 
                     navigate('/');
                 } catch (error: any) {
@@ -50,6 +57,7 @@ const SignIn = () => {
                         title: 'Error',
                         content: error.response.data.content || 'Oops! Something went wrong. Please try again later.',
                     });
+                    dispatch(actGetUserFail(error));
                 } finally {
                     setLoading(false);
                 }

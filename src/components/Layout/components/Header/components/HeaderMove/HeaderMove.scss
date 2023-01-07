@@ -64,6 +64,10 @@
                 transition: all 0.2s ease;
             }
         }
+
+        .header__btn--user {
+            color: var(--white);
+        }
     }
 
     .job-category__list__wrapper {

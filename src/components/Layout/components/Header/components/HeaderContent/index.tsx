@@ -1,50 +1,52 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 //Material UI
 import { Button, Drawer } from '@mui/material';
 import { Box } from '@mui/system';
 import MenuIcon from '@mui/icons-material/Menu';
-import { ACTION_BUTTON_LIST } from '../HeaderFix/constants';
-import { ButtonPropType } from '@/constants/intefaces';
+import {
+    ActionType,
+    handleCloseUserMenu,
+    handleOpenUserMenu,
+    handleUserSignOut,
+    NO_USER_ACTION_BUTTON_LIST,
+    renderActionButtonList,
+    toggleDrawer,
+    WITH_USER_ACTION_BUTTON_LIST,
+} from './constants';
+import { UserDataProps } from '@/constants/intefaces';
 
 //Others
 import './HeaderContent.scss';
+import UserDropDownBtn from './components/UserDropDownBtn';
+import { useAppSelector } from '@/hooks';
 
 const HeaderContent = () => {
+    const USER_INFO: UserDataProps = useAppSelector((state) => state.user.data);
     const [drawer, setDrawer] = useState(false);
+    const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+    const [buttonListData, setButtonListData] = useState<ActionType[]>(NO_USER_ACTION_BUTTON_LIST);
+    const [isSignedIn, setIsSignedIn] = useState<boolean>(false);
+    const [userName, setUserName] = useState<string>('');
 
-    const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-        if (
-            event.type === 'keydown' &&
-            ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift')
-        ) {
-            return;
+    useEffect(() => {
+        //Check if user has signed in
+        let user = window.localStorage.getItem('fiver_user');
+        if (user) {
+            user = JSON.parse(user);
+            //Change content of header
+            setIsSignedIn(true);
+            setButtonListData(WITH_USER_ACTION_BUTTON_LIST);
+
+            //Change content of user button
+            setUserName(USER_INFO?.name.charAt(0).toUpperCase());
         }
-
-        setDrawer(open);
-    };
-
-    const renderActionButtonList = () => {
-        return ACTION_BUTTON_LIST.map((button, index) => {
-            let props: ButtonPropType = {};
-            if (button.to) {
-                props.to = button.to;
-            } else if (button.href) {
-                props.href = button.href;
-            }
-
-            return (
-                <button.component key={index} className={button.className} variant={button.variant} {...props}>
-                    {button.content}
-                </button.component>
-            );
-        });
-    };
+    }, [USER_INFO]);
 
     return (
         <div className="header__content container-center">
-            <Button className="header__drawer-btn hide-on-pc-tablet" onClick={toggleDrawer(true)}>
+            <Button className="header__drawer-btn hide-on-pc-tablet" onClick={(e) => toggleDrawer(e, true, setDrawer)}>
                 <MenuIcon />
             </Button>
 
@@ -60,18 +62,51 @@ const HeaderContent = () => {
             </a>
 
             {/* For PC + tablet */}
-            <div className="header__action-list hide-on-mobile">{renderActionButtonList()}</div>
+            <div className="header__action-list hide-on-mobile">
+                {renderActionButtonList(buttonListData)}
+
+                {/* If user has signed in, user dropdown btn appears */}
+                {isSignedIn && (
+                    <UserDropDownBtn
+                        userName={userName}
+                        onOpenUserMenu={(e) => handleOpenUserMenu(e, setAnchorElUser)}
+                        onCloseUserMenu={() => handleCloseUserMenu(setAnchorElUser)}
+                        onAnchorElUser={anchorElUser}
+                        onSignOut={() => handleUserSignOut(setIsSignedIn, setButtonListData)}
+                    />
+                )}
+            </div>
 
             {/* For mobile */}
-            <Drawer open={drawer} onClose={toggleDrawer(false)}>
-                <Box role="presentation" onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
-                    <div className="header__action-list--mobile">{renderActionButtonList()}</div>
+            <Drawer open={drawer} onClose={(e) => toggleDrawer(e, false, setDrawer)}>
+                <Box
+                    role="presentation"
+                    onClick={(e) => toggleDrawer(e, false, setDrawer)}
+                    onKeyDown={(e) => toggleDrawer(e, false, setDrawer)}
+                >
+                    <div className="header__action-list--mobile">
+                        {renderActionButtonList(buttonListData)}
+
+                        {isSignedIn && (
+                            <>
+                                <Button className="header__btn header__btn--text">Your Profile</Button>
+                                <Button
+                                    className="header__btn header__btn--text"
+                                    onClick={() => handleUserSignOut(setIsSignedIn, setButtonListData)}
+                                >
+                                    Sign Out
+                                </Button>
+                            </>
+                        )}
+                    </div>
                 </Box>
             </Drawer>
 
-            <Link className="header__btn header__btn--text hide-on-pc-tablet" to="/">
-                Join
-            </Link>
+            {!isSignedIn && (
+                <Link className="header__btn header__btn--text hide-on-pc-tablet" to="/">
+                    Join
+                </Link>
+            )}
         </div>
     );
 };

@@ -45,11 +45,46 @@
             transition: all 0.2s ease;
         }
     }
+
+    .header__btn--user {
+        background-color: #e37627;
+    }
+}
+
+.header__action-list {
+    display: flex;
+    align-items: center;
 }
 
 .header__logo svg {
     g:first-of-type {
         fill: var(--white);
+    }
+}
+
+//User Menu when user signs in
+.user__menu-list {
+    .MuiPaper-root {
+        margin-top: 1rem;
+    }
+
+    .MuiButtonBase-root:hover {
+        transition: backgroundColor 0.3s ease;
+    }
+
+    .user__menu-item {
+        font-size: 1.6rem;
+        font-weight: 400;
+        padding: 0.5rem 0;
+        color: var(--gray-text);
+        text-transform: none;
+        text-decoration: none;
+
+        &:hover {
+            color: var(--primary);
+            background-color: transparent;
+            transition: color 0.3s ease;
+        }
     }
 }
 
@@ -84,6 +119,12 @@
         }
     }
 
+    .header__logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
     .header__action-list--mobile {
         width: 272px;
         padding: 20px;
@@ -107,6 +148,7 @@
             border: 1px solid var(--primary);
             padding: 8px 24px;
             margin-bottom: 20px;
+            // text-align: center;
 
             &:hover {
                 background-color: var(--white);

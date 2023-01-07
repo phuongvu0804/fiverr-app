@@ -56,9 +56,4 @@ AXIOS_CLIENT.interceptors.request.use(
     (error) => Promise.reject(error),
 );
 
-AXIOS_CLIENT.interceptors.response.use(
-    (response) => response.data.content,
-    (error) => Promise.reject(error),
-);
-
 export default AXIOS_CLIENT;

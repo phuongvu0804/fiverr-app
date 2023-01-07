@@ -43,3 +43,23 @@ export interface JobCategoryProps {
     id: number;
     tenLoaiCongViec: string;
 }
+
+export interface UserDataProps {
+    avatar: string;
+    birthday: string;
+    bookingJob: [];
+    certification: [];
+    email: string;
+    gender: boolean;
+    id: number;
+    name: string;
+    password: string;
+    phone: string;
+    role: string;
+    skill: [];
+}
+
+export interface UserDataTokenProps {
+    token: string;
+    user: UserDataProps;
+}

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ExoticComponent, ReactNode, Suspense } from 'react';
+import React, { FunctionComponent, ExoticComponent, ReactNode, Suspense, useEffect } from 'react';
 
 // Route's config
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -11,6 +11,11 @@ import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 // Layout
 import { DefaultLayout } from './components/Layout';
 import CLIENT_ROUTES from './routes/ClientRoutes';
+import { useAppDispatch } from './hooks';
+
+//Others
+import { actSignIn } from './store/actions/signIn';
+import { UserDataTokenProps } from './constants/intefaces';
 
 interface RouteType {
     path: string;
@@ -19,7 +24,19 @@ interface RouteType {
 }
 
 function App() {
-    function renderRoutes(Routes: RouteType[]) {
+    const dispatch = useAppDispatch();
+    useEffect(() => {
+        //Check if local storage has account => automatically signed in
+        const DATA = window.localStorage.getItem('fiver_user');
+
+        if (DATA) {
+            const PARSED_DATA: UserDataTokenProps = JSON.parse(DATA);
+            //Dispatch user infor (not token) to redux store
+            dispatch(actSignIn(PARSED_DATA?.user.id));
+        }
+    }, []);
+
+    const renderRoutes = (Routes: RouteType[]) => {
         return Routes.map((route, index) => {
             const Page = route.component;
             const Layout: any = route.layout || DefaultLayout;
@@ -36,7 +53,7 @@ function App() {
                 />
             );
         });
-    }
+    };
 
     return (
         <LocalizationProvider dateAdapter={AdapterMoment}>
