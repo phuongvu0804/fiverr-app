@@ -1,0 +1,50 @@
+section.profile__user-card {
+    text-align: center;
+}
+
+.user-card__top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 2rem;
+
+    .user-card__avatar {
+        --size: 15rem;
+        width: var(--size);
+        height: var(--size);
+        margin-bottom: 1.5rem;
+    }
+
+    p {
+        font-size: 2rem;
+        font-weight: 600;
+    }
+}
+
+.user-card__bottom {
+    padding-top: 2rem;
+}
+
+.user-card__info-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.6rem;
+    color: var(--light-gray);
+    .info-group__name {
+        display: flex;
+        align-items: center;
+    }
+
+    span {
+        margin-left: 1rem;
+    }
+
+    p {
+        font-weight: 600;
+    }
+}
+
+//Responsive for mobile devices
+@media (max-width: 739px) {
+}

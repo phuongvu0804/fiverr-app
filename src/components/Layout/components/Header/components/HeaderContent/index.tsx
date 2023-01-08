@@ -12,6 +12,7 @@ import {
     handleUserSignOut,
     NO_USER_ACTION_BUTTON_LIST,
     renderActionButtonList,
+    renderMobileMenu,
     toggleDrawer,
     WITH_USER_ACTION_BUTTON_LIST,
 } from './constants';
@@ -22,6 +23,7 @@ import './HeaderContent.scss';
 import UserDropDownBtn from './components/UserDropDownBtn';
 import { useAppSelector } from '@/hooks';
 import { LOCAL_STORAGE_USER_NAME } from '@/constants/constants';
+import SideBarMobile from './components/SideBarMobile';
 
 const HeaderContent = () => {
     const USER_INFO: UserDataProps = useAppSelector((state) => state.user.data);
@@ -29,7 +31,7 @@ const HeaderContent = () => {
     const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
     const [buttonListData, setButtonListData] = useState<ActionType[]>(NO_USER_ACTION_BUTTON_LIST);
     const [isSignedIn, setIsSignedIn] = useState<boolean>(false);
-    const [userName, setUserName] = useState<string>('');
+    const [userFirstLetter, setUserFirstLetter] = useState<string>('');
 
     useEffect(() => {
         //Check if user has signed in
@@ -41,7 +43,7 @@ const HeaderContent = () => {
             setButtonListData(WITH_USER_ACTION_BUTTON_LIST);
 
             //Change content of user button
-            setUserName(USER_INFO?.name.charAt(0).toUpperCase());
+            setUserFirstLetter(USER_INFO?.name.charAt(0).toUpperCase());
         }
     }, [USER_INFO]);
 
@@ -69,7 +71,7 @@ const HeaderContent = () => {
                 {/* If user has signed in, user dropdown btn appears */}
                 {isSignedIn && (
                     <UserDropDownBtn
-                        userName={userName}
+                        userFirstLetter={userFirstLetter}
                         onOpenUserMenu={(e) => handleOpenUserMenu(e, setAnchorElUser)}
                         onCloseUserMenu={() => handleCloseUserMenu(setAnchorElUser)}
                         onAnchorElUser={anchorElUser}
@@ -86,20 +88,13 @@ const HeaderContent = () => {
                     onKeyDown={(e) => toggleDrawer(e, false, setDrawer)}
                 >
                     <div className="header__action-list--mobile">
-                        {renderActionButtonList(buttonListData)}
-
-                        {isSignedIn && (
-                            <>
-                                <Button className="header__btn header__btn--text" component={Link} to="/profile">
-                                    Your Profile
-                                </Button>
-                                <Button
-                                    className="header__btn header__btn--text"
-                                    onClick={() => handleUserSignOut(setIsSignedIn, setButtonListData)}
-                                >
-                                    Sign Out
-                                </Button>
-                            </>
+                        {renderMobileMenu(
+                            isSignedIn,
+                            setIsSignedIn,
+                            buttonListData,
+                            setButtonListData,
+                            USER_INFO?.name,
+                            userFirstLetter,
                         )}
                     </div>
                 </Box>

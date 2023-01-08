@@ -5,6 +5,7 @@ import { Fragment, lazy } from 'react';
 const HomePage = lazy(() => import('@/pages/Home'));
 const JobListPage = lazy(() => import('@/pages/JobListPage'));
 const JobDetailsPage = lazy(() => import('@/pages/JobDetailsPage'));
+const Profile = lazy(() => import('@/pages/Profile'));
 
 const CLIENT_ROUTES = [
     {
@@ -22,10 +23,14 @@ const CLIENT_ROUTES = [
         component: JobListPage,
         layout: DefaultLayout,
     },
-
     {
         path: '/job-details/:id',
         component: JobDetailsPage,
+        layout: DefaultLayout,
+    },
+    {
+        path: '/profile',
+        component: Profile,
         layout: DefaultLayout,
     },
 ];

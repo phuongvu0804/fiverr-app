@@ -1,0 +1,111 @@
+.profile__gig-content {
+    padding: 3rem;
+}
+
+.profile__gig-card {
+    padding: 2rem;
+}
+
+.gig-card__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    border: 0.1rem solid var(--border-color);
+}
+
+.gig-card__img {
+    height: 100%;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
+.gig-card__content {
+    padding-left: 2rem;
+    p {
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+    span {
+        font-size: 1.6rem;
+        line-height: 2rem;
+        height: calc(2rem * 3);
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        color: var(--light-gray);
+    }
+}
+
+.gig-card__button-list {
+    margin-top: 1.4rem;
+    text-align: end;
+    button.gig-card__button {
+        text-transform: none;
+        &.gig-card__button—view {
+            background-color: var(--primary);
+        }
+    }
+}
+
+button.gig-card__button + button.gig-card__button {
+    margin-left: 1rem;
+}
+
+.profile__empty-gig-card {
+    padding: 12.8rem 3rem 12rem;
+    text-align: center;
+
+    p {
+        font-size: 1.8rem;
+        margin: 2.4rem 0;
+        color: var(--black);
+    }
+
+    button.contained-primary-btn {
+        width: fit-content;
+    }
+}
+
+//Responsive for mobile devices
+@media (max-width: 739px) {
+    .gig-card__wrapper {
+        padding: 1.4rem;
+        max-height: 50rem;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .gig-card__content {
+        padding-left: 1.4rem;
+        p {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+        span {
+            font-size: 1.4rem;
+            line-height: 1.8rem;
+            height: calc(1.8rem * 3);
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            color: var(--light-gray);
+        }
+    }
+
+    .gig-card__img {
+        height: 15rem;
+    }
+
+    .gig-card__button-list {
+        margin-top: 1rem;
+    }
+}

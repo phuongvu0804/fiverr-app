@@ -1,19 +1,19 @@
-import { Avatar, Button, IconButton, Menu, MenuItem, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { Avatar, Button, IconButton, Menu, MenuItem } from '@mui/material';
 
 interface Props {
-    userName: string;
+    userFirstLetter: string;
     onOpenUserMenu: (event: React.MouseEvent<HTMLElement>) => void;
     onCloseUserMenu: () => void;
     onAnchorElUser: HTMLElement | null;
     onSignOut: () => void;
 }
 
-const UserDropDownBtn = ({ userName, onOpenUserMenu, onCloseUserMenu, onAnchorElUser, onSignOut }: Props) => {
+const UserDropDownBtn = ({ userFirstLetter, onOpenUserMenu, onCloseUserMenu, onAnchorElUser, onSignOut }: Props) => {
     return (
         <div className="header__action-list">
             <IconButton onClick={onOpenUserMenu}>
-                <Avatar className="header__btn--user">{userName}</Avatar>
+                <Avatar className="header__btn--user">{userFirstLetter}</Avatar>
             </IconButton>
             <Menu
                 className="user__menu-list"

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import OutlineButton from '@/components/OutlineButton';
 import { Button } from '@mui/material';
 import { ButtonPropType } from '@/constants/intefaces';
+import SideBarMobile from './components/SideBarMobile';
 
 export interface ActionType {
     content: string;
@@ -113,6 +114,30 @@ export const renderActionButtonList = (buttonList: ActionType[]) => {
             </button.component>
         );
     });
+};
+
+//Render side bar in mobile
+export const renderMobileMenu = (
+    isSignedIn: boolean,
+    setIsSignedIn: React.Dispatch<React.SetStateAction<boolean>>,
+    buttonListData: ActionType[],
+    setButtonListData: React.Dispatch<React.SetStateAction<ActionType[]>>,
+    userName: string = '',
+    userFirstLetter: string,
+) => {
+    if (isSignedIn) {
+        return (
+            <SideBarMobile
+                userFirstLetter={userFirstLetter}
+                userName={userName}
+                buttonListData={buttonListData}
+                setButtonListData={setButtonListData}
+                setIsSignedIn={setIsSignedIn}
+            />
+        );
+    } else {
+        return renderActionButtonList(buttonListData);
+    }
 };
 
 //Handle sign out

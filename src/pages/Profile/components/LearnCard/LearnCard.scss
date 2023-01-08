@@ -1,0 +1,33 @@
+section.profile__learn-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    h4 {
+        font-size: 2rem;
+        font-weight: 600;
+        padding-bottom: 0.4rem;
+    }
+
+    p {
+        font-size: 1.6rem;
+        font-weight: 300;
+        padding-bottom: 2rem;
+        color: var(--light-gray);
+    }
+
+    button.contained-primary-btn {
+        width: fit-content;
+        margin: 0 auto;
+    }
+}
+
+.learn-card__logo {
+    width: 8.5rem;
+    margin-bottom: 2rem;
+}
+
+.learn-card__img {
+    height: 9.6rem;
+    margin-bottom: 2rem;
+}
