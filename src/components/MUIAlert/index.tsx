@@ -1,23 +1,27 @@
 import React from 'react';
 import Alert from '@mui/material/Alert';
 import { AlertTitle, Dialog } from '@mui/material';
-import { MUIAlertProps } from '@/constants/intefaces';
+import { MUIAlertProps, TimeOutIdType } from '@/constants/intefaces';
+import { useAppDispatch, useAppSelector } from '@/hooks';
+import { actCloseAlert } from '@/store/actions/alert';
 
 interface Props {
     openAlert: MUIAlertProps;
-    onOpenAlert: React.Dispatch<React.SetStateAction<MUIAlertProps>>;
-    timeOutId: number | undefined;
+    timeOutId: TimeOutIdType;
 }
 
-const MUIAlert = ({ openAlert, onOpenAlert, timeOutId }: Props) => {
+const MUIAlert = ({ openAlert, timeOutId }: Props) => {
+    const dispatch = useAppDispatch();
+    const TYPE = useAppSelector((state) => state.alert.type);
+
     const closeAlert = () => {
-        onOpenAlert({ ...openAlert, state: false });
+        dispatch(actCloseAlert());
 
         //Clear timeout
         clearTimeout(timeOutId);
     };
     return (
-        <Dialog open={openAlert.state} onClose={closeAlert}>
+        <Dialog open={TYPE === 'OPEN' ? true : false} onClose={closeAlert}>
             <Alert severity={openAlert.type} sx={{ fontSize: '16px', alignItems: 'center' }}>
                 <AlertTitle sx={{ fontSize: '18px' }}>{openAlert.title}</AlertTitle>
                 {openAlert.content}

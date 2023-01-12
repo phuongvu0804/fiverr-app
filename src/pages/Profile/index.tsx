@@ -8,12 +8,11 @@ import UserCard from './components/UserCard';
 import LoadMoreBtn from '@/components/LoadMoreBtn';
 
 //Others
-import { MUIAlertProps, UserDataProps } from '@/constants/intefaces';
+import { UserDataProps } from '@/constants/intefaces';
 import './Profile.scss';
 import { DATA_INIT_STATE, LEARN_CARD_DATA } from './constants';
 import { getBookingList } from '@/store/actions/booking';
 import MUIAlert from '@/components/MUIAlert';
-import { MUI_ALERT_INIT_STATE } from '@/constants/constants';
 
 const Profile = () => {
     let timeOutId;
@@ -22,13 +21,14 @@ const Profile = () => {
     const USER_DATA = useAppSelector((state) => state.user.data);
     const BOOKING_LIST_DATA = useAppSelector((state) => state.booking.data);
     const LOADING = useAppSelector((state) => state.booking.loading);
+    const ALERT = useAppSelector((state) => state.alert.data);
+    const ALERT_TYPE = useAppSelector((state) => state.alert.type);
     const dispatch = useAppDispatch();
 
     const [data, setData] = useState<UserDataProps>(DATA_INIT_STATE);
     const [filteredBookingList, setFilteredBookingList] = useState<[]>([]);
     const [visible, setVisible] = useState<number>(VISIBLE_NUMBER);
     const [loading, setLoading] = useState(false);
-    const [openAlert, setOpenAlert] = useState<MUIAlertProps>(MUI_ALERT_INIT_STATE);
 
     useEffect(() => {
         const controller = new AbortController();
@@ -39,7 +39,7 @@ const Profile = () => {
         return () => {
             controller.abort();
         };
-    }, []);
+    }, [ALERT_TYPE]);
 
     useEffect(() => {
         USER_DATA && setData(USER_DATA);
@@ -68,13 +68,7 @@ const Profile = () => {
                     <LearnCard data={LEARN_CARD_DATA} loading={loading} />
                 </div>
                 <div className="profile__group profile__group--gig-column">
-                    <Gig
-                        data={filteredBookingList}
-                        loading={loading}
-                        openAlert={openAlert}
-                        onOpenAlert={setOpenAlert}
-                        timeOutId={timeOutId}
-                    />
+                    <Gig data={filteredBookingList} loading={loading} timeOutId={timeOutId} />
 
                     {/* If the number of posts display bigger than the number of posts visible and there is no loading, load more Btn appears */}
                     {visible >= VISIBLE_NUMBER && visible < BOOKING_LIST_DATA?.length && !loading && (
@@ -88,7 +82,7 @@ const Profile = () => {
                     )}
                 </div>
             </div>
-            <MUIAlert openAlert={openAlert} onOpenAlert={setOpenAlert} timeOutId={timeOutId} />
+            <MUIAlert openAlert={ALERT} timeOutId={timeOutId} />
         </div>
     );
 };

@@ -45,7 +45,6 @@ const SignIn = () => {
                     const result = await authApi.signIn(formValues);
                     //Dispatch user info (not token) to redux store
                     dispatch(actGetUserSuccess(result.data.content.user));
-
                     //Save user data to local storage
                     auth.signin(result.data.content);
 

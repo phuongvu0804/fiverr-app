@@ -1,3 +1,4 @@
+import { ActionProps } from '../actions/types';
 import { BookingActionType } from '../constants/booking';
 import { StateProps } from './types';
 

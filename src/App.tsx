@@ -34,7 +34,7 @@ function App() {
         if (DATA) {
             const PARSED_DATA: UserDataTokenProps = JSON.parse(DATA);
             //Dispatch user infor (not token) to redux store
-            dispatch(actGetUser(PARSED_DATA?.user.id));
+            dispatch(actGetUser(PARSED_DATA?.user?.id));
         }
     }, []);
 

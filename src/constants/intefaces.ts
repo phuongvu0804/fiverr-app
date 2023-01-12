@@ -72,3 +72,5 @@ export interface MUIAlertProps {
     title: string;
     content: string;
 }
+
+export type TimeOutIdType = number | undefined;

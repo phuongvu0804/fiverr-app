@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React,  from 'react';
 import moment from 'moment';
 
 //Material UI
@@ -7,13 +7,12 @@ import Image from '@/components/Image';
 
 //Others
 import './MUIDialog.scss';
-import { actBookingFail, actBookingRequest, actBookingSuccess, BookingJob } from '@/store/actions/booking';
+import { BookingJob } from '@/store/actions/booking';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { BookingInfo } from '@/assets/models/BookingInfor';
 import { PostProps } from '@/pages/JobListPage/types';
-import { MUIAlertProps, UserDataProps } from '@/constants/intefaces';
-import bookingApi from '@/api/booking';
-import { FAIL_ALERT, SUCCESS_ALERT } from '@/pages/JobDetailsPage/constants';
+import { UserDataProps } from '@/constants/intefaces';
+import { actCloseAlert } from '@/store/actions/alert';
 
 interface Props {
     data: PostProps;
@@ -21,8 +20,6 @@ interface Props {
     totalPrice: number;
     openDialog: boolean;
     setOpenDialog: React.Dispatch<React.SetStateAction<boolean>>;
-    openAlert: MUIAlertProps;
-    setOpenAlert: React.Dispatch<React.SetStateAction<MUIAlertProps>>;
     timeOutId: number | undefined;
 }
 
@@ -31,60 +28,24 @@ interface bookingInfoProps {
     data: number;
 }
 
-const MUIDialog = ({
-    openDialog,
-    setOpenDialog,
-    openAlert,
-    setOpenAlert,
-    timeOutId,
-    data,
-    hour,
-    totalPrice,
-}: Props) => {
+const MUIDialog = ({ openDialog, setOpenDialog, timeOutId, data, hour, totalPrice }: Props) => {
     let bookingInfo: bookingInfoProps[] = [
         {
-            name: '',
-            data: 0,
+            name: 'Hour',
+            data: hour,
+        },
+        {
+            name: 'Price per hour',
+            data: data.congViec.giaTien,
+        },
+        {
+            name: 'Total',
+            data: totalPrice,
         },
     ];
 
     const dispatch = useAppDispatch();
     const USER_DATA: UserDataProps = useAppSelector((state) => state.user.data);
-
-    useEffect(() => {
-        bookingInfo = [
-            {
-                name: 'Hour',
-                data: hour,
-            },
-            {
-                name: 'Price per hour',
-                data: data.congViec.giaTien,
-            },
-            {
-                name: 'Total',
-                data: totalPrice,
-            },
-        ];
-    }, []);
-
-    const bookingJob = async (bookingInfo = new BookingInfo()) => {
-        dispatch(actBookingRequest());
-
-        const result = await bookingApi.bookService(bookingInfo);
-        try {
-            dispatch(actBookingSuccess(result.data.content));
-            setOpenAlert(SUCCESS_ALERT);
-        } catch (error) {
-            dispatch(actBookingFail(error));
-            setOpenAlert(FAIL_ALERT);
-        } finally {
-            //Close alert after 3s
-            timeOutId = window.setTimeout(() => {
-                setOpenAlert({ ...openAlert, state: false });
-            }, 3000);
-        }
-    };
 
     const handleConfirm = () => {
         setOpenDialog(false);
@@ -94,7 +55,11 @@ const MUIDialog = ({
         bookingInfo.ngayThue = moment().format('DD/MM/YYYY');
         bookingInfo.hoanThanh = true;
 
-        bookingJob();
+        dispatch(BookingJob(bookingInfo));
+
+        timeOutId = window.setTimeout(() => {
+            dispatch(actCloseAlert());
+        });
     };
 
     const renderBookingInfo = () => {

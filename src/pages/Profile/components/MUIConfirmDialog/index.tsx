@@ -1,5 +1,8 @@
 import Image from '@/components/Image';
-import MUIAlert from '@/components/MUIAlert';
+import { TimeOutIdType } from '@/constants/intefaces';
+import { useAppDispatch } from '@/hooks';
+import { actCloseAlert } from '@/store/actions/alert';
+import { deleteBooking } from '@/store/actions/booking';
 
 import { Dialog, DialogActions, DialogTitle, Button } from '@mui/material';
 import { Box } from '@mui/system';
@@ -12,10 +15,20 @@ interface Props {
     openDialog: boolean;
     setOpenDialog: React.Dispatch<React.SetStateAction<boolean>>;
     data: BookingItemProps | null;
-    handleDelete: (id: Number) => void;
+    timeOutId: TimeOutIdType;
 }
 
-const MUIConfirmDialog = ({ openDialog, setOpenDialog, data, handleDelete }: Props) => {
+const MUIConfirmDialog = ({ openDialog, setOpenDialog, data, timeOutId }: Props) => {
+    const dispatch = useAppDispatch();
+
+    const handleDelete = (id: Number) => {
+        setOpenDialog(false);
+        dispatch(deleteBooking(id));
+
+        timeOutId = window.setTimeout(() => {
+            dispatch(actCloseAlert());
+        }, 3000);
+    };
     return (
         data && (
             <Dialog className="profile__dialog" open={openDialog} onClose={() => setOpenDialog(false)}>

@@ -8,42 +8,18 @@ import Image from '@/components/Image';
 import { Button, Grid, Skeleton } from '@mui/material';
 
 //Others
-import { BookingItemProps, UseAlertProps } from '@/pages/Profile/types';
-import bookingApi from '@/api/booking';
+import { BookingItemProps } from '@/pages/Profile/types';
 import MUIConfirmDialog from '../../../MUIConfirmDialog';
-import { useAppDispatch } from '@/hooks';
-import { getBookingList } from '@/store/actions/booking';
-import { FAIL_ALERT, SUCCESS_ALERT } from '@/pages/JobDetailsPage/constants';
+import { TimeOutIdType } from '@/constants/intefaces';
 
-interface Props extends UseAlertProps {
+interface Props {
     data: BookingItemProps | null;
     loading: boolean;
+    timeOutId: TimeOutIdType;
 }
 
-const GigCard = ({ data, loading, openAlert, onOpenAlert, timeOutId }: Props) => {
-    const dispatch = useAppDispatch();
+const GigCard = ({ data, loading, timeOutId }: Props) => {
     const [openDialog, setOpenDialog] = useState(false);
-
-    const handleDeleteBooking = async (id: Number) => {
-        await bookingApi.deleteBooking(id);
-        try {
-            //Close delete dialog
-            setOpenDialog(false);
-
-            //Show success alert
-            onOpenAlert(SUCCESS_ALERT);
-
-            dispatch(getBookingList());
-        } catch (error) {
-            //Show success alert
-            onOpenAlert(FAIL_ALERT);
-        } finally {
-            //Close alert after 3s
-            timeOutId = window.setTimeout(() => {
-                onOpenAlert({ ...openAlert, state: false });
-            }, 3000);
-        }
-    };
 
     return data && !loading ? (
         <>
@@ -81,7 +57,7 @@ const GigCard = ({ data, loading, openAlert, onOpenAlert, timeOutId }: Props) =>
                     openDialog={openDialog}
                     setOpenDialog={setOpenDialog}
                     data={data}
-                    handleDelete={handleDeleteBooking}
+                    timeOutId={timeOutId}
                 />
             </div>
         </>

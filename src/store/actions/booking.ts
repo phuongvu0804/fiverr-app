@@ -1,7 +1,9 @@
 import bookingApi from '@/api/booking';
 import { BookingInfo } from '@/assets/models/BookingInfor';
-import { SUCCESS_ALERT } from '@/pages/JobDetailsPage/constants';
+import { FAIL_BOOKING_ALERT, SUCCESS_BOOKING_ALERT } from '@/pages/JobDetailsPage/constants';
+import { FAIL_DELETE_ALERT, SUCCESS_DELETE_ALERT } from '@/pages/Profile/constants';
 import { BookingActionType } from '../constants/booking';
+import { actOpenAlert } from './alert';
 
 export const actBookingRequest = () => {
     return {
@@ -29,11 +31,13 @@ export const BookingJob = (bookingInfo = new BookingInfo()) => {
 
         const fetchBooking = async () => {
             const result = await bookingApi.bookService(bookingInfo);
+
             try {
                 dispatch(actBookingSuccess(result.data.content));
-                return SUCCESS_ALERT;
+                dispatch(actOpenAlert(SUCCESS_BOOKING_ALERT));
             } catch (error) {
                 dispatch(actBookingFail(error));
+                dispatch(actOpenAlert(FAIL_BOOKING_ALERT));
             }
         };
 
@@ -75,5 +79,44 @@ export const getBookingList = () => {
         };
 
         fetchBookingList();
+    };
+};
+
+export const actDeleteBookingRequest = () => {
+    return {
+        type: BookingActionType.deleteBookingRequest,
+    };
+};
+
+export const actDeleteBookingSuccess = (data: any) => {
+    return {
+        type: BookingActionType.deleteBookingSuccess,
+        payload: data,
+    };
+};
+
+export const actDeleteBookingFail = (error: any) => {
+    return {
+        type: BookingActionType.deleteBookingFail,
+        payload: error,
+    };
+};
+
+export const deleteBooking = (id: Number) => {
+    return (dispatch: any) => {
+        dispatch(actDeleteBookingRequest());
+
+        const fetchDeleteBooking = async () => {
+            const result = await bookingApi.deleteBooking(id);
+            try {
+                dispatch(actDeleteBookingSuccess(result.data.content));
+                dispatch(actOpenAlert(SUCCESS_DELETE_ALERT));
+            } catch (error) {
+                dispatch(actDeleteBookingFail(error));
+                dispatch(actOpenAlert(FAIL_DELETE_ALERT));
+            }
+        };
+
+        fetchDeleteBooking();
     };
 };

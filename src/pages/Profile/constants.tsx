@@ -24,14 +24,14 @@ export const DATA_INIT_STATE: UserDataProps = {
     skill: [],
 };
 
-export const SUCCESS_ALERT: MUIAlertProps = {
+export const SUCCESS_DELETE_ALERT: MUIAlertProps = {
     state: true,
     type: 'success',
     title: 'Success',
     content: 'You have successfully deleted your booking!',
 };
 
-export const FAIL_ALERT: MUIAlertProps = {
+export const FAIL_DELETE_ALERT: MUIAlertProps = {
     state: true,
     type: 'error',
     title: 'Error',

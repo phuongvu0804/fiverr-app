@@ -5,4 +5,7 @@ export enum BookingActionType {
     getBookingListResquest = '@bookingReducer/getBookingListResquest',
     getBookingListSuccess = '@bookingReducer/getBookingListSuccess',
     getBookingListFail = '@bookingReducer/getBookingListFail',
+    deleteBookingRequest = '@bookingReducer/deleteBookingRequest',
+    deleteBookingSuccess = '@bookingReducer/deleteBookingSuccess',
+    deleteBookingFail = '@bookingReducer/deleteBookingFail',
 }

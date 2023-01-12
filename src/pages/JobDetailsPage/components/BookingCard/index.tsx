@@ -1,10 +1,8 @@
 //Material UI
-import MUIAlert from '@/components/MUIAlert';
 import { LOCAL_STORAGE_USER_NAME } from '@/constants/constants';
-import { MUIAlertProps } from '@/constants/intefaces';
-import { AccessTime, Autorenew } from '@mui/icons-material';
+import { TimeOutIdType } from '@/constants/intefaces';
 import { Button } from '@mui/material';
-import { ChangeEvent, Dispatch, ElementType, SetStateAction, useEffect, useState } from 'react';
+import { ChangeEvent, ElementType, useEffect, useState } from 'react';
 import { ADDITIONAL_INFO } from '../../constants';
 import { SectionProps } from '../../types';
 
@@ -15,12 +13,10 @@ import MUIDialog from './components/MUIDialog';
 interface Props extends SectionProps {
     className?: string;
     scrollDown?: boolean;
-    openAlert: MUIAlertProps;
-    setOpenAlert: Dispatch<SetStateAction<MUIAlertProps>>;
-    timeOutId: number | undefined;
+    timeOutId: TimeOutIdType;
 }
 
-const BookingCard = ({ data, className, scrollDown, openAlert, setOpenAlert, timeOutId }: Props) => {
+const BookingCard = ({ data, className, scrollDown, timeOutId }: Props) => {
     let HtmlTag: ElementType = 'div';
 
     const [hour, setHour] = useState<number>(1);
@@ -83,8 +79,6 @@ const BookingCard = ({ data, className, scrollDown, openAlert, setOpenAlert, tim
             <MUIDialog
                 openDialog={openDialog}
                 setOpenDialog={setOpenDialog}
-                openAlert={openAlert}
-                setOpenAlert={setOpenAlert}
                 timeOutId={timeOutId}
                 hour={hour}
                 data={data}

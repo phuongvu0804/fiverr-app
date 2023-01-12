@@ -21,20 +21,18 @@ import { NavbarItemProps, ReviewProps } from './types';
 import { PostProps } from '@/pages/JobListPage/types';
 import { jobApi } from '@/api';
 import reviewApi from '@/api/reviewApi';
-import { MUI_ALERT_INIT_STATE } from '@/constants/constants';
-import { MUIAlertProps } from '@/constants/intefaces';
+import { useAppSelector } from '@/hooks';
 
 const JobDetailsPage = () => {
     let timeOutId;
     const { id } = useParams();
-
+    const openAlert = useAppSelector((state) => state.alert.data);
     const [data, setData] = useState<PostProps>(INIT_POST_DATA);
     const [reviews, setReviews] = useState<ReviewProps[]>(INIT_REVIEW_DATA);
     const [scrollDown, setScrollDown] = useState<boolean>(false);
     const [navBarData, setNavbarData] = useState<NavbarItemProps[]>(NAVBAR_LIST);
     const [loading, setLoading] = useState<boolean>(false);
     const [likedPosts, setLikedPosts] = useState<number[]>([]);
-    const [openAlert, setOpenAlert] = useState<MUIAlertProps>(MUI_ALERT_INIT_STATE);
 
     //Listen to the scrolling event
     useEffect(() => {
@@ -131,13 +129,7 @@ const JobDetailsPage = () => {
                         {/* Job details */}
                         <Overview data={data} />
 
-                        <BookingCard
-                            openAlert={openAlert}
-                            setOpenAlert={setOpenAlert}
-                            timeOutId={timeOutId}
-                            data={data}
-                            className="display-tablet-mobile hide-on-pc"
-                        />
+                        <BookingCard timeOutId={timeOutId} data={data} className="display-tablet-mobile hide-on-pc" />
 
                         <JobDesc data={data.congViec.moTa} />
 
@@ -147,8 +139,6 @@ const JobDetailsPage = () => {
                     </div>
 
                     <BookingCard
-                        openAlert={openAlert}
-                        setOpenAlert={setOpenAlert}
                         timeOutId={timeOutId}
                         data={data}
                         className="hide-on-tablet-mobile"
@@ -157,7 +147,7 @@ const JobDetailsPage = () => {
                 </div>
             </div>
 
-            <MUIAlert openAlert={openAlert} onOpenAlert={setOpenAlert} timeOutId={timeOutId} />
+            <MUIAlert openAlert={openAlert} timeOutId={timeOutId} />
         </div>
     ) : (
         //Page's skeleton

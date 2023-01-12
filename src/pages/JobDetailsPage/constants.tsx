@@ -57,14 +57,14 @@ export const INIT_REVIEW_DATA: ReviewProps[] = [
     },
 ];
 
-export const SUCCESS_ALERT: MUIAlertProps = {
+export const SUCCESS_BOOKING_ALERT: MUIAlertProps = {
     state: true,
     type: 'success',
     title: 'Success',
     content: 'Congratulations, you have successfully booked the service',
 };
 
-export const FAIL_ALERT: MUIAlertProps = {
+export const FAIL_BOOKING_ALERT: MUIAlertProps = {
     state: true,
     type: 'error',
     title: 'Error',

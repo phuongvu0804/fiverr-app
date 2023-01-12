@@ -1,4 +1,4 @@
-import { MUIAlertProps } from '@/constants/intefaces';
+import { MUIAlertProps, TimeOutIdType } from '@/constants/intefaces';
 import { JobDetailsProps } from '../JobListPage/types';
 
 export interface LearnCardDataProps {
@@ -18,5 +18,5 @@ export interface BookingItemProps {
 export interface UseAlertProps {
     openAlert: MUIAlertProps;
     onOpenAlert: React.Dispatch<React.SetStateAction<MUIAlertProps>>;
-    timeOutId: number | undefined;
+    timeOutId: TimeOutIdType;
 }
