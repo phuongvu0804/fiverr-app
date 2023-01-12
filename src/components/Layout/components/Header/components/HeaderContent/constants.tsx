@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import { Link, Navigate, NavigateFunction } from 'react-router-dom';
+import { Link, NavigateFunction } from 'react-router-dom';
 
 //Components
 import OutlineButton from '@/components/OutlineButton';

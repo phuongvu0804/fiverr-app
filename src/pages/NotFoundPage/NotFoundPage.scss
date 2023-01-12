@@ -1,0 +1,121 @@
+#not-found {
+    display: flex;
+    flex-direction: column;
+    background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.81) 17.97%, rgba(0, 0, 0, 0.31) 57.6%, transparent 77.6%),
+        url('../../assets/images/404-bg.png');
+    background-position: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    padding: 2.4rem 6.4rem;
+    color: var(--white);
+
+    .not-found__logo-btn {
+        display: block;
+    }
+
+    > div {
+        width: 63.6rem;
+        margin: auto 0;
+    }
+
+    h1 {
+        font-size: 4rem;
+        margin-top: 3.2rem;
+    }
+
+    .not-found__divider {
+        width: 5.6rem;
+        height: 0.4rem;
+        margin: 4rem 0;
+        background-color: var(--white);
+    }
+
+    h5 {
+        font-size: 2.8rem;
+    }
+
+    p {
+        font-size: 1.8rem;
+    }
+
+    .not-found__search-field {
+        margin-top: 2.4rem;
+    }
+}
+
+form.not-found__search-field {
+    .search-field__icon {
+        display: none;
+    }
+
+    .search-field__input {
+        margin-left: 1.8rem;
+    }
+
+    button.search-field__btn {
+        padding: 1.6rem;
+    }
+
+    .not-found__search-icon {
+        font-size: 2.8rem;
+    }
+}
+
+//Responsive for tablet + mobile devices
+@media (max-width: 1023px) {
+    #not-found {
+        background-image: linear-gradient(
+                180deg,
+                #000 0.21%,
+                rgba(0, 0, 0, 0.8) 34.96%,
+                rgba(0, 0, 0, 0.32) 78.47%,
+                rgba(0, 0, 0, 0.25) 85.43%,
+                rgba(0, 0, 0, 0.75) 99.97%
+            ),
+            url('../../assets/images/404-bg.png');
+
+        > div {
+            width: 100%;
+            margin: 2rem 0 0;
+        }
+    }
+}
+
+//Responsive for tablet devices
+@media (min-width: 740px) and (max-width: 1024px) {
+    #not-found {
+        padding: 2.4rem 3.2rem;
+    }
+}
+
+//Responsive for mobile devices
+@media (max-width: 739px) {
+    #not-found {
+        padding: 1.6rem 2rem;
+
+        h1 {
+            font-size: 2.8rem;
+            margin-top: 2.2rem;
+        }
+
+        .not-found__divider {
+            width: 5.6rem;
+            height: 0.4rem;
+            margin: 2.8rem 0;
+            background-color: var(--white);
+        }
+
+        h5 {
+            font-size: 2rem;
+        }
+
+        p {
+            font-size: 1.6rem;
+        }
+
+        .not-found__search-field {
+            margin-top: 2.4rem;
+        }
+    }
+}

@@ -56,12 +56,6 @@
     align-items: center;
 }
 
-.header__logo svg {
-    g:first-of-type {
-        fill: var(--white);
-    }
-}
-
 //User Menu when user signs in
 .user__menu-list {
     .MuiPaper-root {

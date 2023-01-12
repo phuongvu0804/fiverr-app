@@ -1,0 +1,13 @@
+a.logo-btn {
+    color: transparent !important;
+
+    &:hover {
+        background-color: transparent !important;
+    }
+
+    svg {
+        g:first-of-type {
+            fill: var(--white);
+        }
+    }
+}

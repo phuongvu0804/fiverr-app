@@ -18,6 +18,7 @@ import { UserDataTokenProps } from './constants/intefaces';
 import { LOCAL_STORAGE_USER_NAME } from './constants/constants';
 import actGetUser from './store/actions/user';
 import LoadingPage from './pages/LoadingPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 interface RouteType {
     path: string;
@@ -61,8 +62,11 @@ function App() {
         <LocalizationProvider dateAdapter={AdapterMoment}>
             <Suspense fallback={<LoadingPage />}>
                 <Router>
-                    <Routes>{renderRoutes(AUTH_ROUTES)}</Routes>
-                    <Routes>{renderRoutes(CLIENT_ROUTES)}</Routes>
+                    <Routes>
+                        {renderRoutes(AUTH_ROUTES)}
+                        {renderRoutes(CLIENT_ROUTES)}
+                        <Route path="*" element={<NotFoundPage />} />
+                    </Routes>
                 </Router>
             </Suspense>
         </LocalizationProvider>

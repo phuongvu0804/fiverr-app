@@ -8,22 +8,32 @@ import { Button } from '@mui/material';
 //Others
 import './SearchField.scss';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
     className?: string;
     children?: JSX.Element | string;
     searchBtn?: boolean;
+    searchValue: string;
     onSearchValue: React.Dispatch<React.SetStateAction<string>>;
     onSubmit?: (e: React.SyntheticEvent) => void;
 }
 
-const SearchField = ({ className, children, searchBtn = true, onSearchValue, onSubmit }: Props) => {
+const SearchField = ({ className, children, searchBtn = true, searchValue, onSearchValue, onSubmit }: Props) => {
+    const navigate = useNavigate();
+
+    const handleSubmitSearch = (e: React.SyntheticEvent) => {
+        e.preventDefault();
+        if (searchValue !== '') {
+            navigate(`/job-list/${searchValue}`);
+        }
+    };
     return (
         <Paper
             className={`search-field__wrapper ${className}`}
             component="form"
             sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
-            onSubmit={onSubmit}
+            onSubmit={handleSubmitSearch}
         >
             <IconButton className="search-field__icon" type="button" sx={{ p: '10px' }} aria-label="search">
                 <SearchIcon />
