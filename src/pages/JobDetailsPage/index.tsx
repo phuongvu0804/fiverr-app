@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 //Material UI
+import MUIAlert from '@/components/MUIAlert';
 
 //Components
 import BookingCard from './components/BookingCard';
@@ -11,18 +12,20 @@ import JobDesc from './components/JobDesc';
 import SellerDesc from './components/SellerDesc';
 import Reviews from './components/Reviews';
 import Header from './components/Header';
-//Others
-import { INIT_POST_DATA, INIT_REVIEW_DATA, NAVBAR_LIST } from './constants';
+import JobDetailsPageSkeleton from './components/JobDetailsPageSkeleton';
 
 //Others
+import { INIT_POST_DATA, INIT_REVIEW_DATA, NAVBAR_LIST } from './constants';
 import './JobDetailsPage.scss';
 import { NavbarItemProps, ReviewProps } from './types';
 import { PostProps } from '@/pages/JobListPage/types';
 import { jobApi } from '@/api';
 import reviewApi from '@/api/reviewApi';
-import JobDetailsPageSkeleton from './components/JobDetailsPageSkeleton';
+import { MUI_ALERT_INIT_STATE } from '@/constants/constants';
+import { MUIAlertProps } from '@/constants/intefaces';
 
 const JobDetailsPage = () => {
+    let timeOutId;
     const { id } = useParams();
 
     const [data, setData] = useState<PostProps>(INIT_POST_DATA);
@@ -31,6 +34,7 @@ const JobDetailsPage = () => {
     const [navBarData, setNavbarData] = useState<NavbarItemProps[]>(NAVBAR_LIST);
     const [loading, setLoading] = useState<boolean>(false);
     const [likedPosts, setLikedPosts] = useState<number[]>([]);
+    const [openAlert, setOpenAlert] = useState<MUIAlertProps>(MUI_ALERT_INIT_STATE);
 
     //Listen to the scrolling event
     useEffect(() => {
@@ -127,7 +131,13 @@ const JobDetailsPage = () => {
                         {/* Job details */}
                         <Overview data={data} />
 
-                        <BookingCard data={data} className="display-tablet-mobile hide-on-pc" />
+                        <BookingCard
+                            openAlert={openAlert}
+                            setOpenAlert={setOpenAlert}
+                            timeOutId={timeOutId}
+                            data={data}
+                            className="display-tablet-mobile hide-on-pc"
+                        />
 
                         <JobDesc data={data.congViec.moTa} />
 
@@ -136,9 +146,18 @@ const JobDetailsPage = () => {
                         <Reviews data={data} reviewList={reviews} />
                     </div>
 
-                    <BookingCard data={data} className="hide-on-tablet-mobile" scrollDown={scrollDown} />
+                    <BookingCard
+                        openAlert={openAlert}
+                        setOpenAlert={setOpenAlert}
+                        timeOutId={timeOutId}
+                        data={data}
+                        className="hide-on-tablet-mobile"
+                        scrollDown={scrollDown}
+                    />
                 </div>
             </div>
+
+            <MUIAlert openAlert={openAlert} onOpenAlert={setOpenAlert} timeOutId={timeOutId} />
         </div>
     ) : (
         //Page's skeleton

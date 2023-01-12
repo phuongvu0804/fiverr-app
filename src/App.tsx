@@ -14,9 +14,10 @@ import CLIENT_ROUTES from './routes/ClientRoutes';
 import { useAppDispatch } from './hooks';
 
 //Others
-import { actSignIn } from './store/actions/signIn';
 import { UserDataTokenProps } from './constants/intefaces';
 import { LOCAL_STORAGE_USER_NAME } from './constants/constants';
+import actGetUser from './store/actions/user';
+import LoadingPage from './pages/LoadingPage';
 
 interface RouteType {
     path: string;
@@ -33,7 +34,7 @@ function App() {
         if (DATA) {
             const PARSED_DATA: UserDataTokenProps = JSON.parse(DATA);
             //Dispatch user infor (not token) to redux store
-            dispatch(actSignIn(PARSED_DATA?.user.id));
+            dispatch(actGetUser(PARSED_DATA?.user.id));
         }
     }, []);
 
@@ -58,7 +59,7 @@ function App() {
 
     return (
         <LocalizationProvider dateAdapter={AdapterMoment}>
-            <Suspense fallback="<p>Loading</p>">
+            <Suspense fallback={<LoadingPage />}>
                 <Router>
                     <Routes>{renderRoutes(AUTH_ROUTES)}</Routes>
                     <Routes>{renderRoutes(CLIENT_ROUTES)}</Routes>

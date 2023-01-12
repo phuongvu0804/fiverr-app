@@ -1,11 +1,12 @@
 import { DefaultLayout, HeaderFooterLayout } from '@/components/Layout';
+import BlankLayout from '@/components/Layout/BlankLayout';
 import { Fragment, lazy } from 'react';
 
 //Pages
 const HomePage = lazy(() => import('@/pages/Home'));
 const JobListPage = lazy(() => import('@/pages/JobListPage'));
 const JobDetailsPage = lazy(() => import('@/pages/JobDetailsPage'));
-const Profile = lazy(() => import('@/pages/Profile'));
+const ProfilePage = lazy(() => import('@/pages/Profile'));
 
 const CLIENT_ROUTES = [
     {
@@ -30,7 +31,7 @@ const CLIENT_ROUTES = [
     },
     {
         path: '/profile',
-        component: Profile,
+        component: ProfilePage,
         layout: DefaultLayout,
     },
 ];

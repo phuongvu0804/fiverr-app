@@ -1,17 +1,21 @@
 #profile {
     background-color: #f7f7f7;
-
+    padding-bottom: 4rem;
     section {
         background-color: var(--white);
         border: 0.1rem solid #ddd;
-        margin-bottom: 3rem; //Delete later
+    }
+
+    .contained-primary-btn {
+        width: fit-content;
     }
 }
 
 .profile__wrapper {
     display: flex;
     justify-content: space-between;
-    max-width: 1240px;
+    max-width: 124rem;
+    min-height: 80rem;
     margin: 5rem auto 4rem;
 }
 
@@ -23,6 +27,9 @@
     }
 
     &.profile__group--gig-column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         width: 73.6rem;
         padding-left: 2rem;
     }
@@ -30,6 +37,25 @@
 
 .profile__info-card {
     margin-bottom: 3rem;
+}
+
+//Responsive for tablet devices
+@media (min-width: 740px) and (max-width: 1024px) {
+    .profile__wrapper {
+        max-width: 900px;
+        margin-left: 1.8rem;
+        margin-right: 1.8rem;
+    }
+
+    .profile__group {
+        &.profile__group--info-column .profile__info-card {
+            width: 30rem;
+        }
+
+        &.profile__group--gig-column {
+            width: unset;
+        }
+    }
 }
 
 //Responsive for mobile devices

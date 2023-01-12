@@ -20,9 +20,6 @@ const jobApi = {
         const URL = `${RESOURCE_NAME}/lay-cong-viec-chi-tiet/${id}`;
         return AXIOS_CLIENT.get(URL);
     },
-    bookService: (service: any) => {
-        return AXIOS_CLIENT.post('thue-cong-viec', service);
-    },
 };
 
 export default jobApi;

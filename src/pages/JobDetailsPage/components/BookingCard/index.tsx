@@ -1,7 +1,11 @@
 //Material UI
+import MUIAlert from '@/components/MUIAlert';
+import { LOCAL_STORAGE_USER_NAME } from '@/constants/constants';
+import { MUIAlertProps } from '@/constants/intefaces';
 import { AccessTime, Autorenew } from '@mui/icons-material';
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
-import { ChangeEvent, SyntheticEvent, useState } from 'react';
+import { Button } from '@mui/material';
+import { ChangeEvent, Dispatch, ElementType, SetStateAction, useEffect, useState } from 'react';
+import { ADDITIONAL_INFO } from '../../constants';
 import { SectionProps } from '../../types';
 
 //Others
@@ -11,14 +15,32 @@ import MUIDialog from './components/MUIDialog';
 interface Props extends SectionProps {
     className?: string;
     scrollDown?: boolean;
+    openAlert: MUIAlertProps;
+    setOpenAlert: Dispatch<SetStateAction<MUIAlertProps>>;
+    timeOutId: number | undefined;
 }
 
-const BookingCard = ({ data, className, scrollDown }: Props) => {
-    const [hour, setHour] = useState(1);
-    const [openDialog, setOpenDialog] = useState(false);
+const BookingCard = ({ data, className, scrollDown, openAlert, setOpenAlert, timeOutId }: Props) => {
+    let HtmlTag: ElementType = 'div';
 
-    //Html tag - div for PC, - section for tablet + mobile
-    const HtmlTag = className === 'hide-on-tablet-mobile' ? 'div' : 'section';
+    const [hour, setHour] = useState<number>(1);
+    const [openDialog, setOpenDialog] = useState<boolean>(false);
+
+    useEffect(() => {
+        //Html tag - div for PC, - section for tablet + mobile
+        HtmlTag = className === 'hide-on-tablet-mobile' ? 'div' : 'section';
+    }, []);
+
+    const renderAddInfo = () => {
+        return ADDITIONAL_INFO.map((item, index) => {
+            return (
+                <div key={index} className="job-details-booking__add-info-item">
+                    {item.icon}
+                    <span>{item.content}</span>
+                </div>
+            );
+        });
+    };
 
     const handleHourInput = (e: ChangeEvent<HTMLInputElement>) => {
         const INPUT_VALUE = Number(e.target.value);
@@ -30,7 +52,7 @@ const BookingCard = ({ data, className, scrollDown }: Props) => {
     };
 
     const handleBooking = () => {
-        const USER = localStorage.getItem('user');
+        const USER = localStorage.getItem(LOCAL_STORAGE_USER_NAME);
         if (USER) {
             setOpenDialog(true);
         }
@@ -47,17 +69,7 @@ const BookingCard = ({ data, className, scrollDown }: Props) => {
                 <p>{data.congViec.moTaNgan}</p>
             </div>
 
-            <div className="job-details-booking__add-info-list">
-                <div className="job-details-booking__add-info-item">
-                    <AccessTime />
-                    <span>2 Days Delivery</span>
-                </div>
-
-                <div className="job-details-booking__add-info-item">
-                    <Autorenew />
-                    <span>7 Revisions</span>
-                </div>
-            </div>
+            <div className="job-details-booking__add-info-list">{renderAddInfo()}</div>
 
             <div className="job-details-booking__hour">
                 <span>Hours of work</span>
@@ -71,6 +83,9 @@ const BookingCard = ({ data, className, scrollDown }: Props) => {
             <MUIDialog
                 openDialog={openDialog}
                 setOpenDialog={setOpenDialog}
+                openAlert={openAlert}
+                setOpenAlert={setOpenAlert}
+                timeOutId={timeOutId}
                 hour={hour}
                 data={data}
                 totalPrice={handleTotalPrice()}

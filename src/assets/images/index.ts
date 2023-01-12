@@ -45,6 +45,8 @@ const images = {
     categoryData: require('./data.svg').default,
     signInBg: require('./sign-in.webp'),
     signUpBg: require('./sign-up.webp'),
+    learnLogo: require('./learn-logo.png'),
+    learnEnroll: require('./learn-enroll-icon.svg').default,
 };
 
 export default images;

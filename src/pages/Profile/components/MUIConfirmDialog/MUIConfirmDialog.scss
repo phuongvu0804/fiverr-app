@@ -1,0 +1,71 @@
+.profile__dialog {
+    padding: 2rem;
+}
+
+.profile__dialog-wrapper {
+    display: flex;
+    padding: 0 2rem 2rem 2rem;
+    img {
+        width: 20rem;
+        height: 14rem;
+        object-fit: cover;
+        object-position: center;
+        margin-right: 1rem;
+    }
+
+    h4 {
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+
+    p {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+        line-height: 2rem;
+        height: 6rem;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        color: var(--light-gray);
+    }
+}
+
+button.profile__dialog-btn {
+    text-transform: unset;
+    &.profile__dialog-btn—-confirm {
+        background-color: var(--primary);
+    }
+}
+
+//Responsive for tablet + mobile devices
+@media (max-width: 1023px) {
+    .profile__dialog {
+        .MuiPaper-root {
+            width: 100%;
+            max-width: unset;
+            margin: 0;
+        }
+    }
+}
+
+//Responsive for mobile devices
+@media (max-width: 739px) {
+    .profile__dialog-wrapper {
+        display: block;
+        padding: 0 1.2rem 1.2rem 1.2rem;
+        img {
+            width: 100%;
+        }
+
+        h4 {
+            font-size: 1.6rem;
+        }
+
+        p {
+            font-size: 1.4rem;
+            margin-bottom: 0;
+        }
+    }
+}

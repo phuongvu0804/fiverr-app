@@ -21,12 +21,13 @@ import { FORM_INPUT_LIST, INITIAL_VALUES } from './constants';
 import { signInValuesProps } from './types';
 import { renderTextInputs } from '@/components/Layout/AuthenLayout/constants';
 import { useAppDispatch } from '@/hooks';
-import { actGetUserFail, actGetUserRequest, actGetUserSuccess } from '@/store/actions/signIn';
+import { actGetUserFail, actGetUserRequest, actGetUserSuccess } from '@/store/actions/user';
 
 const SignIn = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const auth = useAuth();
+
     const [loading, setLoading] = useState(false);
     const [openDialog, setOpenDialog] = useState<boolean>(false);
     const [dialogContent, setDialogContent] = useState<NotiDialogProps>(INIT_DIALOG_VALUE);
@@ -35,7 +36,6 @@ const SignIn = () => {
         initialValues: INITIAL_VALUES,
         validationSchema: SIGN_IN_SCHEMA,
         onSubmit: (values) => {
-            console.log(values);
             setLoading(true);
 
             const handleSignIn = async (formValues: signInValuesProps) => {

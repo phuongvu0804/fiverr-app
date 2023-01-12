@@ -1,3 +1,4 @@
+import { LOCAL_STORAGE_USER_NAME } from '@/constants/constants';
 import axios from 'axios';
 import API_CONFIG from './apiConfig';
 
@@ -17,6 +18,11 @@ interface UserType {
     _id: string;
 }
 
+let userToken = localStorage.getItem(LOCAL_STORAGE_USER_NAME);
+if (userToken) {
+    userToken = JSON.parse(userToken).token;
+}
+
 //Set config defaults by creating the instance
 const AXIOS_CLIENT = axios.create({
     baseURL: process.env.REACT_APP_BASE_URL,
@@ -26,7 +32,7 @@ const AXIOS_CLIENT = axios.create({
 AXIOS_CLIENT.interceptors.request.use(
     (config) => {
         config.headers!.TokenCybersoft = API_CONFIG.tokenCybersoft;
-        config.headers!.token = API_CONFIG.authToken;
+        config.headers!.token = userToken;
 
         let user = localStorage.getItem('user');
         if (user) {

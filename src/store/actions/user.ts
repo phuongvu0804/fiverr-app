@@ -1,35 +1,34 @@
 //Others
 import userApi from '@/api/userApi';
-import { signInActionType } from '../constants/signIn';
+import { getUserDataActionType } from '../constants/user';
 import { ActionProps } from './types';
 
 export const actGetUserRequest = (): ActionProps => {
     return {
-        type: signInActionType.signInRequest,
+        type: getUserDataActionType.getUserDataRequest,
     };
 };
 
 export const actGetUserSuccess = (data: any): ActionProps => {
     return {
-        type: signInActionType.signInSuccess,
+        type: getUserDataActionType.getUserDataSuccess,
         payload: data,
     };
 };
 
 export const actGetUserFail = (error: any): ActionProps => {
     return {
-        type: signInActionType.signInFail,
+        type: getUserDataActionType.getUserDataFail,
         payload: error,
     };
 };
 
-export const actSignIn = (userInfo: any) => {
+const actGetUser = (userId: number) => {
     return (dispatch: any) => {
         dispatch(actGetUserRequest());
 
-        const fetchUserSignIn = async () => {
-            const result = await userApi.getUserInfo(userInfo);
-
+        const fetchUserData = async () => {
+            const result = await userApi.getUserInfo(userId);
             try {
                 dispatch(actGetUserSuccess(result.data.content));
             } catch (error) {
@@ -37,6 +36,8 @@ export const actSignIn = (userInfo: any) => {
             }
         };
 
-        fetchUserSignIn();
+        fetchUserData();
     };
 };
+
+export default actGetUser;

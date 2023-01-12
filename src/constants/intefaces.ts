@@ -1,3 +1,5 @@
+import { AlertColor } from '@mui/material';
+
 export interface ButtonType {
     name: string;
     href?: string | null;
@@ -62,4 +64,11 @@ export interface UserDataProps {
 export interface UserDataTokenProps {
     token: string;
     user: UserDataProps;
+}
+
+export interface MUIAlertProps {
+    state: boolean;
+    type: AlertColor | undefined;
+    title: string;
+    content: string;
 }

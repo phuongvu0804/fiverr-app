@@ -3,7 +3,7 @@ import React from 'react';
 
 interface Props {
     children: string;
-    className: string;
+    className?: string;
     leftIcon?: JSX.Element;
     rightIcon?: JSX.Element;
     setVisible: React.Dispatch<React.SetStateAction<number>>;

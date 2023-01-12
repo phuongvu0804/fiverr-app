@@ -1,4 +1,4 @@
-import { signInActionType } from '../constants/signIn';
+import { getUserDataActionType } from '../constants/user';
 import { StateProps } from './types';
 
 const INITIAL_STATE: StateProps = {
@@ -7,21 +7,21 @@ const INITIAL_STATE: StateProps = {
     error: null,
 };
 
-const authReducer = (state: StateProps = INITIAL_STATE, action: any) => {
+const userReducer = (state: StateProps = INITIAL_STATE, action: any) => {
     switch (action.type) {
-        case signInActionType.signInRequest:
+        case getUserDataActionType.getUserDataRequest:
             return {
                 loading: true,
                 data: null,
                 error: null,
             };
-        case signInActionType.signInSuccess:
+        case getUserDataActionType.getUserDataSuccess:
             return {
                 loading: false,
                 data: action.payload,
                 error: null,
             };
-        case signInActionType.signInFail:
+        case getUserDataActionType.getUserDataFail:
             return {
                 loading: false,
                 data: null,
@@ -32,4 +32,4 @@ const authReducer = (state: StateProps = INITIAL_STATE, action: any) => {
     }
 };
 
-export default authReducer;
+export default userReducer;

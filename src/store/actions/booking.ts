@@ -1,5 +1,6 @@
-import { jobApi } from '@/api';
+import bookingApi from '@/api/booking';
 import { BookingInfo } from '@/assets/models/BookingInfor';
+import { SUCCESS_ALERT } from '@/pages/JobDetailsPage/constants';
 import { BookingActionType } from '../constants/booking';
 
 export const actBookingRequest = () => {
@@ -22,20 +23,57 @@ export const actBookingFail = (error: any) => {
     };
 };
 
-export const BookingJob = (service: any) => {
+export const BookingJob = (bookingInfo = new BookingInfo()) => {
     return (dispatch: any) => {
         dispatch(actBookingRequest());
 
         const fetchBooking = async () => {
-            const result = await jobApi.bookService(service);
-
+            const result = await bookingApi.bookService(bookingInfo);
             try {
-                dispatch(actBookingSuccess(result));
+                dispatch(actBookingSuccess(result.data.content));
+                return SUCCESS_ALERT;
             } catch (error) {
                 dispatch(actBookingFail(error));
             }
         };
 
         fetchBooking();
+    };
+};
+
+export const actGetBookingListRequest = () => {
+    return {
+        type: BookingActionType.getBookingListResquest,
+    };
+};
+
+export const actGetBookingListSuccess = (data: any) => {
+    return {
+        type: BookingActionType.getBookingListSuccess,
+        payload: data,
+    };
+};
+
+export const actGetBookingListFail = (error: any) => {
+    return {
+        type: BookingActionType.getBookingListFail,
+        payload: error,
+    };
+};
+
+export const getBookingList = () => {
+    return (dispatch: any) => {
+        dispatch(actGetBookingListRequest());
+
+        const fetchBookingList = async () => {
+            const result = await bookingApi.getBookingList();
+            try {
+                dispatch(actGetBookingListSuccess(result.data.content));
+            } catch (error) {
+                dispatch(actGetBookingListFail(error));
+            }
+        };
+
+        fetchBookingList();
     };
 };

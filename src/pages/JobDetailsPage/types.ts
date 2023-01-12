@@ -16,3 +16,8 @@ export interface ReviewProps {
     saoBinhLuan: number;
     tenNguoiBinhLuan: string;
 }
+
+export interface AddInfoProps {
+    icon: JSX.Element;
+    content: string;
+}

@@ -2,7 +2,7 @@ import { Button } from '@mui/material';
 
 const NoContentCard = () => {
     return (
-        <section className="profile__empty-gig-card">
+        <div className="profile__empty-gig-card">
             <div className="gig__img gig__img--no-gig">
                 <svg width="252" height="104" viewBox="0 0 252 104" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -136,7 +136,7 @@ const NoContentCard = () => {
             </div>
             <p>It seems that you don't have any active Gigs</p>
             <Button className="contained-primary-btn">Create a new Gig</Button>
-        </section>
+        </div>
     );
 };
 

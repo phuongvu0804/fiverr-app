@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
-import bookingReducer from './bookingReducer';
+import booking from './booking';
 import jobReducer from './jobReducer';
 import userReducer from './user';
 
 const rootReducer = combineReducers({
     jobCategory: jobReducer,
-    booking: bookingReducer,
+    booking,
     user: userReducer,
 });
 

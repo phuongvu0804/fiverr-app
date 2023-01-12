@@ -1,7 +1,9 @@
+import { MUIAlertProps } from '@/constants/intefaces';
+import { AccessTime, Autorenew } from '@mui/icons-material';
 import { PostProps } from '../JobListPage/types';
-import { ReviewProps } from './types';
+import { AddInfoProps, NavbarItemProps, ReviewProps } from './types';
 
-export const NAVBAR_LIST = [
+export const NAVBAR_LIST: NavbarItemProps[] = [
     {
         name: 'Overview',
         href: 'overview',
@@ -52,5 +54,30 @@ export const INIT_REVIEW_DATA: ReviewProps[] = [
         noiDung: '',
         saoBinhLuan: 0,
         tenNguoiBinhLuan: '',
+    },
+];
+
+export const SUCCESS_ALERT: MUIAlertProps = {
+    state: true,
+    type: 'success',
+    title: 'Success',
+    content: 'Congratulations, you have successfully booked the service',
+};
+
+export const FAIL_ALERT: MUIAlertProps = {
+    state: true,
+    type: 'error',
+    title: 'Error',
+    content: 'Oops! Something went wrong, you cannot book this service at this time. Please try again later!',
+};
+
+export const ADDITIONAL_INFO: AddInfoProps[] = [
+    {
+        icon: <AccessTime />,
+        content: '2 Days Delivery',
+    },
+    {
+        icon: <Autorenew />,
+        content: '7 Revisions',
     },
 ];
