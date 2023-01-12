@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 //Material UI
 import { Button, Drawer } from '@mui/material';
@@ -26,6 +26,7 @@ import { LOCAL_STORAGE_USER_NAME } from '@/constants/constants';
 import SideBarMobile from './components/SideBarMobile';
 
 const HeaderContent = () => {
+    const navigate = useNavigate();
     const USER_INFO: UserDataProps = useAppSelector((state) => state.user.data);
     const [drawer, setDrawer] = useState(false);
     const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
@@ -75,7 +76,7 @@ const HeaderContent = () => {
                         onOpenUserMenu={(e) => handleOpenUserMenu(e, setAnchorElUser)}
                         onCloseUserMenu={() => handleCloseUserMenu(setAnchorElUser)}
                         onAnchorElUser={anchorElUser}
-                        onSignOut={() => handleUserSignOut(setIsSignedIn, setButtonListData)}
+                        onSignOut={() => handleUserSignOut(setIsSignedIn, setButtonListData, navigate)}
                     />
                 )}
             </div>

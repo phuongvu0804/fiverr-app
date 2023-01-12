@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 //Material UI
 import { Avatar, Button, Typography } from '@mui/material';
@@ -8,6 +8,7 @@ import { Box } from '@mui/system';
 import { handleUserSignOut, renderActionButtonList } from '../../constants';
 
 const SideBarMobile = ({ userFirstLetter, userName, buttonListData, setIsSignedIn, setButtonListData }: any) => {
+    const navigate = useNavigate();
     return (
         <div className="sidebar">
             <Box
@@ -27,7 +28,7 @@ const SideBarMobile = ({ userFirstLetter, userName, buttonListData, setIsSignedI
             {renderActionButtonList(buttonListData)}
             <Button
                 className="header__btn header__btn--text"
-                onClick={() => handleUserSignOut(setIsSignedIn, setButtonListData)}
+                onClick={() => handleUserSignOut(setIsSignedIn, setButtonListData, navigate)}
             >
                 Sign Out
             </Button>

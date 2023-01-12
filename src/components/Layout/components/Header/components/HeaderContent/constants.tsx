@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, NavigateFunction } from 'react-router-dom';
 
 //Components
 import OutlineButton from '@/components/OutlineButton';
@@ -144,10 +144,12 @@ export const renderMobileMenu = (
 export const handleUserSignOut = (
     setIsSignedIn: React.Dispatch<React.SetStateAction<boolean>>,
     setButtonListData: React.Dispatch<React.SetStateAction<ActionType[]>>,
+    navigate: NavigateFunction,
 ) => {
     localStorage.removeItem('fiver_user');
 
     setIsSignedIn(false);
 
     setButtonListData(NO_USER_ACTION_BUTTON_LIST);
+    navigate('/');
 };
