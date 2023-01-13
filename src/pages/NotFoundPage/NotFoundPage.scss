@@ -80,6 +80,23 @@ form.not-found__search-field {
             margin: 2rem 0 0;
         }
     }
+
+    form.not-found__search-field {
+        flex-direction: row;
+        > div {
+            display: flex;
+            flex: 1;
+            margin-bottom: 0;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .search-field__btn {
+            width: unset;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+    }
 }
 
 //Responsive for tablet devices
