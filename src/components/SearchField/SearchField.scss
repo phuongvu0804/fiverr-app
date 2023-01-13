@@ -22,3 +22,26 @@ form.search-field__wrapper {
     font-size: 2.6rem;
     fill: var(--gray-text);
 }
+
+//Responsive for mobile and tablet devices
+@media (max-width: 1023px) {
+    form.search-field__wrapper {
+        display: flex;
+        flex-direction: column;
+        background-color: transparent;
+        box-shadow: none;
+
+        > div {
+            display: flex;
+            background-color: var(--white);
+            width: 100%;
+            margin-bottom: 1.2rem;
+            border-radius: 0.4rem;
+        }
+    }
+
+    .search-field__input,
+    .search-field__btn {
+        width: 100%;
+    }
+}

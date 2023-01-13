@@ -11,15 +11,7 @@ import './Banner.scss';
 import BackGroundSlick from './components/BackGroundSlick';
 
 const Banner = ({ data }: { data: BgItemType[] }) => {
-    const navigate = useNavigate();
     const [searchValue, setSearchValue] = useState('');
-
-    const handleSubmitSearch = (e: React.SyntheticEvent) => {
-        e.preventDefault();
-        if (searchValue !== '') {
-            navigate(`/job-list/${searchValue}`);
-        }
-    };
 
     return (
         <div className="home__banner">
@@ -36,28 +28,9 @@ const Banner = ({ data }: { data: BgItemType[] }) => {
                     </h2>
 
                     {/* Search field for PC */}
-                    <SearchField
-                        className="banner__search hide-on-tablet-mobile"
-                        searchValue={searchValue}
-                        onSearchValue={setSearchValue}
-                    >
+                    <SearchField className="banner__search" searchValue={searchValue} onSearchValue={setSearchValue}>
                         Search
                     </SearchField>
-
-                    {/* Search field for tablet + mobile */}
-                    <div className="banner__search-tablet-mobile hide-on-pc display-tablet-mobile">
-                        <SearchField
-                            className="banner__search"
-                            searchBtn={false}
-                            searchValue={searchValue}
-                            onSearchValue={setSearchValue}
-                        >
-                            Search
-                        </SearchField>
-                        <Button className="banner__search-btn" variant="contained" onClick={handleSubmitSearch}>
-                            Search
-                        </Button>
-                    </div>
                 </div>
             </div>
         </div>

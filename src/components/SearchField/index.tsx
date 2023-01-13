@@ -9,6 +9,7 @@ import { Button } from '@mui/material';
 import './SearchField.scss';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Box } from '@mui/system';
 
 interface Props {
     className?: string;
@@ -35,16 +36,18 @@ const SearchField = ({ className, children, searchBtn = true, searchValue, onSea
             sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
             onSubmit={handleSubmitSearch}
         >
-            <IconButton className="search-field__icon" type="button" sx={{ p: '10px' }} aria-label="search">
-                <SearchIcon />
-            </IconButton>
+            <Box>
+                <IconButton className="search-field__icon" type="button" sx={{ p: '10px' }} aria-label="search">
+                    <SearchIcon />
+                </IconButton>
 
-            <InputBase
-                className="search-field__input"
-                sx={{ ml: 1, flex: 1 }}
-                placeholder='Try "building mobile app"'
-                onChange={(e) => onSearchValue(e.target.value)}
-            />
+                <InputBase
+                    className="search-field__input"
+                    sx={{ ml: 1, flex: 1 }}
+                    placeholder='Try "building mobile app"'
+                    onChange={(e) => onSearchValue(e.target.value)}
+                />
+            </Box>
 
             {searchBtn && (
                 <Button type="submit" className="search-field__btn" variant="contained">
