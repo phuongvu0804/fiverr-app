@@ -1,3 +1,4 @@
+import { CustomedErrorProps } from '@/api/config/errorHandling';
 import { AlertColor } from '@mui/material';
 
 export interface ButtonType {
@@ -69,8 +70,36 @@ export interface UserDataTokenProps {
 export interface MUIAlertProps {
     state: boolean;
     type: AlertColor | undefined;
-    title: string;
+    title: string | number;
     content: string;
 }
 
 export type TimeOutIdType = number | undefined;
+
+export interface LogErrorProps {
+    type: number;
+    customedError: CustomedErrorProps;
+}
+
+export interface JobDetailsProps {
+    danhGia: number;
+    giaTien: number;
+    hinhAnh: string;
+    id: number;
+    maChiTietLoaiCongViec: number;
+    moTa: string;
+    moTaNgan: string;
+    nguoiTao: number;
+    saoCongViec: number;
+    tenCongViec: string;
+}
+
+export interface PostProps {
+    avatar: string;
+    congViec: JobDetailsProps;
+    id: number;
+    tenChiTietLoai: string;
+    tenLoaiCongViec: string;
+    tenNguoiTao: string;
+    tenNhomChiTietLoai: string;
+}

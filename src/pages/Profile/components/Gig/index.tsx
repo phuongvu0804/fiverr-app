@@ -1,5 +1,6 @@
 //Components
 import { TimeOutIdType } from '@/constants/intefaces';
+import { BookingItemProps } from '../../types';
 import GigCard from './components/GigCard';
 import NoContentCard from './components/NoContentCard';
 
@@ -7,7 +8,7 @@ import NoContentCard from './components/NoContentCard';
 import './Gig.scss';
 
 interface Props {
-    data: [];
+    data: BookingItemProps[];
     loading: boolean;
     timeOutId: TimeOutIdType;
 }

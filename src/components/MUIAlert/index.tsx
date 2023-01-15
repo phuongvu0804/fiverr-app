@@ -1,4 +1,3 @@
-import React from 'react';
 import Alert from '@mui/material/Alert';
 import { AlertTitle, Dialog } from '@mui/material';
 import { MUIAlertProps, TimeOutIdType } from '@/constants/intefaces';
@@ -12,6 +11,7 @@ interface Props {
 
 const MUIAlert = ({ openAlert, timeOutId }: Props) => {
     const dispatch = useAppDispatch();
+
     const TYPE = useAppSelector((state) => state.alert.type);
 
     const closeAlert = () => {

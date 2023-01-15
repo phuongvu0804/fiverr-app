@@ -1,5 +1,4 @@
-import { MUIAlertProps, TimeOutIdType } from '@/constants/intefaces';
-import { JobDetailsProps } from '../JobListPage/types';
+import { JobDetailsProps, MUIAlertProps, TimeOutIdType } from '@/constants/intefaces';
 
 export interface LearnCardDataProps {
     logo: any;

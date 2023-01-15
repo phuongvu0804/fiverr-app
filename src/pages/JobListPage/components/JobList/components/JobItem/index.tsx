@@ -7,10 +7,10 @@ import { Grid, IconButton } from '@mui/material';
 
 //Others
 import { handleInitialLikedState, handleLike } from '@/constants/functions';
-import { PostProps } from '../../../../types';
 
 //Others
 import './JobItem.scss';
+import { PostProps } from '@/constants/intefaces';
 
 interface Props {
     data: PostProps;

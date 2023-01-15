@@ -1,6 +1,5 @@
-import { MUIAlertProps } from '@/constants/intefaces';
+import { MUIAlertProps, PostProps } from '@/constants/intefaces';
 import { AccessTime, Autorenew } from '@mui/icons-material';
-import { PostProps } from '../JobListPage/types';
 import { AddInfoProps, NavbarItemProps, ReviewProps } from './types';
 
 export const NAVBAR_LIST: NavbarItemProps[] = [

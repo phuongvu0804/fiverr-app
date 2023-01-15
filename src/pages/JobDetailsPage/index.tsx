@@ -18,14 +18,17 @@ import JobDetailsPageSkeleton from './components/JobDetailsPageSkeleton';
 import { INIT_POST_DATA, INIT_REVIEW_DATA, NAVBAR_LIST } from './constants';
 import './JobDetailsPage.scss';
 import { NavbarItemProps, ReviewProps } from './types';
-import { PostProps } from '@/pages/JobListPage/types';
 import { jobApi } from '@/api';
 import reviewApi from '@/api/reviewApi';
 import { useAppSelector } from '@/hooks';
+import { callApi } from '@/api/config/errorHandling';
+import { LogErrorProps, PostProps } from '@/constants/intefaces';
+import useLogError from '@/hooks/useLogError';
 
 const JobDetailsPage = () => {
     let timeOutId;
     const { id } = useParams();
+    const logError = useLogError();
     const openAlert = useAppSelector((state) => state.alert.data);
     const [data, setData] = useState<PostProps>(INIT_POST_DATA);
     const [reviews, setReviews] = useState<ReviewProps[]>(INIT_REVIEW_DATA);
@@ -34,6 +37,10 @@ const JobDetailsPage = () => {
     const [loading, setLoading] = useState<boolean>(false);
     const [likedPosts, setLikedPosts] = useState<number[]>([]);
 
+    const handleError = (error: LogErrorProps) => {
+        setLoading(false);
+        logError(error);
+    };
     //Listen to the scrolling event
     useEffect(() => {
         let OFFSET_Y = 0;
@@ -69,37 +76,43 @@ const JobDetailsPage = () => {
         };
     }, []);
 
-    //Fetch Job Details' data
+    //Fetch Job Details
     useEffect(() => {
         const controller = new AbortController();
 
-        const fetchJobDetails = async (jobId: string) => {
-            setLoading(false);
-            const result = await jobApi.getJobDetails(jobId);
-            try {
-                setLoading(true);
-                setData(result.data.content[0]);
-            } catch (error) {
-                setLoading(true);
-                console.log(error);
-            }
-        };
+        if (id) {
+            callApi(
+                jobApi.getJobDetails(id),
+                (result: any) => {
+                    setLoading(false);
+                    setData(result[0]);
+                },
+                (error: LogErrorProps) => {
+                    handleError(error);
+                },
+            );
+        }
 
-        const fetchJobReviews = async (jobId: string) => {
-            setLoading(false);
-            const result = await reviewApi.getReviewsbyJob(jobId);
-            try {
-                setLoading(true);
-                setReviews(result.data.content);
-            } catch (error) {
-                setLoading(true);
-                console.log(error);
-            }
+        return () => {
+            controller.abort();
         };
+    }, []);
+
+    //Fetch Job Reviews
+    useEffect(() => {
+        const controller = new AbortController();
 
         if (id) {
-            fetchJobDetails(id);
-            fetchJobReviews(id);
+            callApi(
+                reviewApi.getReviewsbyJob(id),
+                (result: any) => {
+                    setLoading(false);
+                    setReviews(result);
+                },
+                (error: LogErrorProps) => {
+                    handleError(error);
+                },
+            );
         }
 
         return () => {
@@ -116,7 +129,7 @@ const JobDetailsPage = () => {
         }
     }, []);
 
-    return loading ? (
+    return !loading ? (
         //Page's content
         <div id="job-details-page" className="padding-top-page">
             <Header likedPosts={likedPosts} postId={data.id} data={navBarData} scrollDown={scrollDown} />

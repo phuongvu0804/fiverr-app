@@ -4,9 +4,9 @@ import JobItemSkeleton from './components/JobItem/JobItemSkeleton';
 
 //Material UI
 import { Grid } from '@mui/material';
+import { PostProps } from '@/constants/intefaces';
 
 //Others
-import { PostProps } from '../../types';
 
 interface Props {
     loading: boolean;

@@ -1,5 +1,7 @@
 //Others
+import { callApi } from '@/api/config/errorHandling';
 import userApi from '@/api/userApi';
+import { LogErrorProps, UserDataProps } from '@/constants/intefaces';
 import { getUserDataActionType } from '../constants/user';
 import { ActionProps } from './types';
 
@@ -27,16 +29,13 @@ const actGetUser = (userId: number) => {
     return (dispatch: any) => {
         dispatch(actGetUserRequest());
 
-        const fetchUserData = async () => {
-            const result = await userApi.getUserInfo(userId);
-            try {
-                dispatch(actGetUserSuccess(result.data.content));
-            } catch (error) {
-                dispatch(actGetUserFail(error));
-            }
-        };
-
-        fetchUserData();
+        callApi(
+            userApi.getUserInfo(userId),
+            (response: UserDataProps) => {
+                dispatch(actGetUserSuccess(response));
+            },
+            (error: LogErrorProps) => dispatch(actGetUserFail(error)),
+        );
     };
 };
 

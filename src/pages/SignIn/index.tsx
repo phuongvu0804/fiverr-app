@@ -18,10 +18,11 @@ import authApi from '@/api/authApi';
 import useAuth from '@/hooks/useAuth';
 import { SIGN_IN_SCHEMA } from '@/validators/authValidator';
 import { FORM_INPUT_LIST, INITIAL_VALUES } from './constants';
-import { signInValuesProps } from './types';
 import { renderTextInputs } from '@/components/Layout/AuthenLayout/constants';
 import { useAppDispatch } from '@/hooks';
 import { actGetUserFail, actGetUserRequest, actGetUserSuccess } from '@/store/actions/user';
+import { callApi } from '@/api/config/errorHandling';
+import { LogErrorProps, UserDataTokenProps } from '@/constants/intefaces';
 
 const SignIn = () => {
     const navigate = useNavigate();
@@ -37,32 +38,29 @@ const SignIn = () => {
         validationSchema: SIGN_IN_SCHEMA,
         onSubmit: (values) => {
             setLoading(true);
+            dispatch(actGetUserRequest());
 
-            const handleSignIn = async (formValues: signInValuesProps) => {
-                dispatch(actGetUserRequest());
-
-                try {
-                    const result = await authApi.signIn(formValues);
+            callApi(
+                authApi.signIn(values),
+                (response: UserDataTokenProps) => {
                     //Dispatch user info (not token) to redux store
-                    dispatch(actGetUserSuccess(result.data.content.user));
+                    dispatch(actGetUserSuccess(response.user));
                     //Save user data to local storage
-                    auth.signin(result.data.content);
+                    auth.signin(response);
 
                     navigate('/');
-                } catch (error: any) {
+                },
+                (error: LogErrorProps) => {
                     setOpenDialog(true);
                     setDialogContent({
                         type: NotiTypes.ERROR,
                         title: 'Error',
-                        content: error.response.data.content || 'Oops! Something went wrong. Please try again later.',
+                        content: error.customedError.message || 'Oops! Something went wrong. Please try again later.',
                     });
                     dispatch(actGetUserFail(error));
-                } finally {
-                    setLoading(false);
-                }
-            };
-
-            handleSignIn(values);
+                },
+                () => setLoading(false),
+            );
         },
     });
 

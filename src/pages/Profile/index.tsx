@@ -13,6 +13,8 @@ import './Profile.scss';
 import { DATA_INIT_STATE, LEARN_CARD_DATA } from './constants';
 import { getBookingList } from '@/store/actions/booking';
 import MUIAlert from '@/components/MUIAlert';
+import useLogError from '@/hooks/useLogError';
+import { BookingItemProps } from './types';
 
 const Profile = () => {
     let timeOutId;
@@ -24,15 +26,17 @@ const Profile = () => {
     const ALERT = useAppSelector((state) => state.alert.data);
     const ALERT_TYPE = useAppSelector((state) => state.alert.type);
     const dispatch = useAppDispatch();
+    const logError = useLogError();
 
     const [data, setData] = useState<UserDataProps>(DATA_INIT_STATE);
-    const [filteredBookingList, setFilteredBookingList] = useState<[]>([]);
+    const [filteredBookingList, setFilteredBookingList] = useState<BookingItemProps[]>([]);
     const [visible, setVisible] = useState<number>(VISIBLE_NUMBER);
     const [loading, setLoading] = useState(false);
 
+    //Fetch booking service data
     useEffect(() => {
         const controller = new AbortController();
-        dispatch(getBookingList());
+        dispatch(getBookingList(logError));
 
         LOADING && setLoading(false);
 

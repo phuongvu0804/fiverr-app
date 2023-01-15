@@ -1,7 +1,10 @@
 import bookingApi from '@/api/booking';
+import { callApi } from '@/api/config/errorHandling';
 import { BookingInfo } from '@/assets/models/BookingInfor';
-import { FAIL_BOOKING_ALERT, SUCCESS_BOOKING_ALERT } from '@/pages/JobDetailsPage/constants';
+import { LogErrorProps } from '@/constants/intefaces';
+import { SUCCESS_BOOKING_ALERT } from '@/pages/JobDetailsPage/constants';
 import { FAIL_DELETE_ALERT, SUCCESS_DELETE_ALERT } from '@/pages/Profile/constants';
+import { BookingItemProps } from '@/pages/Profile/types';
 import { BookingActionType } from '../constants/booking';
 import { actOpenAlert } from './alert';
 
@@ -25,23 +28,35 @@ export const actBookingFail = (error: any) => {
     };
 };
 
-export const BookingJob = (bookingInfo = new BookingInfo()) => {
+export const BookingJob = (bookingInfo = new BookingInfo(), logError: (error: LogErrorProps) => false | void) => {
     return (dispatch: any) => {
         dispatch(actBookingRequest());
 
-        const fetchBooking = async () => {
-            const result = await bookingApi.bookService(bookingInfo);
+        // const fetchBooking = async () => {
+        //     const result = await bookingApi.bookService(bookingInfo);
 
-            try {
-                dispatch(actBookingSuccess(result.data.content));
+        //     try {
+        //         dispatch(actBookingSuccess(result.data.content));
+        //         dispatch(actOpenAlert(SUCCESS_BOOKING_ALERT));
+        //     } catch (error) {
+        //         dispatch(actBookingFail(error));
+        //         dispatch(actOpenAlert(FAIL_BOOKING_ALERT));
+        //     }
+        // };
+
+        // fetchBooking();
+
+        callApi(
+            bookingApi.bookService(bookingInfo),
+            (response: any) => {
+                dispatch(actBookingSuccess(response));
                 dispatch(actOpenAlert(SUCCESS_BOOKING_ALERT));
-            } catch (error) {
+            },
+            (error: LogErrorProps) => {
                 dispatch(actBookingFail(error));
-                dispatch(actOpenAlert(FAIL_BOOKING_ALERT));
-            }
-        };
-
-        fetchBooking();
+                logError(error);
+            },
+        );
     };
 };
 
@@ -65,20 +80,22 @@ export const actGetBookingListFail = (error: any) => {
     };
 };
 
-export const getBookingList = () => {
+export const getBookingList = (logError: (error: LogErrorProps) => false | void) => {
     return (dispatch: any) => {
         dispatch(actGetBookingListRequest());
 
-        const fetchBookingList = async () => {
-            const result = await bookingApi.getBookingList();
-            try {
-                dispatch(actGetBookingListSuccess(result.data.content));
-            } catch (error) {
+        callApi(
+            bookingApi.getBookingList(),
+            (result: any) => {
+                console.log(result);
+                dispatch(actGetBookingListSuccess(result));
+            },
+            (error: LogErrorProps) => {
+                //Dispatch error to redux and display the error message to user
                 dispatch(actGetBookingListFail(error));
-            }
-        };
-
-        fetchBookingList();
+                logError(error);
+            },
+        );
     };
 };
 
@@ -106,17 +123,17 @@ export const deleteBooking = (id: Number) => {
     return (dispatch: any) => {
         dispatch(actDeleteBookingRequest());
 
-        const fetchDeleteBooking = async () => {
-            const result = await bookingApi.deleteBooking(id);
-            try {
-                dispatch(actDeleteBookingSuccess(result.data.content));
+        callApi(
+            bookingApi.deleteBooking(id),
+            (result: BookingItemProps[]) => {
+                dispatch(actDeleteBookingSuccess(result));
                 dispatch(actOpenAlert(SUCCESS_DELETE_ALERT));
-            } catch (error) {
+            },
+            (error: LogErrorProps) => {
+                //Dispatch error to redux and display the error alert to user
                 dispatch(actDeleteBookingFail(error));
                 dispatch(actOpenAlert(FAIL_DELETE_ALERT));
-            }
-        };
-
-        fetchDeleteBooking();
+            },
+        );
     };
 };

@@ -1,6 +1,5 @@
+import { lazy } from 'react';
 import { DefaultLayout, HeaderFooterLayout } from '@/components/Layout';
-import BlankLayout from '@/components/Layout/BlankLayout';
-import { Fragment, lazy } from 'react';
 
 //Pages
 const HomePage = lazy(() => import('@/pages/Home'));

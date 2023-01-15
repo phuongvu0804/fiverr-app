@@ -104,6 +104,12 @@
 @media (max-width: 739px) {
     .header__content {
         padding: 15px 24px;
+
+        .header__logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
     }
 
     .header__drawer-btn {
@@ -111,12 +117,6 @@
             font-size: 4rem;
             color: var(--light-gray);
         }
-    }
-
-    .header__logo {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
     }
 
     .header__action-list--mobile {
@@ -142,7 +142,6 @@
             border: 1px solid var(--primary);
             padding: 8px 24px;
             margin-bottom: 20px;
-            // text-align: center;
 
             &:hover {
                 background-color: var(--white);

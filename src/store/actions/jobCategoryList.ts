@@ -1,4 +1,7 @@
 //Others
+import { jobApi } from '@/api';
+import { callApi } from '@/api/config/errorHandling';
+import { JobCategoryProps, LogErrorProps } from '@/constants/intefaces';
 import { JobCategoryActionType } from '../constants/jobCategoryList';
 import { ActionProps } from './types';
 
@@ -22,20 +25,20 @@ export const actGetJobCategoryListFail = (error: any): ActionProps => {
     };
 };
 
-// export const getJobCategoryList = (): ThunkAction<void, RootState, unknown, AnyAction> => {
-//     return (dispatch: Dispatch<any>) => {
-//         dispatch(actGetJobCategoryListRequest());
+export const getJobCategoryList = (setJobCategoryData: React.Dispatch<React.SetStateAction<JobCategoryProps[]>>) => {
+    return (dispatch: any) => {
+        dispatch(actGetJobCategoryListRequest());
 
-//         const fetchJobCategoryList = async () => {
-//             const result = await jobApi.getJobCategoryList();
-
-//             try {
-//                 actGetJobCategoryListSuccess(result);
-//             } catch (error) {
-//                 actGetJobCategoryListFail(error);
-//             }
-//         };
-
-//         fetchJobCategoryList();
-//     };
-// };
+        callApi(
+            jobApi.getJobCategoryList(),
+            (resp: JobCategoryProps[]) => {
+                dispatch(actGetJobCategoryListSuccess(resp));
+                setJobCategoryData(resp);
+            },
+            (error: LogErrorProps) => {
+                //Not display out
+                dispatch(actGetJobCategoryListFail(error.customedError));
+            },
+        );
+    };
+};

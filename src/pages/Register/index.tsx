@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 
 //Material UI
-import { Button, FormControl, FormHelperText, InputLabel, MenuItem, Select, TextField } from '@mui/material';
+import { FormControl, FormHelperText, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import { DesktopDatePicker } from '@mui/x-date-pickers';
 import LoadingButton from '@mui/lab/LoadingButton';
 
@@ -15,7 +15,6 @@ import AuthenDialog from '../../components/Layout/AuthenLayout/components/Authen
 import { INITIAL_VALUES, TEXT_INPUT_LIST } from './constants';
 import { SIGN_UP_SCHEMA } from '@/validators/authValidator';
 import authApi from '@/api/authApi';
-import { SignUpValuesProps } from './types';
 import useAuth from '@/hooks/useAuth';
 import {
     INIT_DIALOG_VALUE,
@@ -23,9 +22,14 @@ import {
     NotiTypes,
 } from '@/components/Layout/AuthenLayout/components/AuthenDialog/constants';
 import { renderTextInputs } from '@/components/Layout/AuthenLayout/constants';
+import { callApi } from '@/api/config/errorHandling';
+import { LogErrorProps, UserDataProps, UserDataTokenProps } from '@/constants/intefaces';
+import { actGetUserFail, actGetUserSuccess } from '@/store/actions/user';
+import { useAppDispatch } from '@/hooks';
 
 const Register = () => {
     const auth = useAuth();
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
     const [gender, setGender] = useState('');
@@ -48,35 +52,55 @@ const Register = () => {
         onSubmit: (values) => {
             setLoading(true);
 
-            const handleSignUp = async (formValues: SignUpValuesProps) => {
-                try {
-                    await authApi.signUp(formValues);
-
-                    //Save user data to local storage
-                    auth.signin(formValues);
-
+            callApi(
+                authApi.signUp(values),
+                (response: UserDataProps) => {
                     setOpenDialog(true);
 
                     setDialogContent({
                         ...INIT_DIALOG_VALUE,
-                        content: `Congratulations ${formValues.name}! You have successfully created an account`,
+                        content: `Congratulations ${values.name}! You have successfully created an account`,
                     });
 
                     //Close noti automatically after 5s
                     setTimeout(() => handleAutoCloseSuccessNoti(), 5000);
-                } catch (error: any) {
+
+                    //Sign in user automatically
+                    callApi(
+                        authApi.signIn(values),
+                        (response: UserDataTokenProps) => {
+                            console.log(response);
+                            //Dispatch user info (not token) to redux store
+                            dispatch(actGetUserSuccess(response.user));
+                            //Save user data to local storage
+                            auth.signin(response);
+
+                            navigate('/');
+                        },
+                        (error: LogErrorProps) => {
+                            setOpenDialog(true);
+                            setDialogContent({
+                                type: NotiTypes.ERROR,
+                                title: 'Error',
+                                content:
+                                    error.customedError.message ||
+                                    'Oops! Something went wrong. Please try again later.',
+                            });
+                            dispatch(actGetUserFail(error));
+                        },
+                    );
+                },
+                (error: LogErrorProps) => {
                     setOpenDialog(true);
                     setDialogContent({
                         type: NotiTypes.ERROR,
                         title: 'Error',
-                        content: error.response.data.content || 'Oops! Something went wrong. Please try again later.',
+                        content: error.customedError.message || 'Oops! Something went wrong. Please try again later.',
                     });
-                } finally {
-                    setLoading(false);
-                }
-            };
-
-            handleSignUp(values);
+                    dispatch(actGetUserFail(error));
+                },
+                () => setLoading(false),
+            );
         },
     });
 

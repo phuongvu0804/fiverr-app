@@ -5,6 +5,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Button, Drawer } from '@mui/material';
 import { Box } from '@mui/system';
 import MenuIcon from '@mui/icons-material/Menu';
+
+//Components
+import LogoBtn from '@/components/LogoBtn';
+import UserDropDownBtn from './components/UserDropDownBtn';
+
+//Others
+import './HeaderContent.scss';
 import {
     ActionType,
     handleCloseUserMenu,
@@ -16,13 +23,6 @@ import {
     toggleDrawer,
     WITH_USER_ACTION_BUTTON_LIST,
 } from './constants';
-
-//Components
-import LogoBtn from '@/components/LogoBtn';
-import UserDropDownBtn from './components/UserDropDownBtn';
-
-//Others
-import './HeaderContent.scss';
 import { useAppSelector } from '@/hooks';
 import { LOCAL_STORAGE_USER_NAME } from '@/constants/constants';
 import { UserDataProps } from '@/constants/intefaces';

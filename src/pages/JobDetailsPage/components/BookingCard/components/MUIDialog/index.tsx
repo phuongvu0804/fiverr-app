@@ -10,9 +10,9 @@ import './MUIDialog.scss';
 import { BookingJob } from '@/store/actions/booking';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { BookingInfo } from '@/assets/models/BookingInfor';
-import { PostProps } from '@/pages/JobListPage/types';
-import { UserDataProps } from '@/constants/intefaces';
+import { PostProps, UserDataProps } from '@/constants/intefaces';
 import { actCloseAlert } from '@/store/actions/alert';
+import useLogError from '@/hooks/useLogError';
 
 interface Props {
     data: PostProps;
@@ -45,6 +45,7 @@ const MUIDialog = ({ openDialog, setOpenDialog, timeOutId, data, hour, totalPric
     ];
 
     const dispatch = useAppDispatch();
+    const logError = useLogError();
     const USER_DATA: UserDataProps = useAppSelector((state) => state.user.data);
 
     const handleConfirm = () => {
@@ -55,7 +56,7 @@ const MUIDialog = ({ openDialog, setOpenDialog, timeOutId, data, hour, totalPric
         bookingInfo.ngayThue = moment().format('DD/MM/YYYY');
         bookingInfo.hoanThanh = true;
 
-        dispatch(BookingJob(bookingInfo));
+        dispatch(BookingJob(bookingInfo, logError));
 
         timeOutId = window.setTimeout(() => {
             dispatch(actCloseAlert());

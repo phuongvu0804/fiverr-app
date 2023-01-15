@@ -1,4 +1,4 @@
-import { PostProps } from '../JobListPage/types';
+import { PostProps } from '@/constants/intefaces';
 
 export interface NavbarItemProps {
     name: string;

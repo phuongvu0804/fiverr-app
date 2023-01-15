@@ -12,7 +12,7 @@ import './JobList.scss';
 import { PRICE_DATA, PriceDataValues, SELLER_FILTER_LIST, SELLER_RATE_DATA } from './constants';
 import { jobApi } from '@/api';
 import { useAppSelector } from '@/hooks';
-import { PostProps } from './types';
+import { PostProps } from '@/constants/intefaces';
 
 const JobListPage = () => {
     //Get params from URLs

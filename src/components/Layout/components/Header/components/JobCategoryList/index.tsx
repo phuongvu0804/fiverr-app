@@ -1,47 +1,22 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
 
 //Others
-import { jobApi } from '@/api';
-import {
-    actGetJobCategoryListFail,
-    actGetJobCategoryListRequest,
-    actGetJobCategoryListSuccess,
-} from '@/store/actions/jobCategoryList';
+import { getJobCategoryList } from '@/store/actions/jobCategoryList';
 import './JobCategoryList.scss';
 import { useAppDispatch } from '@/hooks';
 
 //Components
 import JobCategoryListTablet from './components/JobCategoryListTablet';
 import JobCategoryListPC from './components/JobCategoryListPC';
+import { JobCategoryProps } from '@/constants/intefaces';
 
 const JobCategoryList = () => {
     const dispatch = useAppDispatch();
-
-    const [jobCategoryData, setJobCategoryData] = useState([]);
-
+    const [jobCategoryData, setJobCategoryData] = useState<JobCategoryProps[]>([]);
     useEffect(() => {
         const controller = new AbortController();
 
-        //Fetch list of job categories
-        const getJobCategoryList = () => {
-            dispatch(actGetJobCategoryListRequest());
-
-            const fetchJobCategoryList = async () => {
-                const result = await jobApi.getJobCategoryList();
-                try {
-                    dispatch(actGetJobCategoryListSuccess(result.data.content));
-                    setJobCategoryData(result.data.content);
-                } catch (error) {
-                    dispatch(actGetJobCategoryListFail(error));
-                }
-            };
-
-            fetchJobCategoryList();
-        };
-
-        getJobCategoryList();
-
+        dispatch(getJobCategoryList(setJobCategoryData));
         return () => {
             controller.abort();
         };
