@@ -63,7 +63,7 @@ const validateResponse = (error: AxiosErrorProps) => {
     };
 };
 
-const callApi = async (api: any, onRequest: any, onError?: (error: any) => void, onFinally?: any) => {
+const callApi = (api: any, onRequest: any, onError?: (error: any) => void, onFinally?: any) => {
     api.then((response: ApiResponseProps) => {
         onRequest && onRequest(response.data.content);
     })
