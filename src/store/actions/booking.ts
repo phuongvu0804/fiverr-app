@@ -32,20 +32,6 @@ export const BookingJob = (bookingInfo = new BookingInfo(), logError: (error: Lo
     return (dispatch: any) => {
         dispatch(actBookingRequest());
 
-        // const fetchBooking = async () => {
-        //     const result = await bookingApi.bookService(bookingInfo);
-
-        //     try {
-        //         dispatch(actBookingSuccess(result.data.content));
-        //         dispatch(actOpenAlert(SUCCESS_BOOKING_ALERT));
-        //     } catch (error) {
-        //         dispatch(actBookingFail(error));
-        //         dispatch(actOpenAlert(FAIL_BOOKING_ALERT));
-        //     }
-        // };
-
-        // fetchBooking();
-
         callApi(
             bookingApi.bookService(bookingInfo),
             (response: any) => {
@@ -86,8 +72,7 @@ export const getBookingList = (logError: (error: LogErrorProps) => false | void)
 
         callApi(
             bookingApi.getBookingList(),
-            (result: any) => {
-                console.log(result);
+            (result: BookingItemProps) => {
                 dispatch(actGetBookingListSuccess(result));
             },
             (error: LogErrorProps) => {

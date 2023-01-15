@@ -12,18 +12,21 @@ import './JobList.scss';
 import { PRICE_DATA, PriceDataValues, SELLER_FILTER_LIST, SELLER_RATE_DATA } from './constants';
 import { jobApi } from '@/api';
 import { useAppSelector } from '@/hooks';
-import { PostProps } from '@/constants/intefaces';
+import { LogErrorProps, PostProps } from '@/constants/intefaces';
+import { callApi } from '@/api/config/errorHandling';
+import useLogError from '@/hooks/useLogError';
 
 const JobListPage = () => {
     //Get params from URLs
     let { id } = useParams();
     const JOB_CATEGORY = useAppSelector((state) => state.jobCategory['data']);
+    const logError = useLogError();
 
-    const [data, setData] = useState([]);
-    const [filteredData, setFilteredData] = useState(data);
-    const [loading, setLoading] = useState(false);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage] = useState(12);
+    const [data, setData] = useState<PostProps[]>([]);
+    const [filteredData, setFilteredData] = useState<PostProps[]>(data);
+    const [loading, setLoading] = useState<boolean>(false);
+    const [currentPage, setCurrentPage] = useState<number>(1);
+    const [postsPerPage] = useState<number>(12);
     const [likedPosts, setLikedPosts] = useState<number[]>([]);
 
     const POST_LIST_LENGTH = filteredData?.length;
@@ -39,21 +42,19 @@ const JobListPage = () => {
     //Fetch data of list of jobs
     useEffect(() => {
         const controller = new AbortController();
-        const fetchPosts = async (SEARCHED_VALUE: string) => {
-            setLoading(true);
-            const result = await jobApi.getJobsByName(SEARCHED_VALUE);
 
-            try {
-                setData(result.data.content);
-                setFilteredData(result.data.content);
-
-                setLoading(false);
-            } catch (error) {
-                console.log(error);
-                setLoading(false);
-            }
-        };
-        fetchPosts(SEARCHED_VALUE);
+        setLoading(true);
+        callApi(
+            jobApi.getJobsByName(SEARCHED_VALUE),
+            (response: PostProps[]) => {
+                setData(response);
+                setFilteredData(response);
+            },
+            (error: LogErrorProps) => {
+                logError(error);
+            },
+            () => setLoading(false),
+        );
 
         return () => {
             controller.abort();

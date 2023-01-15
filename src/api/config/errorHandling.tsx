@@ -65,11 +65,9 @@ const validateResponse = (error: AxiosErrorProps) => {
 
 const callApi = async (api: any, onRequest: any, onError?: (error: any) => void, onFinally?: any) => {
     api.then((response: ApiResponseProps) => {
-        console.log(response);
         onRequest && onRequest(response.data.content);
     })
         .catch((error: any) => {
-            console.log('callApi err', error);
             const CUSTOM_ERROR = validateResponse(error.response?.data);
 
             onError && onError(CUSTOM_ERROR);

@@ -6,13 +6,13 @@ import Gig from './components/Gig';
 import LearnCard from './components/LearnCard';
 import UserCard from './components/UserCard';
 import LoadMoreBtn from '@/components/LoadMoreBtn';
+import MUIAlert from '@/components/MUIAlert';
 
 //Others
 import { UserDataProps } from '@/constants/intefaces';
 import './Profile.scss';
 import { DATA_INIT_STATE, LEARN_CARD_DATA } from './constants';
 import { getBookingList } from '@/store/actions/booking';
-import MUIAlert from '@/components/MUIAlert';
 import useLogError from '@/hooks/useLogError';
 import { BookingItemProps } from './types';
 

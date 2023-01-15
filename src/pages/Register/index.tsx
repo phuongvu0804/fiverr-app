@@ -69,7 +69,6 @@ const Register = () => {
                     callApi(
                         authApi.signIn(values),
                         (response: UserDataTokenProps) => {
-                            console.log(response);
                             //Dispatch user info (not token) to redux store
                             dispatch(actGetUserSuccess(response.user));
                             //Save user data to local storage
