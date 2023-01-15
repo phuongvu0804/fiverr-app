@@ -26,7 +26,7 @@ const JobCategoryListTablet = ({ data }: Props) => {
 
     return (
         <Slider {...SETTINGS} className="job-category__list hide-on-pc hide-on-mobile">
-            {data.map((item: JobCategoryProps, index: number) => (
+            {data?.map((item: JobCategoryProps, index: number) => (
                 <div key={index} className="job-category__item hide-on-mobile">
                     <NavLink
                         className={({ isActive }) => (isActive ? 'job-category__link active' : 'job-category__link')}

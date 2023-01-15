@@ -13,6 +13,7 @@ import { JobCategoryProps } from '@/constants/intefaces';
 const JobCategoryList = () => {
     const dispatch = useAppDispatch();
     const [jobCategoryData, setJobCategoryData] = useState<JobCategoryProps[]>([]);
+
     useEffect(() => {
         const controller = new AbortController();
 
@@ -23,14 +24,16 @@ const JobCategoryList = () => {
     }, []);
 
     return (
-        <Fragment>
-            {/* In PC screen */}
-            <div className="job-category__list__wrapper">
-                <JobCategoryListPC data={jobCategoryData} />
-                {/* In tablet screen */}
-                <JobCategoryListTablet data={jobCategoryData} />
-            </div>
-        </Fragment>
+        jobCategoryData && (
+            <Fragment>
+                {/* In PC screen */}
+                <div className="job-category__list__wrapper">
+                    <JobCategoryListPC data={jobCategoryData} />
+                    {/* In tablet screen */}
+                    <JobCategoryListTablet data={jobCategoryData} />
+                </div>
+            </Fragment>
+        )
     );
 };
 
