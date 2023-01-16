@@ -94,7 +94,7 @@ const HeaderContent = () => {
             </Drawer>
 
             {!isSignedIn && (
-                <Link className="header__btn header__btn--text hide-on-pc-tablet" to="/">
+                <Link className="header__btn header__btn--text hide-on-pc-tablet" to="/auth/sign-up">
                     Join
                 </Link>
             )}
