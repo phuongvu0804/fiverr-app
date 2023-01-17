@@ -33,6 +33,6 @@ To experience more the project, try to sign in with this account:
 
 The following sources have been used for reference purposes.
 
--   Airbnb: as the UX/UI inspiration
+-   Fiverr: as the UX/UI inspiration
     -   https://www.fiverr.com/
--   CyberSoft: as the API provider
+
