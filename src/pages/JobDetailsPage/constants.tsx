@@ -29,7 +29,7 @@ export const INIT_POST_DATA: PostProps = {
     avatar: '',
     congViec: {
         danhGia: 0,
-        giaTien: -1,
+        giaTien: 0,
         hinhAnh: '',
         id: -1,
         maChiTietLoaiCongViec: -1,

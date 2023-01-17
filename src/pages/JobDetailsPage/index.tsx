@@ -30,6 +30,7 @@ const JobDetailsPage = () => {
     const { id } = useParams();
     const logError = useLogError();
     const openAlert = useAppSelector((state) => state.alert.data);
+
     const [data, setData] = useState<PostProps>(INIT_POST_DATA);
     const [reviews, setReviews] = useState<ReviewProps[]>(INIT_REVIEW_DATA);
     const [scrollDown, setScrollDown] = useState<boolean>(false);
@@ -41,6 +42,7 @@ const JobDetailsPage = () => {
         setLoading(false);
         logError(error);
     };
+
     //Listen to the scrolling event
     useEffect(() => {
         let OFFSET_Y = 0;
@@ -79,7 +81,7 @@ const JobDetailsPage = () => {
     //Fetch Job Details
     useEffect(() => {
         const controller = new AbortController();
-
+        setLoading(true);
         if (id) {
             callApi(
                 jobApi.getJobDetails(id),

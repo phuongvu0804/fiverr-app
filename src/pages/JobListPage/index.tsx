@@ -19,7 +19,7 @@ import useLogError from '@/hooks/useLogError';
 const JobListPage = () => {
     //Get params from URLs
     let { id } = useParams();
-    const JOB_CATEGORY = useAppSelector((state) => state.jobCategory['data']);
+    const JOB_CATEGORY_DATA = useAppSelector((state) => state.jobCategory);
     const logError = useLogError();
 
     const [data, setData] = useState<PostProps[]>([]);
@@ -69,6 +69,13 @@ const JobListPage = () => {
             PARSED_LIKED_POST_DATA && setLikedPosts(PARSED_LIKED_POST_DATA!);
         }
     }, []);
+
+    //Set loading
+    useEffect(() => {
+        if (JOB_CATEGORY_DATA.loading) {
+            setLoading(true);
+        }
+    }, [JOB_CATEGORY_DATA.loading]);
 
     //Set current page
     const paginate = (event: React.ChangeEvent<unknown>, pageNumber: number) => {
@@ -151,7 +158,7 @@ const JobListPage = () => {
             <h3 className="job-list__title">Results for "{SEARCHED_VALUE}"</h3>
             <div className="job-list__filter-wrapper">
                 <div className="job-list__filter—group">
-                    <CategoryJobFilter data={JOB_CATEGORY} name="Category" onFilter={onFilterCategory} />
+                    <CategoryJobFilter data={JOB_CATEGORY_DATA.data} name="Category" onFilter={onFilterCategory} />
                     <PriceJobFilter data={PRICE_DATA} name="Budget" onFilter={onFilterPrice} />
                     <SellerRateFilter data={SELLER_RATE_DATA} name="Seller rate" onFilter={onFilterSeller} />
                 </div>

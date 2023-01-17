@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Avatar, Button, IconButton, Menu, MenuItem } from '@mui/material';
 
 interface Props {
@@ -10,6 +10,7 @@ interface Props {
 }
 
 const UserDropDownBtn = ({ userFirstLetter, onOpenUserMenu, onCloseUserMenu, onAnchorElUser, onSignOut }: Props) => {
+    const navigate = useNavigate();
     return (
         <div className="header__action-list">
             <IconButton onClick={onOpenUserMenu}>
@@ -33,12 +34,24 @@ const UserDropDownBtn = ({ userFirstLetter, onOpenUserMenu, onCloseUserMenu, onA
                 onClose={onCloseUserMenu}
             >
                 <MenuItem onClick={onCloseUserMenu}>
-                    <Button className="user__menu-item" component={Link} to="/profile">
+                    <Button
+                        className="user__menu-item"
+                        onClick={() => {
+                            onCloseUserMenu();
+                            navigate('/profile');
+                        }}
+                    >
                         Your Profile
                     </Button>
                 </MenuItem>
                 <MenuItem onClick={onCloseUserMenu}>
-                    <Button className="user__menu-item" onClick={onSignOut}>
+                    <Button
+                        className="user__menu-item"
+                        onClick={() => {
+                            onSignOut();
+                            onCloseUserMenu();
+                        }}
+                    >
                         Sign Out
                     </Button>
                 </MenuItem>

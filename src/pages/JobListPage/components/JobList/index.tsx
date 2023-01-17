@@ -17,7 +17,7 @@ interface Props {
 
 const JobList = ({ loading, data, likedPosts, postsPerPage }: Props) => {
     const renderPostList = () => {
-        if (loading && !data) {
+        if (loading) {
             const loadingArray = Array.apply(null, Array(postsPerPage));
 
             return loadingArray.map((item, index) => <JobItemSkeleton key={index} />);
