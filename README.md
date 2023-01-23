@@ -1,4 +1,4 @@
-# Airbnb Clone App
+# Fiverr Clone App
 
 An online market for freelance services. Users can search for services, book them, and manage their profile.
 Visit the live demo: [fiverr]: https://fiverr-app.vercel.app/
@@ -35,4 +35,3 @@ The following sources have been used for reference purposes.
 
 -   Fiverr: as the UX/UI inspiration
     -   https://www.fiverr.com/
-
