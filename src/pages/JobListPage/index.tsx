@@ -13,7 +13,7 @@ import { PRICE_DATA, PriceDataValues, SELLER_FILTER_LIST, SELLER_RATE_DATA } fro
 import { jobApi } from '@/api';
 import { useAppSelector } from '@/hooks';
 import { LogErrorProps, PostProps } from '@/constants/intefaces';
-import { callApi } from '@/api/config/errorHandling';
+import { callApi } from '@/configs/api/errorHandling';
 import useLogError from '@/hooks/useLogError';
 
 const JobListPage = () => {

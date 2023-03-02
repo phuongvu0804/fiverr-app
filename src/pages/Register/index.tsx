@@ -22,7 +22,7 @@ import {
     NotiTypes,
 } from '@/components/Layout/AuthenLayout/components/AuthenDialog/constants';
 import { renderTextInputs } from '@/components/Layout/AuthenLayout/constants';
-import { callApi } from '@/api/config/errorHandling';
+import { callApi } from '@/configs/api/errorHandling';
 import { LogErrorProps, UserDataProps, UserDataTokenProps } from '@/constants/intefaces';
 import { actGetUserFail, actGetUserSuccess } from '@/store/actions/user';
 import { useAppDispatch } from '@/hooks';

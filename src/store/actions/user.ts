@@ -1,5 +1,5 @@
 //Others
-import { callApi } from '@/api/config/errorHandling';
+import { callApi } from '@/configs/api/errorHandling';
 import userApi from '@/api/userApi';
 import { LogErrorProps, UserDataProps } from '@/constants/intefaces';
 import { getUserDataActionType } from '../constants/user';

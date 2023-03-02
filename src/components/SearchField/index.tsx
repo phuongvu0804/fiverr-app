@@ -7,7 +7,7 @@ import { Button } from '@mui/material';
 
 //Others
 import './SearchField.scss';
-import { useState } from 'react';
+import { SyntheticEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Box } from '@mui/system';
 
@@ -17,13 +17,20 @@ interface Props {
     searchBtn?: boolean;
     searchValue: string;
     onSearchValue: React.Dispatch<React.SetStateAction<string>>;
-    onSubmit?: (e: React.SyntheticEvent) => void;
+    onSubmit?: (e: SyntheticEvent) => void;
 }
 
 const SearchField = ({ className, children, searchBtn = true, searchValue, onSearchValue, onSubmit }: Props) => {
     const navigate = useNavigate();
 
-    const handleSubmitSearch = (e: React.SyntheticEvent) => {
+    const handleChange = (e: SyntheticEvent) => {
+        const searchValue = (e.target as HTMLInputElement).value;
+        if (!searchValue.startsWith(' ')) {
+            onSearchValue(searchValue);
+        }
+    };
+
+    const handleSubmitSearch = (e: SyntheticEvent) => {
         e.preventDefault();
         if (searchValue !== '') {
             navigate(`/job-list/${searchValue}`);
@@ -43,9 +50,10 @@ const SearchField = ({ className, children, searchBtn = true, searchValue, onSea
 
                 <InputBase
                     className="search-field__input"
+                    value={searchValue}
                     sx={{ ml: 1, flex: 1 }}
                     placeholder='Try "building mobile app"'
-                    onChange={(e) => onSearchValue(e.target.value)}
+                    onChange={handleChange}
                 />
             </Box>
 

@@ -1,5 +1,5 @@
 import bookingApi from '@/api/booking';
-import { callApi } from '@/api/config/errorHandling';
+import { callApi } from '@/configs/api/errorHandling';
 import { BookingInfo } from '@/assets/models/BookingInfor';
 import { LogErrorProps } from '@/constants/intefaces';
 import { SUCCESS_BOOKING_ALERT } from '@/pages/JobDetailsPage/constants';

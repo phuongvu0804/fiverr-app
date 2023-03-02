@@ -21,7 +21,7 @@ import { FORM_INPUT_LIST, INITIAL_VALUES } from './constants';
 import { renderTextInputs } from '@/components/Layout/AuthenLayout/constants';
 import { useAppDispatch } from '@/hooks';
 import { actGetUserFail, actGetUserRequest, actGetUserSuccess } from '@/store/actions/user';
-import { callApi } from '@/api/config/errorHandling';
+import { callApi } from '@/configs/api/errorHandling';
 import { LogErrorProps, UserDataTokenProps } from '@/constants/intefaces';
 
 const SignIn = () => {

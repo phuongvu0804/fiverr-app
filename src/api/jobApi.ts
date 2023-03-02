@@ -1,4 +1,4 @@
-import AXIOS_CLIENT from './config/axiosClient';
+import AXIOS_CLIENT from '../configs/api/axiosClient';
 
 const RESOURCE_NAME = 'cong-viec';
 

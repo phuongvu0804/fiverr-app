@@ -1,5 +1,6 @@
 import { lazy } from 'react';
 import { DefaultLayout, HeaderFooterLayout } from '@/components/Layout';
+import { clientRoutes } from '@/configs/routes';
 
 //Pages
 const HomePage = lazy(() => import('@/pages/Home'));
@@ -9,27 +10,27 @@ const ProfilePage = lazy(() => import('@/pages/Profile'));
 
 const CLIENT_ROUTES = [
     {
-        path: '/',
+        path: clientRoutes.home,
         component: HomePage,
         layout: HeaderFooterLayout,
     },
     {
-        path: '/job-list/:id',
+        path: clientRoutes.JobListPage,
         component: JobListPage,
         layout: DefaultLayout,
     },
     {
-        path: '/job-category/:id',
+        path: clientRoutes.JobCategoryPage,
         component: JobListPage,
         layout: DefaultLayout,
     },
     {
-        path: '/job-details/:id',
+        path: clientRoutes.JobDetailsPage,
         component: JobDetailsPage,
         layout: DefaultLayout,
     },
     {
-        path: '/profile',
+        path: clientRoutes.ProfilePage,
         component: ProfilePage,
         layout: DefaultLayout,
     },

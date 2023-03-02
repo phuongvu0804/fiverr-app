@@ -1,5 +1,5 @@
 import { BookingInfo } from '@/assets/models/BookingInfor';
-import AXIOS_CLIENT from './config/axiosClient';
+import AXIOS_CLIENT from '../configs/api/axiosClient';
 
 const RESOURCE_NAME = 'thue-cong-viec';
 

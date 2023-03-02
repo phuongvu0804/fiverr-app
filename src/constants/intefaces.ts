@@ -1,4 +1,4 @@
-import { CustomedErrorProps } from '@/api/config/errorHandling';
+import { CustomedErrorProps } from '@/configs/api/errorHandling';
 import { AlertColor } from '@mui/material';
 
 export interface ButtonType {

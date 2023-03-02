@@ -1,6 +1,6 @@
 import { SignUpValuesProps } from '@/pages/Register/types';
 import { signInValuesProps } from '@/pages/SignIn/types';
-import AXIOS_CLIENT from './config/axiosClient';
+import AXIOS_CLIENT from '../configs/api/axiosClient';
 
 const RESOURCE_NAME = 'auth';
 

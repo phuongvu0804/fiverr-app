@@ -1,6 +1,6 @@
 //Others
 import { jobApi } from '@/api';
-import { callApi } from '@/api/config/errorHandling';
+import { callApi } from '@/configs/api/errorHandling';
 import { JobCategoryProps, LogErrorProps } from '@/constants/intefaces';
 import { JobCategoryActionType } from '../constants/jobCategoryList';
 import { ActionProps } from './types';

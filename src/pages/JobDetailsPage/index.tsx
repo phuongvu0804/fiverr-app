@@ -21,7 +21,7 @@ import { NavbarItemProps, ReviewProps } from './types';
 import { jobApi } from '@/api';
 import reviewApi from '@/api/reviewApi';
 import { useAppSelector } from '@/hooks';
-import { callApi } from '@/api/config/errorHandling';
+import { callApi } from '@/configs/api/errorHandling';
 import { LogErrorProps, PostProps } from '@/constants/intefaces';
 import useLogError from '@/hooks/useLogError';
 
