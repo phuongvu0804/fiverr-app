@@ -19,7 +19,7 @@ import useLogError from '@/hooks/useLogError';
 const JobListPage = () => {
     //Get params from URLs
     let { id } = useParams();
-    const JOB_CATEGORY_DATA = useAppSelector((state) => state.jobCategory);
+    const JOB_CATEGORY_DATA: any = useAppSelector((state) => state.jobCategory);
     const logError = useLogError();
 
     const [data, setData] = useState<PostProps[]>([]);
@@ -28,10 +28,11 @@ const JobListPage = () => {
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [postsPerPage] = useState<number>(12);
     const [likedPosts, setLikedPosts] = useState<number[]>([]);
+    const [jobCategoryName, setJobCategoryName] = useState<string>('');
 
     const POST_LIST_LENGTH = filteredData?.length;
 
-    const SEARCHED_VALUE: string = id !== undefined ? id : '';
+    const searchParams: string = id ? id : '';
 
     //Get current posts
     const INDEX_OF_LAST_POST = currentPage * postsPerPage;
@@ -39,13 +40,24 @@ const JobListPage = () => {
     const CURRENT_POSTS = filteredData?.slice(INDEX_OF_FIRST_POST, INDEX_OF_LAST_POST);
     const TOTAL_PAGE = Math.ceil(POST_LIST_LENGTH / postsPerPage);
 
+    useEffect(() => {
+        if (Number(searchParams)) {
+            const category = JOB_CATEGORY_DATA.data?.filter((item: any, index: number) => item.id == searchParams);
+            if (category?.length) {
+                setJobCategoryName(category[0].tenLoaiCongViec);
+            }
+        } else {
+            setJobCategoryName(searchParams);
+        }
+    }, [JOB_CATEGORY_DATA.data, searchParams]);
+
     //Fetch data of list of jobs
     useEffect(() => {
         const controller = new AbortController();
 
         setLoading(true);
         callApi(
-            jobApi.getJobsByName(SEARCHED_VALUE),
+            jobApi.getJobsByName(searchParams),
             (response: PostProps[]) => {
                 setData(response);
                 setFilteredData(response);
@@ -155,7 +167,7 @@ const JobListPage = () => {
 
     return (
         <div id="job-list" className="container-center padding-top-page">
-            <h3 className="job-list__title">Results for "{SEARCHED_VALUE}"</h3>
+            <h3 className="job-list__title">Results for "{jobCategoryName}"</h3>
             <div className="job-list__filter-wrapper">
                 <div className="job-list__filter—group">
                     <CategoryJobFilter data={JOB_CATEGORY_DATA.data} name="Category" onFilter={onFilterCategory} />
